@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
   root 'page#index'
 
   get '/secret' => 'page#secret'
   get '/register' => 'users#new'
 
-  resources :users
+  #routes for login form/login in/logging out
+  get 'login' => 'sessions#new'
+
+  post '/login'=> 'sessions#create'
+
+  get '/logout' => 'sessions#destroy'
+
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
