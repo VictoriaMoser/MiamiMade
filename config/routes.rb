@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'page#index'
+  root '/'
+
+  get 'page#index'
 
   get '/secret' => 'page#secret'
   get '/register' => 'users#new'
