@@ -1,0 +1,2 @@
+class Investor < ApplicationRecord
+end
