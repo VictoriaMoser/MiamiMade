@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root '/'
+  # root ''
+  # root (pages home)
 
   get 'page#index'
 
