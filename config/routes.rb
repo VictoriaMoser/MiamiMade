@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   # root ''
   # root (pages home)
 
-  get 'page#index'
+  root 'page#index'
 
   get '/secret' => 'page#secret'
   get '/register' => 'users#new'
+
+  resources :users
 
   #routes for login form/login in/logging out
   get 'login' => 'sessions#new'
