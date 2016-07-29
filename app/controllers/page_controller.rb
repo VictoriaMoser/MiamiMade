@@ -4,5 +4,6 @@ class PageController < ApplicationController
   end
 
   def secret
+    redirect_to root_path if current_user.admin?
   end
 end
