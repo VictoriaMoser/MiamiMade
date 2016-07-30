@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20160729234746) do
     t.boolean  "approval"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_investors_on_user_id"
   end
 
   create_table "startups", force: :cascade do |t|
@@ -33,7 +35,9 @@ ActiveRecord::Schema.define(version: 20160729234746) do
     t.boolean  "approval"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
     t.string   "email"
+    t.index ["user_id"], name: "index_startups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

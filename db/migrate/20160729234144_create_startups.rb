@@ -9,6 +9,9 @@ class CreateStartups < ActiveRecord::Migration[5.0]
       t.boolean :approval
 
       t.timestamps
+
+      t.belongs_to :user, index: true
+
     end
   end
 end

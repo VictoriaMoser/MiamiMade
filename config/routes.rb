@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  get 'investor/index'
+
+  get 'investor/new'
+
+  get 'investor/create'
+
+  get 'investor/edit'
+
+  get 'investor/destroy'
+
+  get 'startup/index'
+
+  get 'startup/new'
+
+  get 'startup/create'
+
+  get 'startup/edit'
+
+  get 'startup/destroy'
+
   # root ''
   # root (pages home)
 
@@ -16,8 +36,4 @@ Rails.application.routes.draw do
 
   get '/logout' => 'sessions#destroy'
 
-
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
