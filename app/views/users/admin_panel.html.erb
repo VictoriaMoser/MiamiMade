@@ -1,8 +1,18 @@
 <div> <% @investors.each do |investor| %>
   <%= investor.name %>
+  <%= investor.email %>
+  <%= investor.website %>
+  <%= investor.address %>
+  <%= investor.description %>
+  <%= investor.founded_date %>
   <%end%>
 </div>
 <div> <% @startups.each do |startup| %>
   <%= startup.name %>
+  <%= startup.email %>
+  <%= startup.website %>
+  <%= startup.address %>
+  <%= startup.description %>
+  <%= startup.founded_date %>
   <%end%>
 </div>
