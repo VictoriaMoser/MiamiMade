@@ -1,2 +1,21 @@
-<h1>Startup#index</h1>
-<p>Find me in app/views/startup/index.html.erb</p>
+<div class="startups index">
+  <h2> Startups </h2>
+</div>
+
+<div class="">
+  <table>
+    <%= @startups.each do |startups| %>
+    <tr>
+      <td> <%= startup.name %> </td>
+      <td> <%= startup.website %> </td>
+      <td> <%= startup.address %> </td>
+      <td> <%= startup.description %> </td>
+      <td> <%= startup.founded_date %> </td>
+      <td class="actions">
+        <%= link_to("show", '#', :class => 'action show') %>
+        <%= link_to("edit", '#', :class => 'action edit') %>
+        <%= link_to("delete", '#', :class => 'action delete') %>
+      </td>
+    </tr>
+  </table>
+</div>

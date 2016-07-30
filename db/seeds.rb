@@ -3,5 +3,11 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   movies = Movie.create( name: 'Star Wars' }, { name: 'Lord of the Rings' )
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Startup.create(name:'Acordis International', address:'Miami')
+Startup.create(name:'Fresh Meal Plan', address:'Miami')
+Startup.create(name:'DG3 Media Group', address:'Orlando, FL')
+Startup.create(name:'E-Telequote Insurance', address:'Tampa')
+Startup.create(name:'Resell MFG', address:'Orlando, FL')

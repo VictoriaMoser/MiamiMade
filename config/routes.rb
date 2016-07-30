@@ -1,23 +1,23 @@
 Rails.application.routes.draw do
-  get 'investor/index'
+  # get 'investor/index'
+  #
+  # get 'investor/new'
+  #
+  # get 'investor/create'
+  #
+  # get 'investor/edit'
+  #
+  # get 'investor/destroy'
 
-  get 'investor/new'
+  get 'startup#index'
 
-  get 'investor/create'
-
-  get 'investor/edit'
-
-  get 'investor/destroy'
-
-  get 'startup/index'
-
-  get 'startup/new'
-
-  get 'startup/create'
-
-  get 'startup/edit'
-
-  get 'startup/destroy'
+  # get 'startup/new'
+  #
+  # get 'startup/create'
+  #
+  # get 'startup/edit'
+  #
+  # get 'startup/destroy'
 
   # root ''
   # root (pages home)

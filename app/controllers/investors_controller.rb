@@ -1,4 +1,4 @@
-class StartupController < ApplicationController
+class InvestorsController < ApplicationController
   def index
   end
 
