@@ -1,4 +1,5 @@
 <div> <% @investors.each do |investor| %>
+<!-- Make these list items -->
   <%= investor.name %>
   <%= investor.email %>
   <%= investor.website %>
@@ -6,6 +7,7 @@
   <%= investor.description %>
   <%= investor.founded_date %>
   <%end%>
+  <!-- Add buttons for approval -->
 </div>
 <div> <% @startups.each do |startup| %>
   <%= startup.name %>

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # root (pages home)
 
   root 'page#index'
-
+  get '/admin_panel' => 'users#admin_panel'
   get '/secret' => 'page#secret'
   get '/register' => 'users#new'
 
