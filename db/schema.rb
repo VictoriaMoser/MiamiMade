@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729234746) do
+ActiveRecord::Schema.define(version: 20160731164327) do
 
   create_table "investors", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +20,12 @@ ActiveRecord::Schema.define(version: 20160729234746) do
     t.text     "description"
     t.date     "founded_date"
     t.boolean  "approval"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
+    t.string   "shortdescription"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_investors_on_user_id"
   end
 
@@ -33,10 +36,13 @@ ActiveRecord::Schema.define(version: 20160729234746) do
     t.text     "description"
     t.date     "founded_date"
     t.boolean  "approval"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
     t.string   "email"
+    t.string   "shortdescription"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_startups_on_user_id"
   end
 
