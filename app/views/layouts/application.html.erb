@@ -12,11 +12,11 @@
   </head>
 
   <body>
-    <% if current_user %>
+    <!-- <% if current_user %>
        Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
        <% else %>
        <%= link_to 'Login', login_path %> | <%= link_to 'Register',register_path %>
-    <% end %>
+    <% end %> -->
     <%= yield %>
   </body>
 </html>
