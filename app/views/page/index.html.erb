@@ -1,1 +1,66 @@
-<h1>MiamiMade.</h1>
+
+<div id="control">
+		<h2>South Florida StartUp Ecosystem</h2>
+		<p>We'll help you locate and get information about SouthFlorida StartUps, Inverstors and all components of the ecosystem.  PLease select the filters of the information you would like us to display and press Search...</p>
+
+    </br>
+    <% if current_user %>
+       Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
+       <% else %>
+       <%= link_to 'Login', login_path %> | <%= link_to 'Register',register_path %>
+    <% end %>
+    </br>
+
+    <form method="get" id="chooseZip">
+			<button type="submit" class="learnButton">Entity selection</button>
+    	<button type="submit" class="learnButton">Vertical selection</button>
+
+      <div class="dropdown">
+          <button onclick="myFunction()"
+          class="dropbtn">Industry Selection</button>
+          <div id="myDropdown" class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+          </div>
+      </div>
+
+      </br></br>
+      <input type="radio"> StartUps</button></br></br>
+      <input type="radio"> Investors</button></br></br></br>
+
+      <button type="submit" class="learnButton">Search</button>
+
+			<!-- <button type="button" id="searchZip" class="learnButton">Search by Zip Code</button> -->
+			<!-- <div class="clear"></div>
+			<div class="zipSearch">
+				<input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
+				<button type="submit" class="learnButton">Search</button>
+			</div> -->
+			<div class="clear"></div>
+		</form>
+
+		<p>If you've found this App helpful, please help spread the word!</p>
+
+		<div class="social">
+
+			<div class="twitter">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-via="pauldessert">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			</div>
+
+			<!-- <div class="facebook">
+				<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.seedtip.com&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=21&amp;appId=752601418144350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+			</div> -->
+
+
+		</div>
+    </br></br>
+		<div class="clear"></div>
+		<div id="results"></div>
+		<p>A project by <a href="">Victoria, Alejandra, Andres</a>.</p>
+	</div>
+
+	<!-- an empty div for the map -->
+	<div id="map-canvas"></div>
+
