@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @startup.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @startup.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @startup.website %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @startup.address %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @startup.description %>
+</p>
+
+<p>
+  <strong>Founded date:</strong>
+  <%= @startup.founded_date %>
+</p>
+
+<p>
+  <strong>Approval:</strong>
+  <%= @startup.approval %>
+</p>
+
+<%= link_to 'Edit', edit_startup_path(@startup) %> |
+<%= link_to 'Back', startups_path %>

@@ -1,25 +1,4 @@
 Rails.application.routes.draw do
-  # get 'investor/index'
-  #
-  # get 'investor/new'
-  #
-  # get 'investor/create'
-  #
-  # get 'investor/edit'
-  #
-  # get 'investor/destroy'
-
-
-  # get 'startup/new'
-  #
-  # get 'startup/create'
-  #
-  # get 'startup/edit'
-  #
-  # get 'startup/destroy'
-
-  # root ''
-  # root (pages home)
 
   root 'page#index'
   get '/admin_panel' => 'users#admin_panel'
@@ -35,7 +14,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   #routes for startups
-    resources :startups
-    get '/startup/index' => 'startups#index'
+  resources :startups
+  get '/startups' => 'startups#index'
+  resources :investors
+
 
 end
