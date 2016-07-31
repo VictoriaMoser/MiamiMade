@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   #routes for startups
   resources :startups
   get '/startups' => 'startups#index'
+  #routes for investors
   resources :investors
+  get '/investors' => 'investors#index'
+
 
 
 end
