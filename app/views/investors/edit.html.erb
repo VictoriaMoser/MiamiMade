@@ -1,2 +1,6 @@
-<h1>Investor#edit</h1>
-<p>Find me in app/views/investor/edit.html.erb</p>
+<h1>Editing Investor</h1>
+
+<%= render 'form', investor: @investor %>
+
+<%= link_to 'Show', @investor %> |
+<%= link_to 'Back', investors_path %>

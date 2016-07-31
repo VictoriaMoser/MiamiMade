@@ -1,2 +1,5 @@
-<h1>Investor#new</h1>
-<p>Find me in app/views/investor/new.html.erb</p>
+<h1>New Investor</h1>
+
+<%= render 'form', investor: @investor %>
+
+<%= link_to 'Back', investors_path %>
