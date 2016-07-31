@@ -41,14 +41,16 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully   destroyed.' }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def admin_panel
-    @investors = Investor.all
-    @startups = Startup.all
+    # if current_user.admin == true
+      @investors = Investor.where(approval: false)
+      @startups = Startup.where(approval: false)
+    # end 
   end
 
   private

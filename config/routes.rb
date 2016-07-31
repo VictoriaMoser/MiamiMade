@@ -16,10 +16,12 @@ Rails.application.routes.draw do
   #routes for startups
   resources :startups
   get '/startups' => 'startups#index'
+  #approving startups
+  patch '/startups/:id/approve' => 'startups#approve', as: 'startup_approve'
   #routes for investors
   resources :investors
   get '/investors' => 'investors#index'
-
-
-
+  #approving investors
+  patch '/investors/:id/approve' => 'investors#approve', as: 'investor_approve'
+ 
 end

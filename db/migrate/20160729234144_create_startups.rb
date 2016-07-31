@@ -6,7 +6,7 @@ class CreateStartups < ActiveRecord::Migration[5.0]
       t.string :address
       t.text :description
       t.date :founded_date
-      t.boolean :approval
+      t.boolean :approval, default: false
 
       t.timestamps
 

@@ -4,7 +4,7 @@ class StartupsController < ApplicationController
   # GET /startups
   # GET /startups.json
   def index
-    @startups = Startup.all
+    @startups = Startup.where(approval: true)
   end
 
   # GET /startups/1
@@ -61,6 +61,16 @@ class StartupsController < ApplicationController
     end
   end
 
+  def approve
+    @startup = Startup.find(params[:id])
+    @startup.approve
+    if @startup.save
+      redirect_to admin_panel_path
+    else
+      # Go back to admin_panel and give error
+    end
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_startup
@@ -71,4 +81,8 @@ class StartupsController < ApplicationController
     def startup_params
       params.require(:startup).permit(:name, :email, :website, :address, :description, :founded_date, :approval)
     end
+
+    def approval_params
+      params.permit(:approval)
+    end 
 end

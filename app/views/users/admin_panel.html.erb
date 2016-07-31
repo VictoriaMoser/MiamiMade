@@ -1,20 +1,64 @@
-<div> <% @investors.each do |investor| %>
-<!-- Make these list items -->
-  <%= investor.name %>
-  <%= investor.email %>
-  <%= investor.website %>
-  <%= investor.address %>
-  <%= investor.description %>
-  <%= investor.founded_date %>
-  <%end%>
+<div> 
+<h3> Investors </h3>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Founded Date</th>
+    </tr>
+    <tbody>
+
+    <% @investors.each do |investor| %>
+
+      <tr>
+        <td><%= investor.name %></td>
+        <td><%= investor.email %></td>
+        <td><%= investor.website %></td>
+        <td><%= investor.address %></td>
+        <td><%= investor.description %></td>
+        <td><%= investor.founded_date %></td>
+        <td><%= button_to 'Edit', edit_investor_path(investor), method:'get' %></td>
+        <td><%= button_to 'Approve', investor_approve_path(investor), method:'patch' %></td>
+      </tr>
+   <%end%>
+   </tbody>
+</table> 
+
   <!-- Add buttons for approval -->
-</div>
-<div> <% @startups.each do |startup| %>
-  <%= startup.name %>
-  <%= startup.email %>
-  <%= startup.website %>
-  <%= startup.address %>
-  <%= startup.description %>
-  <%= startup.founded_date %>
-  <%end%>
-</div>
+
+<div> 
+<h3> Startups </h3>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Founded Date</th>
+    </tr>
+    <tbody>
+
+    <% @startups.each do |startup| %>
+
+      <tr>
+        <td><%= startup.name %></td>
+        <td><%= startup.email %></td>
+        <td><%= startup.website %></td>
+        <td><%= startup.address %></td>
+        <td><%= startup.description %></td>
+        <td><%= startup.founded_date %></td>
+        <td><%= button_to 'Edit', edit_startup_path(startup), method: 'get' %></td>
+        <td><%= button_to 'Approve', startup_approve_path(startup), method:'patch' %></td>
+      </tr>
+   <%end%>
+   </tbody>
+</table> 
+
+  <!-- Add buttons for approval -->
+
+
+

@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20160731164327) do
     t.string   "address"
     t.text     "description"
     t.date     "founded_date"
-    t.boolean  "approval"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.boolean  "approval",         default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "user_id"
     t.string   "shortdescription"
     t.float    "latitude"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20160731164327) do
     t.string   "address"
     t.text     "description"
     t.date     "founded_date"
-    t.boolean  "approval"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.boolean  "approval",         default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "user_id"
     t.string   "email"
     t.string   "shortdescription"
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20160731164327) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.boolean  "admin"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "admin",           default: false
   end
 
 end

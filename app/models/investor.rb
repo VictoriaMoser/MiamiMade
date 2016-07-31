@@ -6,7 +6,7 @@ class Investor < ApplicationRecord
   validates :description, presence: true
   validates :founded_date, presence: true
   
-  def aprove
+  def approve
     self.approval = true
   end
 end

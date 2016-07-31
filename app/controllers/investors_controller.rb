@@ -4,7 +4,7 @@ class InvestorsController < ApplicationController
   # GET /investors
   # GET /investors.json
   def index
-    @investors = Investor.all
+    @investors = Investor.where(approval: true)
   end
 
   # GET /investors/1
@@ -61,6 +61,16 @@ class InvestorsController < ApplicationController
     end
   end
 
+  def approve
+    @investor = Investor.find(params[:id])
+    @investor.approve
+    if @investor.save
+      redirect_to admin_panel_path
+    else
+      # Go back to admin_panel and give error
+    end
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_investor
@@ -71,4 +81,8 @@ class InvestorsController < ApplicationController
     def investor_params
       params.require(:investor).permit(:name, :email, :website, :address, :description, :founded_date, :approval)
     end
+
+    def approval_params
+      params.permit(:approval)
+    end 
 end
