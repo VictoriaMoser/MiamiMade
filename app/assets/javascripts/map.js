@@ -3,8 +3,8 @@
 ** www.pauldessert.com | www.seedtip.com
 */
 
-$(function() {
 
+function ready() {
 		var marketId = []; //returned from the API
 		var allLatlng = []; //returned from the API
 		var allMarkers = []; //returned from the API
@@ -23,17 +23,17 @@ $(function() {
 			}
 
 			function success(pos){
+				console.log('got usercoords');
 				userCords = pos.coords;
-
-				//return userCords;
+				return userCords;
 			}
 
 			// Get the user's current position
 			navigator.geolocation.getCurrentPosition(success, error);
 			//console.log(pos.latitude + " " + pos.longitude);
-			} else {
-				alert('Geolocation is not supported in your browser');
-			}
+		} else {
+			alert('Geolocation is not supported in your browser');
+		}
 
 		//End Geo location
 
@@ -173,4 +173,7 @@ $(function() {
 
         return false; // important: prevent the form from submitting
     });
-});
+};
+
+$(document).on('ready turbolinks:load', ready);
+// window.initMap = ready;
