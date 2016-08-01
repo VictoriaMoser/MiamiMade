@@ -2,13 +2,11 @@ class InvestorsController < ApplicationController
   before_action :set_investor, only: [:show, :edit, :update, :destroy]
 
   # GET /investors
-  # GET /investors.json
   def index
     @investors = Investor.where(approval: true)
   end
 
   # GET /investors/1
-  # GET /investors/1.json
   def show
   end
 
@@ -22,7 +20,6 @@ class InvestorsController < ApplicationController
   end
 
   # POST /investors
-  # POST /investors.json
   def create
     @investor = Investor.new(investor_params)
 
@@ -38,7 +35,6 @@ class InvestorsController < ApplicationController
   end
 
   # PATCH/PUT /investors/1
-  # PATCH/PUT /investors/1.json
   def update
     respond_to do |format|
       if @investor.update(investor_params)
@@ -52,7 +48,6 @@ class InvestorsController < ApplicationController
   end
 
   # DELETE /investors/1
-  # DELETE /investors/1.json
   def destroy
     @investor.destroy
     respond_to do |format|
