@@ -6,10 +6,8 @@
 #   movies = Movie.create( name: 'Star Wars' }, { name: 'Lord of the Rings' )
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Startup.create(name:'Acordis International', address:'Miami, FL', longitud: '25.7617', latitude: '-80.1918')
-Startup.create(name:'Fresh Meal Plan', address:'Miami, FL', longitud: '25.8717', latitude: '-78.1918')
-Startup.create(name:'DG3 Media Group', address:'Orlando, FL', longitud: '28.5383', latitude: '-81.3792')
-Startup.create(name:'E-Telequote Insurance', address:'Tampa, FL', longitud: '27.9506', latitude: '-82.4572')
-Startup.create(name:'Resell MFG', address:'Orlando, FL', longitud: '28.7483', latitude: '-81.6392')
-
-Investor.create(name:'', address:'', longitud:'', latitude:'')
+Startup.create(name:'Acordis International', address:'Miami, FL', longitude: '25.7617', latitude: '-80.1918')
+Startup.create(name:'Fresh Meal Plan', address:'Miami, FL', longitude: '25.8717', latitude: '-78.1918')
+Startup.create(name:'DG3 Media Group', address:'Orlando, FL', longitude: '28.5383', latitude: '-81.3792')
+Startup.create(name:'E-Telequote Insurance', address:'Tampa, FL', longitude: '27.9506', latitude: '-82.4572')
+Startup.create(name:'Resell MFG', address:'Orlando, FL', longitude: '28.7483', latitude: '-81.6392')
