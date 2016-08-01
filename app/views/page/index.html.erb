@@ -4,11 +4,11 @@
 			<p>We'll help you locate and get information about SouthFlorida StartUps, Inverstors and all components of the ecosystem.  PLease select the filters of the information you would like us to display and press Search...</p>
 
 	    </br>
-	    <% if current_user %>
+	    <!-- <% if current_user %>
 	       Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
 	       <% else %>
 	       <%= link_to 'Login', login_path %> | <%= link_to 'Register',register_path %>
-	    <% end %>
+	    <% end %> -->
 	    </br>
 
 	    <form method="get" id="chooseZip">
@@ -60,7 +60,7 @@
 
 	<!-- an empty div for the map -->
 	<div class="col-md-6">
-		<div id="map-canvas">hello</div>
+		<div id="map-canvas"></div>
 	</div>
 
 </div>
