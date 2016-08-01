@@ -14,14 +14,14 @@
  *= require_self
  */
 
- .col-centered {
-     float: none;
-     margin: 0 auto;
- }
+.col-centered {
+   float: none;
+   margin: 0 auto;
+}
 
- #nav {
-   background-color: #fff;
- }
+.container-fluid {
+  border: 2px solid red;
+}
 
 .navbar li {
   color: #fff !important;
