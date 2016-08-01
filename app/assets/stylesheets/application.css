@@ -18,3 +18,11 @@
      float: none;
      margin: 0 auto;
  }
+
+ #nav {
+   background-color: #fff;
+ }
+
+.navbar li {
+  color: #fff !important;
+}

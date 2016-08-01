@@ -20,6 +20,17 @@
        <% else %>
        <%= link_to 'Login', login_path %> | <%= link_to 'Register',register_path %>
     <% end %> -->
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "Miami Made", '#', id: "logo" %>
+        <nav id="nav">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Register", new_user_path %></li>
+            <li><%= link_to "Login", users_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <div class="container-fluid">
     <%= yield %>
     </div>
