@@ -14,15 +14,9 @@
  *= require_self
  */
 
-.col-centered {
-   float: none;
-   margin: 0 auto;
-}
-
 .container-fluid {
   border: 2px solid red;
+  height: 100%;
 }
 
-.navbar li {
-  color: #fff !important;
-}
+html, body, main, .row, .col-md-6, #map-canvas { height: 100% }
