@@ -1,28 +1,20 @@
 class StartupsController < ApplicationController
   before_action :set_startup, only: [:show, :edit, :update, :destroy]
 
-  # GET /startups
-  # GET /startups.json
   def index
     @startups = Startup.where(approval: true)
   end
 
-  # GET /startups/1
-  # GET /startups/1.json
   def show
   end
 
-  # GET /startups/new
   def new
     @startup = Startup.new
   end
 
-  # GET /startups/1/edit
   def edit
   end
 
-  # POST /startups
-  # POST /startups.json
   def create
     @startup = Startup.new(startup_params)
 
@@ -37,8 +29,6 @@ class StartupsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /startups/1
-  # PATCH/PUT /startups/1.json
   def update
     respond_to do |format|
       if @startup.update(startup_params)
@@ -50,9 +40,7 @@ class StartupsController < ApplicationController
       end
     end
   end
-
-  # DELETE /startups/1
-  # DELETE /startups/1.json
+  
   def destroy
     @startup.destroy
     respond_to do |format|
