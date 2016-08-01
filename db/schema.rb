@@ -19,14 +19,12 @@ ActiveRecord::Schema.define(version: 20160731164327) do
     t.string   "address"
     t.text     "description"
     t.date     "founded_date"
-    t.boolean  "approval",         default: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "user_id"
+    t.boolean  "approval"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "shortdescription"
     t.float    "latitude"
     t.float    "longitude"
-    t.index ["user_id"], name: "index_investors_on_user_id"
   end
 
   create_table "startups", force: :cascade do |t|
@@ -35,24 +33,22 @@ ActiveRecord::Schema.define(version: 20160731164327) do
     t.string   "address"
     t.text     "description"
     t.date     "founded_date"
-    t.boolean  "approval",         default: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "user_id"
+    t.boolean  "approval"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "email"
     t.string   "shortdescription"
     t.float    "latitude"
     t.float    "longitude"
-    t.index ["user_id"], name: "index_startups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "admin",           default: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.boolean  "admin"
   end
 
 end
