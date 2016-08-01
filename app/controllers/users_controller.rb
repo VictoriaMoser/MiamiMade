@@ -49,8 +49,7 @@ class UsersController < ApplicationController
   def admin_panel
       redirect_to login_path unless current_user.admin
       @investors = Investor.where(approval: false)
-      @startups = Startup.where(approval: false)
-    # end 
+      @startups = Startup.where(approval: false) 
   end
 
   private
