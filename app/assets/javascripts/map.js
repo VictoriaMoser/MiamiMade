@@ -23,7 +23,6 @@ function ready() {
 			}
 
 			function success(pos){
-				console.log('got usercoords');
 				userCords = pos.coords;
 				return userCords;
 			}
