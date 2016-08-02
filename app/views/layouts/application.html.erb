@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>MiamiMade</title>
     <%= csrf_meta_tags %>
@@ -16,20 +17,26 @@
   </head>
 
   <body>
-    <!-- <% if current_user %>
-       Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
-       <% else %>
-       <%= link_to 'Login', login_path %> | <%= link_to 'Register',register_path %>
-    <% end %> -->
     <header class="navbar">
       <div class="container-fluid">
-        <%= link_to "Miami Made", '#', id: "logo" %>
-        <nav id="nav">
-          <ul class="nav navbar-nav navbar-right">
-            <!-- <li><%= link_to "Register", register_path %></li>
-            <li><%= link_to "Login", login_path %></li> -->
-          </ul>
-        </nav>
+        <div class="row">
+          <%= link_to "MiamiMade", root_path, id: "logo" %>
+          <nav id="nav">
+            <ul class="nav navbar-nav navbar-right">
+              <% if current_user %>
+                <li><%= link_to 'Startups', startups_path %></li>
+                <li><%= link_to 'Investors', investors_path %></li>
+                <li>Signed in as <%= current_user.name %></li>
+                <li><%= link_to "Logout", logout_path %></li>
+                <% else %>
+                <li><%= link_to 'Startups', startups_path %></li>
+                <li><%= link_to 'Investors', investors_path %></li>
+                <li><%= link_to 'Login', login_path %></li>
+                <li><%= link_to 'Register',register_path %></li>
+        	    <% end %>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
 
@@ -39,17 +46,17 @@
       </div>
     </main>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script>
-      function initMap() {
-        // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          scrollwheel: false,
-          zoom: 8
-        });
-      }
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <p>A project by <a href="#">Victoria Cartagena, N. Alejandra Estevez, Andres Duarte</a>.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
+
 </html>

@@ -1,0 +1,9 @@
+<h2>Search Results</h2>
+
+<% if @results.empty? %>
+  Try your search again.
+<% else %>
+  <% @results.each do |result| %>
+    <p><%= link_to result.name, result  %></p>
+  <% end %>
+<% end %>

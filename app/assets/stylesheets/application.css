@@ -14,9 +14,26 @@
  *= require_self
  */
 
+ body {
+ 	background-image: url(/assets/images/skyline.js);
+ }
+
+#logo {
+  font-size: 2em;
+  margin: 0 30px;
+
+}
+
+ul.nav {
+  padding: 10px;
+}
+
 .container-fluid {
-  border: 2px solid red;
   height: 100%;
 }
 
 html, body, main, .row, .col-md-6, #map-canvas { height: 100% }
+
+footer {
+  background-color: black;
+}

@@ -3,8 +3,8 @@ class Startup < ApplicationRecord
 
   validates :name, presence: true
   validates :address, presence: true
-  validates :description, presence: true
-  validates :founded_date, presence: true
+  # validates :description, presence: true
+  # validates :founded_date, presence: true
 
   def approve
     self.approval = true
