@@ -34,6 +34,11 @@ ul.nav {
 
 html, body, main, .row, .col-md-6, #map-canvas { height: 100% }
 
+
+.form-style {
+    border: 2px solid black;
+}
+
 footer {
   background-color: black;
 }
