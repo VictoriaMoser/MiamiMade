@@ -2,28 +2,23 @@ require 'test_helper'
 
 class InvestorControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get investor_index_url
+    get investors_path
     assert_response :success
   end
 
   test "should get new" do
-    get investor_new_url
-    assert_response :success
-  end
-
-  test "should get create" do
-    get investor_create_url
+    get new_investor_path
     assert_response :success
   end
 
   test "should get edit" do
-    get investor_edit_url
+    get edit_investor_path(investors(:one))
     assert_response :success
   end
 
   test "should get destroy" do
-    get investor_destroy_url
-    assert_response :success
+    delete investor_path(investors(:one))
+    assert_redirected_to investors_path
   end
 
 end
