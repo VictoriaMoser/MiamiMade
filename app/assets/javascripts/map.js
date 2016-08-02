@@ -1,178 +1,123 @@
-/* Pull local Farers market data from the USDA API and display on
-** Google Maps using GeoLocation or user input zip code. By Paul Dessert
-** www.pauldessert.com | www.seedtip.com
-*/
+// function ready() {
+//
+//
+//********* geolocation
+
+// if (navigator.geolocation) {
+//
+// 	function error(err) {
+// 		console.warn('ERROR(' + err.code + '): ' + err.message);
+// 	}
+//
+// 	function success(pos){
+// 		userCords = pos.coords;
+// 		return userCords;
+// 	}
+//
+// 	// Get the user's current position
+// 	navigator.geolocation.getCurrentPosition(success, error);
+// 	//console.log(pos.latitude + " " + pos.longitude);
+// } else {
+// 	alert('Geolocation is not supported in your browser');
+// }
+
+//********** End Geo location
 
 
-function ready() {
-		var marketId = []; //returned from the API
-		var allLatlng = []; //returned from the API
-		var allMarkers = []; //returned from the API
-		var marketName = []; //returned from the API
-		var infowindow = null;
-		var pos;
-		var userCords;
-		var tempMarkerHolder = [];
+/*change map to map-canvas*/
 
-		//Start geolocation
 
-		if (navigator.geolocation) {
 
-			function error(err) {
-				console.warn('ERROR(' + err.code + '): ' + err.message);
-			}
+var map;
 
-			function success(pos){
-				userCords = pos.coords;
-				return userCords;
-			}
+var markers = [];
 
-			// Get the user's current position
-			navigator.geolocation.getCurrentPosition(success, error);
-			//console.log(pos.latitude + " " + pos.longitude);
-		} else {
-			alert('Geolocation is not supported in your browser');
-		}
-
-		//End Geo location
-
-		//map options
-		var mapOptions = {
-			zoom: 9,
-			center: new google.maps.LatLng(26, -81),
-			panControl: false,
-			panControlOptions: {
-				position: google.maps.ControlPosition.BOTTOM_LEFT
-			},
-			zoomControl: true,
-			zoomControlOptions: {
-				style: google.maps.ZoomControlStyle.LARGE,
-				position: google.maps.ControlPosition.RIGHT_CENTER
-			},
-			scaleControl: false
-
-		};
-
-	//Adding infowindow option
-	infowindow = new google.maps.InfoWindow({
-		content: "holding..."
+function initMap(){
+	map = new google.maps.Map(document.getElementById('map-canvas'),{
+		center: {lat: 25.79, lng: -80.19},
+		zoom: 13
 	});
 
-	//Fire up Google maps and place inside the map-canvas div
-	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-	//grab form data
-    $('#chooseZip').submit(function() { // bind function to submit event of form
+	// we need to figure out how to request especific data from the database and then bring it here to include it in the array
 
-		//define and set variables
-		var userZip = $("#textZip").val();
-		//console.log("This-> " + userCords.latitude);
+	var locations = [
+		{title: 'Tim Shop', location: {lat: 25.7617, lng: -80.1918}, description: 'Antique shop ', type:'startup'},
+		{title: 'Anne Website', location: {lat: 25.7619, lng: -80.1928}, description: 'Super Website', type:'startup'},
+		{title: 'Robert Restaurant', location: {lat: 25.7667, lng: -80.1999}, description: 'Magic food', type:'startup'},
+		{title: 'Kim delivery', location: {lat: 25.8048, lng: -80.1999}, description: 'fast delivery', type:'startup'},
+		{title: 'citibank', location: {lat: 25.7697, lng: -80.2048}, description: 'Ruby ruby', type:'investor'},
+		{title: 'Mario', location: {lat: 25.8042, lng: -80.1989}, description: 'easy plans', type:'investor'},
+	];
 
-		var accessURL;
 
-		if(userZip){
-			accessURL = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + userZip;
-		} else {
-			accessURL = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + userCords.latitude + "&lng=" + userCords.longitude;
+	var largeInfowindow = new google.maps.InfoWindow();
+
+
+	var bounds = new google.maps.LatLngBounds();
+
+	//The following group uses the location array to create an array of markers on initialize
+
+	for (var i = 0; i < locations.length; i++) {
+		// Get the position from the location array
+		var position = locations[i].location;
+		var title = locations[i].title;
+		var description = locations[i].description;
+		var type = locations[i].type;
+		// depedning on the type of entity change the icon to be presented in the map
+		if (type == 'investor') {
+			var type_entity = google.maps.SymbolPath.CIRCLE;
 		}
+		else {
+			var type_entity = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
+		};
+		// Create a marker per location, and put into markers array
+		var marker = new google.maps.Marker({
+			map: map,
+			position: position,
+			title: title,
+			description: description,
+			animation: google.maps.Animation.DROP,
+			icon: {
+				path: type_entity,
+				scale: 5
+			}
 
+			//      icon: 'http://cdn.com/my-custom-icon.png' // null = default icon  *** another option to have especific icons
+		});
 
-			//Use the zip code and return all market ids in area.
-			$.ajax({
-				type: "GET",
-				contentType: "application/json; charset=utf-8",
-				url: accessURL,
-				dataType: 'jsonp',
-				success: function (data) {
+		markers.push(marker);
+		//Extend the boundaries of the map for each marker
+		bounds.extend(marker.position);
 
-					 $.each(data.results, function (i, val) {
-						marketId.push(val.id);
-						marketName.push(val.marketname);
-					 });
+		//Create an onClick event to open an infowindow on each marker
+		marker.addListener('click',function(){
+			populateInfoWindow(this, largeInfowindow);
+		});
+		//we colse here the loop to create the array with the markers
+	}
+}
 
-					//console.log(marketName);
+// This function populates the infowindow when the marker is clicked, we'll only allow
+// one infowindow which will open at the marker that is clicked, and populate based
+// on that markers position
 
-					var counter = 0;
-					//Now, use the id to get detailed info
-					$.each(marketId, function (k, v){
-						$.ajax({
-							type: "GET",
-							contentType: "application/json; charset=utf-8",
-							// submit a get request to the restful service mktDetail.
-							url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + v,
-							dataType: 'jsonp',
-							success: function (data) {
+function populateInfoWindow(marker, infowindow) {
+	// Check to make sure that the infowindow is not already opended on this marker
+	if (infowindow.marker != marker) {
+		infowindow.marker = marker;
+		//With the "infowindow" we can play around the css styles on the top of the file
+		infowindow.setContent('<div id="infowindow"><strong>' + marker.title  + '</strong><br>' + marker.description + '</div>');
+		infowindow.open(map, marker);
 
-							for (var key in data) {
+		// Make sure the marker is cleared if the infowindow is closed
+		infowindow.addListener('closeclick',function(){
+			infowindow.setMarker(null);
+		});
+	}
+	map.fitBounds(bounds);
+}
 
-								var results = data[key];
-
-								//console.log(results);
-
-								//The API returns a link to Google maps containing lat and long. This pulls it apart.
-								var googleLink = results['GoogleLink'];
-								var latLong = decodeURIComponent(googleLink.substring(googleLink.indexOf("=")+1, googleLink.lastIndexOf("(")));
-
-								var split = latLong.split(',');
-
-								//covert values to floats, to play nice with .LatLng() below.
-								var latitude = parseFloat(split[0]);
-								var longitude = parseFloat(split[1]);
-
-								//set the markers.
-								myLatlng = new google.maps.LatLng(latitude,longitude);
-
-								allMarkers = new google.maps.Marker({
-									position: myLatlng,
-									map: map,
-									title: marketName[counter],
-									html:
-											'<div class="markerPop">' +
-											'<h1>' + marketName[counter].substring(4) + '</h1>' + //substring removes distance from title
-											'<h3>' + results['Address'] + '</h3>' +
-											'<p>' + results['Products'].split(';') + '</p>' +
-											'<p>' + results['Schedule'] + '</p>' +
-											'</div>'
-								});
-
-								//put all lat long in array
-								allLatlng.push(myLatlng);
-
-								//Put the marketrs in an array
-								tempMarkerHolder.push(allMarkers);
-
-								counter++;
-								//console.log(counter);
-							};
-
-								google.maps.event.addListener(allMarkers, 'click', function () {
-									infowindow.setContent(this.html);
-									infowindow.open(map, this);
-								});
-
-
-								//console.log(allLatlng);
-								//  Make an array of the LatLng's of the markers you want to show
-								//  Create a new viewpoint bound
-								var bounds = new google.maps.LatLngBounds ();
-								//  Go through each...
-								for (var i = 0, LtLgLen = allLatlng.length; i < LtLgLen; i++) {
-								  //  And increase the bounds to take this point
-								  bounds.extend (allLatlng[i]);
-								}
-								//  Fit these bounds to the map
-								map.fitBounds (bounds);
-
-
-							}
-						});
-					}); //end .each
-				}
-			});
-
-        return false; // important: prevent the form from submitting
-    });
-};
-
-$(document).on('ready turbolinks:load', ready);
-// window.initMap = ready;
+	// }
+	// $(document).on('ready turbolinks:load', ready);
+	// window.initMap = ready;
