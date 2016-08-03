@@ -22,7 +22,7 @@
         <td><%= startup.email %></td>
         <td><%= startup.website %></td>
         <td><%= startup.address %></td>
-        <td><%= startup.description %></td>
+        <td><%= startup.description[0..100]%>...</td>
         <td><%= startup.founded_date %></td>
         <td><%= link_to 'Learn More', startup %></td>
       </tr>

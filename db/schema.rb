@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731164327) do
+ActiveRecord::Schema.define(version: 20160802235051) do
 
   create_table "investors", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160731164327) do
     t.string   "shortdescription"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "vertical"
     t.index ["user_id"], name: "index_investors_on_user_id"
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160731164327) do
     t.string   "shortdescription"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "vertical"
     t.index ["user_id"], name: "index_startups_on_user_id"
   end
 
