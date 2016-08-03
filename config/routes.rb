@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get '/vertical-search' => 'page#vertical_search'
   root 'page#index'
   get '/search' => 'page#search'
   get '/admin_panel' => 'users#admin_panel'

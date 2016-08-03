@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// $(document).on('turbolinks:load', function() {
+//   var example = document.getElementById('investor');
+//
+//   example.dataset.investors
+// // }
+
+// if !gon.coord.empty?
+    // gon.coords = [ A , B ,C]

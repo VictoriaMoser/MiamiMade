@@ -25,31 +25,38 @@
 
 
 /*change map to map-canvas*/
-
-
-
 var map;
 
 var markers = [];
 
 function initMap(){
-	map = new google.maps.Map(document.getElementById('map-canvas'),{
+	map = new google.maps.Map(document.getElementById('map-canvas'), {
 		center: {lat: 25.79, lng: -80.19},
-		zoom: 13
+		zoom: 13,
+		scrollwheel: false
 	});
 
+	// function getLocations() {
+	// 	var locations = $('#investor').data().investors;
+	// 	return locations;
+	// }
+	var locations = $('#investor').data().investors;
+	console.log(locations);
+	console.log('before putting them in markers');
+	console.log(locations.length)
 
 	// we need to figure out how to request especific data from the database and then bring it here to include it in the array
 
+	// var locations = [
+	// 	{title: 'Tim Shop', location: {lat: 25.7617, lng: -80.1918}, description: 'Antique shop ', type:'startup'},
+	// 	{title: 'Anne Website', location: {lat: 25.7619, lng: -80.1928}, description: 'Super Website', type:'startup'},
+	// 	{title: 'Robert Restaurant', location: {lat: 25.7667, lng: -80.1999}, description: 'Magic food', type:'startup'},
+	// 	{title: 'Kim delivery', location: {lat: 25.8048, lng: -80.1999}, description: 'fast delivery', type:'startup'},
+	// 	{title: 'citibank', location: {lat: 25.7697, lng: -80.2048}, description: 'Ruby ruby', type:'investor'},
+	// 	{title: 'Mario', location: {lat: 25.8042, lng: -80.1989}, description: 'easy plans', type:'investor'},
+	// ];
+	// console.log(locations, $('#investor').data().investors);
 
-	var locations = [
-		{title: 'Tim Shop', location: {lat: 25.7617, lng: -80.1918}, description: 'Antique shop ', type:'startup'},
-		{title: 'Anne Website', location: {lat: 25.7619, lng: -80.1928}, description: 'Super Website', type:'startup'},
-		{title: 'Robert Restaurant', location: {lat: 25.7667, lng: -80.1999}, description: 'Magic food', type:'startup'},
-		{title: 'Kim delivery', location: {lat: 25.8048, lng: -80.1999}, description: 'fast delivery', type:'startup'},
-		{title: 'citibank', location: {lat: 25.7697, lng: -80.2048}, description: 'Ruby ruby', type:'investor'},
-		{title: 'Mario', location: {lat: 25.8042, lng: -80.1989}, description: 'easy plans', type:'investor'},
-	];
 
 
 	var largeInfowindow = new google.maps.InfoWindow();
@@ -66,12 +73,14 @@ function initMap(){
 		var description = locations[i].description;
 		var type = locations[i].type;
 		// depedning on the type of entity change the icon to be presented in the map
+		var type_entity;
 		if (type == 'investor') {
-			var type_entity = google.maps.SymbolPath.CIRCLE;
+			type_entity = google.maps.SymbolPath.CIRCLE;
 		}
 		else {
-			var type_entity = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
+			type_entity = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
 		};
+
 		// Create a marker per location, and put into markers array
 		var marker = new google.maps.Marker({
 			map: map,
@@ -83,7 +92,8 @@ function initMap(){
 				path: type_entity,
 				scale: 5
 			}
-
+			// console.log(title);
+			// console.log(position);
 			//      icon: 'http://cdn.com/my-custom-icon.png' // null = default icon  *** another option to have especific icons
 		});
 
