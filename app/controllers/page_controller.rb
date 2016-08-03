@@ -1,10 +1,8 @@
 class PageController < ApplicationController
   def index
     # redirect_to register_path if session[:user_id].nil?
-    # startup_result = Startup.find_by name: params[:term]
-    # investor_result = Investor.find_by name: params[:term]
-    #
-    # @results = (startup_result + investor_result) || "Nothing was Found"
+
+    # @options = ["All", "Advertising", "Apps", "Biotechnology", "Commerce and Shopping", "Community and Lifestyle", "Consumer Electronics", "Content and Publishing", "Data and Analytics", "Fashion", "Financial Services", "Food and Beverage", "Government and Military", "Hardware", "Healthcare", "Internet Services", "Manufacturing", "Media and Entertainment", "Mobile", "Software"].sort
   end
 
   def search

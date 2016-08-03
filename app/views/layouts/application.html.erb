@@ -20,19 +20,19 @@
     <header class="navbar">
       <div class="container-fluid">
         <div class="row">
-          <%= link_to "MiamiMade", root_path, id: "logo" %>
+          <%= link_to "MiamiMade", '/', id: "logo" %>
           <nav id="nav">
             <ul class="nav navbar-nav navbar-right">
               <% if current_user %>
-                <li><%= link_to 'Startups', startups_path %></li>
-                <li><%= link_to 'Investors', investors_path %></li>
+                <li><%= link_to 'STARTUPS', startups_path %></li>
+                <li><%= link_to 'INVESTORS', investors_path %></li>
                 <li>Signed in as <%= current_user.name %></li>
-                <li><%= link_to "Logout", logout_path %></li>
+                <li><%= link_to "LOGOUT", logout_path %></li>
                 <% else %>
-                <li><%= link_to 'Startups', startups_path %></li>
-                <li><%= link_to 'Investors', investors_path %></li>
-                <li><%= link_to 'Login', login_path %></li>
-                <li><%= link_to 'Register',register_path %></li>
+                <li><%= link_to 'STARTUPS', startups_path %></li>
+                <li><%= link_to 'INVESTORS', investors_path %></li>
+                <li><%= link_to 'LOGIN', login_path %></li>
+                <li><%= link_to 'REGISTER',register_path %></li>
         	    <% end %>
             </ul>
           </nav>

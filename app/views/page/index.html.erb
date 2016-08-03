@@ -8,6 +8,7 @@
 		<!--Filters-->
 		<div class="row">
 			<!--Startup Filters-->
+			<% form_tag "url" %>
 			<div class="col-sm-6 vertical-line">
 				<div class="checkbox">
 				  <label>
@@ -15,15 +16,7 @@
 				    Startups
 				  </label>
 				</div>
-				<h4>Industry Vertical:</h4>
-				<select class="form-control">
-				  <option>Vertical 1</option>
-				  <option>Vertical 2</option>
-				  <option>Vertical 3</option>
-				  <option>Vertical 4</option>
-				  <option>Vertical 5</option>
-					<option>All</option>
-				</select>
+				<%= select_tag "Industry Vertical:", @options, class: "form-control" %>
 				<hr>
 				<h4>Stage:</h4>
 				<select class="form-control">
@@ -45,12 +38,26 @@
 				</div>
 				<h4>Industry Vertical:</h4>
 				<select class="form-control">
-				  <option>Vertical 1</option>
-				  <option>Vertical 1</option>
-				  <option>Vertical 3</option>
-				  <option>Vertical 4</option>
-				  <option>Vertical 5</option>
 					<option>All</option>
+					<option>Advertising</option>
+					<option>Apps</option>
+					<option>Biotechnology</option>
+					<option>Commerce and Shopping</option>
+					<option>Community and Lifestyle</option>
+					<option>Consumer Electronics</option>
+					<option>Content and Publishing</option>
+					<option>Data and Analytics</option>
+					<option>Fashion</option>
+					<option>Financial Services</option>
+					<option>Food and Beverage</option>
+					<option>Government and Military</option>
+					<option>Hardware</option>
+					<option>Healthcare</option>
+					<option>Internet Services</option>
+					<option>Manufacturing</option>
+					<option>Media and Entertainment</option>
+					<option>Mobile</option>
+					<option>Software</option>
 				</select>
 				<hr>
 				<h4>Investor Type:</h4>
