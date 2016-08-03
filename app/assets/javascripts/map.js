@@ -38,7 +38,9 @@ function initMap(){
 		zoom: 13
 	});
 
+
 	// we need to figure out how to request especific data from the database and then bring it here to include it in the array
+
 
 	var locations = [
 		{title: 'Tim Shop', location: {lat: 25.7617, lng: -80.1918}, description: 'Antique shop ', type:'startup'},
