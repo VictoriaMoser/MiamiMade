@@ -24,8 +24,9 @@
         <td><%= investor.address %></td>
         <td><%= investor.description[0..100]...%></td>
         <td><%= investor.founded_date %></td>
-         <td><%= link_to 'Learn More', investor %></td>
+        <td><%= link_to 'Learn More', investor %></td>
       </tr>
     <% end %>
+    <td><%= button_to 'Add a new investor', new_startup_path, method:'get' %></td>
   </tbody>
 </table>
