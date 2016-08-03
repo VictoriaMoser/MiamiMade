@@ -15,6 +15,18 @@ class PageController < ApplicationController
     @results = startup_result || investor_result
   end
 
+  def vertical_search
+    @results = Investor.where(vertical: params[:vertical])
+    @coords = @results.map do |investor|
+      {title: investor.name, location: {lat: investor.latitude, lng: investor.longitude}, description: investor.description, type: "investor"}
+    end
+    @coords = @coords.to_json
+
+    render :index
+  end
+
+  # {title: 'Tim Shop', location: {lat: 25.7617, lng: -80.1918}, description: 'Antique shop ', type:'startup'}
+
   def secret
     redirect_to root_path if current_user.admin = nil
   end

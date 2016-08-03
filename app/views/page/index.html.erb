@@ -8,7 +8,7 @@
 		<!--Filters-->
 		<div class="row">
 			<!--Startup Filters-->
-			<% form_tag "url" %>
+			<!-- <% form_tag "url" %> -->
 			<div class="col-sm-6 vertical-line">
 				<div class="checkbox">
 				  <label>
@@ -16,6 +16,7 @@
 				    Startups
 				  </label>
 				</div>
+
 				<%= select_tag "Industry Vertical:", @options, class: "form-control" %>
 				<hr>
 				<h4>Stage:</h4>
@@ -36,29 +37,12 @@
 				    Investors
 				  </label>
 				</div>
-				<h4>Industry Vertical:</h4>
-				<select class="form-control">
-					<option>All</option>
-					<option>Advertising</option>
-					<option>Apps</option>
-					<option>Biotechnology</option>
-					<option>Commerce and Shopping</option>
-					<option>Community and Lifestyle</option>
-					<option>Consumer Electronics</option>
-					<option>Content and Publishing</option>
-					<option>Data and Analytics</option>
-					<option>Fashion</option>
-					<option>Financial Services</option>
-					<option>Food and Beverage</option>
-					<option>Government and Military</option>
-					<option>Hardware</option>
-					<option>Healthcare</option>
-					<option>Internet Services</option>
-					<option>Manufacturing</option>
-					<option>Media and Entertainment</option>
-					<option>Mobile</option>
-					<option>Software</option>
-				</select>
+				<h4 id="investor" data-investors='<%= @coords  %>'>Industry Vertical:</h4>
+				<%= form_tag('/vertical-search', method: :get) do %>
+				<%= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter') %>
+
+			<%= submit_tag 'Submit' %>
+			<% end %>
 				<hr>
 				<h4>Investor Type:</h4>
 				<select class="form-control">
@@ -69,14 +53,17 @@
 				</select>
 			</div>
 			<!--Searchbox-->
-			<div class="col-sm-12 centered">
-			<h1>Search</h1>
-			<%= form_tag("/search", method: "get") do %>
-  			<%= search_field_tag :term %>
-  			<%= submit_tag "Go!" %>
-			<% end %>
-			<%= params[:term] %>
+			<div class="row">
+				<div class="col-sm-12">
+				<h1>Search</h1>
+				<%= form_tag("/search", method: "get") do %>
+	  			<%= search_field_tag :term %>
+	  			<%= submit_tag "Go!" %>
+				<% end %>
+				<%= params[:term] %>
+				</div>
 			</div>
+
 		</div>
 	</div>
 
