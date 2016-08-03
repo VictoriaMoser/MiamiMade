@@ -1,3 +1,12 @@
 // Place all the styles related to the Startup controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+    table-layout:fixed;
+}
+
+.div-table-content {
+  height:150px;
+  overflow-y:auto;
+}

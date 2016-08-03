@@ -1,37 +1,35 @@
+<div class="row">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @startup.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @startup.email %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @startup.website %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @startup.address %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @startup.description %>
-</p>
-
-<p>
-  <strong>Founded date:</strong>
-  <%= @startup.founded_date %>
-</p>
+<table class="table table-striped">
+  <thead class="thead-default">
+    <tr>
+      <th><strong>Name</strong></th>
+      <th><strong>Email</strong></th>
+      <th><strong>Website</strong></th>
+      <th><strong>Address</strong></th>
+      <th><strong>Description</strong></th>
+      <th><strong>Founded date</strong></th>
+    </tr>
+  </thead>
+</table>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td><%= @startup.name %></td>
+      <td><%= @startup.email %></td>
+      <td><%= @startup.website %></td>
+      <td><%= @startup.address %></td>
+      <td><%= @startup.description %></td>
+      <td><%= @startup.founded_date %></td>
+    </tr>
+  </tbody>
+</table>
 
 
 <%= link_to 'Edit', edit_startup_path(@startup) %> |
 <%= link_to 'Back', startups_path %>
 
 <td><%= link_to 'Add a new startup', new_startup_path(@startup) %></td>
+
+</div>
