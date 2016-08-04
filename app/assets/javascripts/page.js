@@ -5,3 +5,18 @@
 $(document).ready(function() {
   $('div.hidden').fadeIn(2000).removeClass('hidden');
 });
+
+//Register Submit in Modal
+function ready() {
+  $('.modal-button').click(function() {
+    $('.register-form').submit();
+  });
+
+}
+//Login Submit in Modal
+function ready() {
+  $('.modal-button').click(function() {
+    $('.login-form').submit();
+  });
+
+}
