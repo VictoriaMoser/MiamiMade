@@ -23,14 +23,29 @@
 
 /*change map to map-canvas*/
 
+$(function() {
+
+	var investorType = $('.investor-type').val();
+
+	$('button').on('click', function(){
+		$.ajax({
+			url: '/search',
+			data: {
+				investorType: investorType,
+
+			}
+		})
+	});
+});
+
 var map;
 
 var markers = [];
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
-		center: {lat: 25.79, lng: -80.19},
-		zoom: 11,
+		center: {lat: 26.79, lng: -80.59},
+		zoom: 7,
 		scrollwheel: false
 	});
 
@@ -38,10 +53,13 @@ function initMap(){
 	var startups = $('#map-data').data().startups;
 	var locations = [];
 
+	console.log(investors)
+	console.log(startups)
+
 	for (var i = 0; i < investors.length; i++) {
 		var location = {
 										title: investors[i].name,
-										location: {lat: investors[i].longitude, lng: investors[i].latitude },
+										location: {lat: investors[i].latitude, lng: investors[i].longitude },
 										short_description: investors[i].shortdescription,
 										address: investors[i].address,
 										website: investors[i].website,
@@ -59,7 +77,7 @@ function initMap(){
 	for (var i = 0; i < startups.length; i++) {
 		var location = {
 										title: startups[i].name,
-										location: {lat: startups[i].longitude, lng: startups[i].latitude },
+										location: {lat: startups[i].latitude, lng: startups[i].longitude },
 										short_description: startups[i].shortdescription,
 										address: startups[i].address,
 										website: startups[i].website,
@@ -73,23 +91,9 @@ function initMap(){
 	}
 
 	// console.log("StartUps added: "+locations);
+
+
 	console.log(locations);
-
-
-
-
-
-
-	// var locations = [
-	// 	{title: 'Tim Shop', location: {lat: 25.7617, lng: -80.1918}, description: 'Antique shop ', type:'startup'},
-	// 	{title: 'Anne Website', location: {lat: 25.7619, lng: -80.1928}, description: 'Super Website', type:'startup'},
-	// 	{title: 'Robert Restaurant', location: {lat: 25.7667, lng: -80.1999}, description: 'Magic food', type:'startup'},
-	// 	{title: 'Kim delivery', location: {lat: 25.8048, lng: -80.1999}, description: 'fast delivery', type:'startup'},
-	// 	{title: 'citibank', location: {lat: 25.7697, lng: -80.2048}, description: 'Ruby ruby', type:'investor'},
-	// 	{title: 'Mario', location: {lat: 25.8042, lng: -80.1989}, description: 'easy plans', type:'investor'},
-	// ];
-
-
 
 	var largeInfowindow = new google.maps.InfoWindow();
 
@@ -111,12 +115,12 @@ function initMap(){
 		var website = locations[i].website;
 		// depedning on the type of entity change the icon to be presented in the map
 		var type_entity;
-		// if (type == 'investor') {
-		// 	type_entity = google.maps.SymbolPath.CIRCLE;
-		// }
-		// else {
-		// 	type_entity = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
-		// }
+		if (type == 'investor') {
+			type_entity = google.maps.SymbolPath.CIRCLE;
+		}
+		else {
+			type_entity = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
+		}
 
 
 		// Create a marker per location, and put into markers array
@@ -126,10 +130,10 @@ function initMap(){
 			title: title,
 			description: description,
 			animation: google.maps.Animation.DROP,
-			// icon: {
-			// 	path: type_entity,
-			// 	scale: 5
-			// }
+			icon: {
+				path: type_entity,
+				scale: 5
+			}
 			// console.log(title);
 			// console.log(position);
 			//      icon: 'http://cdn.com/my-custom-icon.png' // null = default icon  *** another option to have especific icons
@@ -163,9 +167,7 @@ function populateInfoWindow(marker, infowindow, bounds) {
 			infowindow.setMarker(null);
 		});
 	}
-	map.fitBounds(bounds);
+	// map.fitBounds(bounds);
 }
-
-	// }
 	// $(document).on('ready turbolinks:load', ready);
 	// window.initMap = ready;

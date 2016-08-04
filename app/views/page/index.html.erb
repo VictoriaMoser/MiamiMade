@@ -38,13 +38,13 @@
 				  </label>
 				</div>
 
-				<h4 id="investor" data-investors-verticals='<%= @coords  %>'>Industry Vertical:</h4>
+				<h4 id="vertical" data-investors-verticals='<%= @coords  %>'>Industry Vertical:</h4>
 				<%= form_tag('/vertical-search', method: :get) do %>
 				<%= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter', class: "form-control") %>
 
 				<hr>
 				<h4>Investor Type:</h4>
-				<select class="form-control">
+				<select class="form-control investor-type">
 				  <option>Angel Investor</option>
 				  <option>Venture Capitalist</option>
 				  <option>Peer-to-Peer Lending</option>

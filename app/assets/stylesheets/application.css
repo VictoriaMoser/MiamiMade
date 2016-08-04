@@ -13,8 +13,11 @@
  *= require_tree .
  *= require_self
  */
-html, body, main, .row, .container-fluid, .col-md-8, #map-canvas { height: 100% }
+html, body, main, .row, .container-fluid, .col-md-8 { height: 100% }
 
+#map-canvas {
+    height: 80%
+}
 
 html body {
  	background-image: url("skyline.jpg");

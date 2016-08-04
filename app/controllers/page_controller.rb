@@ -8,6 +8,7 @@ class PageController < ApplicationController
   end
 
   def search
+    params[:investorType]
     startup_result = Startup.where("name like ?", "%#{params[:term]}%")
     p startup_result
     puts "*" * 20
