@@ -13,30 +13,36 @@
  *= require_tree .
  *= require_self
  */
-
- body {
- 	/*background-image: url("/assets/images/skyline.jpg");*/
- }
-
-#logo {
-  font-size: 2em;
-  margin: 0 30px;
-
-}
-
-ul.nav {
-  padding: 10px;
-}
-
-.container-fluid {
-  height: 100%;
-}
-
 html, body, main, .row, .col-md-6, #map-canvas { height: 100% }
 
 
+html body {
+ 	background-image: url("skyline.jpg");
+  font-family: 'Roboto', sans-serif !important;
+  /*background: url("skyline2.jpeg") no-repeat fixed center;*/
+}
+
+#logo {
+  font-size: 2em;
+  margin: auto 0;
+}
+
 .form-style {
     border: 2px solid black;
+}
+
+#nav ul {
+  float: right;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+#nav li.nav-links {
+  display: inline;
+  font-size: 1.2em;
+  padding: 0 20px;
+  color: #5b04ff !important;
+  letter-spacing: 1px;
 }
 
 footer {

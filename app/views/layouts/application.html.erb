@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -17,27 +18,27 @@
   </head>
 
   <body>
-    <header class="navbar">
-      <div class="container-fluid">
-        <div class="row">
-          <%= link_to "MiamiMade", '/', id: "logo" %>
-          <nav id="nav">
-            <ul class="nav navbar-nav navbar-right">
-              <% if current_user %>
-                <li><%= link_to 'STARTUPS', startups_path %></li>
-                <li><%= link_to 'INVESTORS', investors_path %></li>
-                <li>Signed in as <%= current_user.name %></li>
-                <li><%= link_to "LOGOUT", logout_path %></li>
-                <% else %>
-                <li><%= link_to 'STARTUPS', startups_path %></li>
-                <li><%= link_to 'INVESTORS', investors_path %></li>
-                <li><%= link_to 'LOGIN', login_path %></li>
-                <li><%= link_to 'REGISTER',register_path %></li>
-        	    <% end %>
-            </ul>
-          </nav>
-        </div>
-      </div>
+    <header>
+      <nav id="nav" class="navbar navbar-static-top navbar-inverse">
+        <div class="container-fluid">
+          <div class="row">
+            <%= link_to image_tag("Miami_made_full_white.png", border: 0, width: "150px"), '/', id: "logo", class: "navbar-brand" %>
+              <ul>
+                <% if current_user %>
+                  <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
+                  <li class="nav-links"><%= link_to 'INVESTORS', investors_path %></li>
+                  <li>Signed in as <%= current_user.name %></li>
+                  <li><%= link_to "LOGOUT", logout_path %></li>
+                  <% else %>
+                  <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
+                  <li class="nav-links"><%= link_to 'INVESTORS', investors_path %></li>
+                  <li class="nav-links"><%= link_to 'LOGIN', login_path %></li>
+                  <li class="nav-links"><%= link_to 'REGISTER',register_path %></li>
+          	    <% end %>
+              </ul>
+            </div>
+          </div>
+        </nav>
     </header>
 
     <main>
@@ -57,6 +58,6 @@
     </footer>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </body>
 
+  </body>
 </html>
