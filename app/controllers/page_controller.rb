@@ -1,6 +1,9 @@
 class PageController < ApplicationController
 
   def index
+    @investors = Investor.all.to_json
+    @startups = Startup.all.to_json
+    # redirect_to register_path if session[:user_id].nil?
     @user = User.new
   end
 

@@ -47,9 +47,11 @@
 				    Investors
 				  </label>
 				</div>
-				<h4 id="investor" data-investors='<%= @coords  %>'>Industry Vertical:</h4>
+
+				<h4 id="investor" data-investors-verticals='<%= @coords  %>'>Industry Vertical:</h4>
 				<%= form_tag('/vertical-search', method: :get) do %>
 				<%= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter', class: "form-control") %>
+
 				<hr>
 				<h4>Investor Type:</h4>
 				<select class="form-control">
@@ -79,7 +81,7 @@
 
 	<!-- an empty div for the map -->
 
-	<div class="col-xs-12 col-md-8">
+	<div data-investors="<%= @investors %>" data-startups="<%= @startups %>" id="map-data" class="col-xs-12 col-md-8">
 		<div id="map-canvas"></div>
 	</div>
 
