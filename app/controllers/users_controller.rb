@@ -17,12 +17,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
+    UserMailer.registration_confirmation(@user).deliver
+    flash[:success] = "Please confirm your email address to continue"
+    redirect_to root_url
     else
-      redirect_to register_path
+    flash[:error] = "Ooooppss, something went wrong!"
+    render 'new'
     end
   end
 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     @startups = Startup.where(approval: false)
   end
 
-  private
+ private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -66,4 +66,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+ end
 end

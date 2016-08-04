@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   patch '/investors/:id/approve' => 'investors#approve', as: 'investor_approve'
 
  #validating user email
- resources :users do
-   member do
+  resources :users do
+    member do
      get :confirm_email 
    end
  end
