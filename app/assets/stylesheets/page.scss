@@ -3,15 +3,23 @@ h1#title {
 	text-align: center;
 	padding-bottom: 20px;
 	text-align: center;
+	color: #fff;
 }
 
 p {
 	padding-bottom: 20px;
 	text-align: center;
+	color: #fff;
 }
 
 #sidebar {
 	padding: 50px;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: scroll;
+}
+
+#hidden {
+	display: none;
 }
 
 .vertical-line {
