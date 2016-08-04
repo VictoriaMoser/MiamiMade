@@ -1,6 +1,3 @@
-// function ready() {
-//
-//
 //********* geolocation
 
 // if (navigator.geolocation) {
@@ -25,6 +22,7 @@
 
 
 /*change map to map-canvas*/
+
 var map;
 
 var markers = [];
@@ -32,20 +30,55 @@ var markers = [];
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
 		center: {lat: 25.79, lng: -80.19},
-		zoom: 13,
+		zoom: 11,
 		scrollwheel: false
 	});
 
-	// function getLocations() {
-	// 	var locations = $('#investor').data().investors;
-	// 	return locations;
-	// }
-	var locations = $('#investor').data().investors;
-	console.log(locations);
-	console.log('before putting them in markers');
-	console.log(locations.length)
+	var investors = $('#map-data').data().investors;
+	var startups = $('#map-data').data().startups;
+	var locations = [];
 
-	// we need to figure out how to request especific data from the database and then bring it here to include it in the array
+	for (var i = 0; i < investors.length; i++) {
+		var location = {
+										title: investors[i].name,
+										location: {lat: investors[i].longitude, lng: investors[i].latitude },
+										short_description: investors[i].shortdescription,
+										address: investors[i].address,
+										website: investors[i].website,
+										founded: investors[i].founded_date,
+										full_description: investors[i].description,
+										vertical: investors[i].vertical,
+										type:"investor"
+									}
+
+		locations.push(location);
+	}
+
+	// console.log("Investors information: " + locations);
+
+	for (var i = 0; i < startups.length; i++) {
+		var location = {
+										title: startups[i].name,
+										location: {lat: startups[i].longitude, lng: startups[i].latitude },
+										short_description: startups[i].shortdescription,
+										address: startups[i].address,
+										website: startups[i].website,
+										founded: startups[i].founded_date,
+										full_description: startups[i].description,
+										vertical: startups[i].vertical,
+										type:"startup"
+									}
+
+		locations.push(location);
+	}
+
+	// console.log("StartUps added: "+locations);
+	console.log(locations);
+
+
+
+
+
 
 	// var locations = [
 	// 	{title: 'Tim Shop', location: {lat: 25.7617, lng: -80.1918}, description: 'Antique shop ', type:'startup'},
@@ -55,7 +88,6 @@ function initMap(){
 	// 	{title: 'citibank', location: {lat: 25.7697, lng: -80.2048}, description: 'Ruby ruby', type:'investor'},
 	// 	{title: 'Mario', location: {lat: 25.8042, lng: -80.1989}, description: 'easy plans', type:'investor'},
 	// ];
-	// console.log(locations, $('#investor').data().investors);
 
 
 
@@ -64,22 +96,28 @@ function initMap(){
 
 	var bounds = new google.maps.LatLngBounds();
 
-	//The following group uses the location array to create an array of markers on initialize
+	//The following group uses the location array to create an array of markers to show them in the map
 
 	for (var i = 0; i < locations.length; i++) {
 		// Get the position from the location array
 		var position = locations[i].location;
 		var title = locations[i].title;
-		var description = locations[i].description;
+		// var description = locations[i].description;
 		var type = locations[i].type;
+		var founded = locations[i].founded;
+		var address = locations[i].address;
+		var description = locations[i].short_description;
+		var vertical = locations[i].type;
+		var website = locations[i].website;
 		// depedning on the type of entity change the icon to be presented in the map
 		var type_entity;
-		if (type == 'investor') {
-			type_entity = google.maps.SymbolPath.CIRCLE;
-		}
-		else {
-			type_entity = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
-		};
+		// if (type == 'investor') {
+		// 	type_entity = google.maps.SymbolPath.CIRCLE;
+		// }
+		// else {
+		// 	type_entity = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
+		// }
+
 
 		// Create a marker per location, and put into markers array
 		var marker = new google.maps.Marker({
@@ -88,10 +126,10 @@ function initMap(){
 			title: title,
 			description: description,
 			animation: google.maps.Animation.DROP,
-			icon: {
-				path: type_entity,
-				scale: 5
-			}
+			// icon: {
+			// 	path: type_entity,
+			// 	scale: 5
+			// }
 			// console.log(title);
 			// console.log(position);
 			//      icon: 'http://cdn.com/my-custom-icon.png' // null = default icon  *** another option to have especific icons
@@ -103,17 +141,16 @@ function initMap(){
 
 		//Create an onClick event to open an infowindow on each marker
 		marker.addListener('click',function(){
-			populateInfoWindow(this, largeInfowindow);
+			populateInfoWindow(this, largeInfowindow, bounds);
 		});
-		//we colse here the loop to create the array with the markers
+		//we close here the loop to create the array with the markers
 	}
 }
 
 // This function populates the infowindow when the marker is clicked, we'll only allow
 // one infowindow which will open at the marker that is clicked, and populate based
 // on that markers position
-
-function populateInfoWindow(marker, infowindow) {
+function populateInfoWindow(marker, infowindow, bounds) {
 	// Check to make sure that the infowindow is not already opended on this marker
 	if (infowindow.marker != marker) {
 		infowindow.marker = marker;

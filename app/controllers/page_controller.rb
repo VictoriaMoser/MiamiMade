@@ -1,5 +1,7 @@
 class PageController < ApplicationController
   def index
+    @investors = Investor.all.to_json
+    @startups = Startup.all.to_json
     # redirect_to register_path if session[:user_id].nil?
 
     # @options = ["All", "Advertising", "Apps", "Biotechnology", "Commerce and Shopping", "Community and Lifestyle", "Consumer Electronics", "Content and Publishing", "Data and Analytics", "Fashion", "Financial Services", "Food and Beverage", "Government and Military", "Hardware", "Healthcare", "Internet Services", "Manufacturing", "Media and Entertainment", "Mobile", "Software"].sort
