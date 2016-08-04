@@ -15,12 +15,11 @@
  */
 html, body, main, .row, .col-md-6, #map-canvas { height: 100% }
 
-/*#map-canvas { height: 100% }*/
 
 html body {
- 	/*background-image: url("/assets/images/skyline.jpg");*/
+ 	background-image: url("skyline.jpg");
   font-family: 'Roboto', sans-serif !important;
-  background: url("skyline2.jpeg") no-repeat fixed center;
+  /*background: url("skyline2.jpeg") no-repeat fixed center;*/
 }
 
 #logo {
@@ -43,6 +42,7 @@ html body {
   font-size: 1.2em;
   padding: 0 20px;
   color: #5b04ff !important;
+  letter-spacing: 1px;
 }
 
 footer {

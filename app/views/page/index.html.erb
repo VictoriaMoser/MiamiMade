@@ -40,7 +40,6 @@
 				<h4 id="investor" data-investors='<%= @coords  %>'>Industry Vertical:</h4>
 				<%= form_tag('/vertical-search', method: :get) do %>
 				<%= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter', class: "form-control") %>
-				<% end %>
 				<hr>
 				<h4>Investor Type:</h4>
 				<select class="form-control">
@@ -51,6 +50,7 @@
 				</select>
 				<br>
 				<%= submit_tag 'Submit', class: "btn btn-primary" %>
+				<% end %>
 			</div>
 			<!--Searchbox-->
 			<div class="row">
