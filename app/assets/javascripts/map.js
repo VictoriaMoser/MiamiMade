@@ -23,136 +23,52 @@
 
 /*change map to map-canvas*/
 
-$(function() {
-
-	var investorType = $('.investor-type').val();
-
-	$('button').on('click', function(){
-		$.ajax({
-			url: '/search',
-			data: {
-				investorType: investorType,
-
-			}
-		})
-	});
-});
-
 var map;
 
+var locations = [];
 var markers = [];
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
-<<<<<<< HEAD
-		center: {lat: 26.79, lng: -80.59},
-=======
 		center: {lat: 28.00, lng: -79.60},
->>>>>>> b71528120f9969532bb56a10f9e2cee9ac11b25d
 		zoom: 7,
 		scrollwheel: false
 	});
 
-	var investors = $('#map-data').data().investors;
-	var startups = $('#map-data').data().startups;
-	var locations = [];
 
-	console.log(investors)
-	console.log(startups)
+  $('.collapsible').collapsible({
+    accordion: false
+  });
 
-	for (var i = 0; i < investors.length; i++) {
-		var location = {
-										title: investors[i].name,
-										location: {lat: investors[i].latitude, lng: investors[i].longitude },
-										short_description: investors[i].shortdescription,
-										address: investors[i].address,
-										website: investors[i].website,
-										founded: investors[i].founded_date,
-										full_description: investors[i].description,
-										vertical: investors[i].vertical,
-										type:"investor"
-									}
+  $('.js-filter-box').on('click', function(e){
+    var filters = {
+      vertical: [],
+			stage: []
+    }
 
-		locations.push(location);
-	}
+    $('.js-filter-box:checked').each(function(index, element){
+      var filterId = $(element).attr("value");
+      var category = $(element).attr("data-category");
+      // console.log($(element).attr("data-category"));
+      filters[category].push(filterId);
+    })
 
-	// console.log("Investors information: " + locations);
+    $.ajax({
+      url: '/filter',
+			method: "POST",
+      data: filters,
+      success: businessMarkers
+    })
 
-	for (var i = 0; i < startups.length; i++) {
-		var location = {
-										title: startups[i].name,
-										location: {lat: startups[i].latitude, lng: startups[i].longitude },
-										short_description: startups[i].shortdescription,
-										address: startups[i].address,
-										website: startups[i].website,
-										founded: startups[i].founded_date,
-										full_description: startups[i].description,
-										vertical: startups[i].vertical,
-										type:"startup"
-									}
+  });
 
-		locations.push(location);
-	}
+	// var investors = $('#map-data').data().investors;
+	// var startups = $('#map-data').data().startups;
 
-	// console.log("StartUps added: "+locations);
-
-
-	console.log(locations);
 
 	var largeInfowindow = new google.maps.InfoWindow();
 
-
 	var bounds = new google.maps.LatLngBounds();
-
-	//The following group uses the location array to create an array of markers to show them in the map
-
-	for (var i = 0; i < locations.length; i++) {
-		// Get the position from the location array
-		var position = locations[i].location;
-		var title = locations[i].title;
-		// var description = locations[i].description;
-		var type = locations[i].type;
-		var founded = locations[i].founded;
-		var address = locations[i].address;
-		var description = locations[i].short_description;
-		var vertical = locations[i].type;
-		var website = locations[i].website;
-		// depedning on the type of entity change the icon to be presented in the map
-		var type_entity;
-		if (type == 'investor') {
-			type_entity = google.maps.SymbolPath.CIRCLE;
-		}
-		else {
-			type_entity = google.maps.SymbolPath.BACKWARD_CLOSED_ARROW;
-		}
-
-
-		// Create a marker per location, and put into markers array
-		var marker = new google.maps.Marker({
-			map: map,
-			position: position,
-			title: title,
-			description: description,
-			animation: google.maps.Animation.DROP,
-			icon: {
-				path: type_entity,
-				scale: 5
-			}
-			// console.log(title);
-			// console.log(position);
-			//      icon: 'http://cdn.com/my-custom-icon.png' // null = default icon  *** another option to have especific icons
-		});
-
-		markers.push(marker);
-		//Extend the boundaries of the map for each marker
-		bounds.extend(marker.position);
-
-		//Create an onClick event to open an infowindow on each marker
-		marker.addListener('click',function(){
-			populateInfoWindow(this, largeInfowindow, bounds);
-		});
-		//we close here the loop to create the array with the markers
-	}
 }
 
 // This function populates the infowindow when the marker is clicked, we'll only allow
@@ -171,7 +87,72 @@ function populateInfoWindow(marker, infowindow, bounds) {
 			infowindow.setMarker(null);
 		});
 	}
-	// map.fitBounds(bounds);
+	map.fitBounds(bounds);
 }
-	// $(document).on('ready turbolinks:load', ready);
-	// window.initMap = ready;
+
+function businessMarkers(response) {
+  var largeInfowindow = new google.maps.InfoWindow();
+
+	var bounds = new google.maps.LatLngBounds();
+
+  response.investors.forEach(function(investor) {
+    var location = {
+                    title: investor.name,
+                    position: {lat: investor.latitude, lng: investor.longitude },
+                    short_description: investor.shortdescription,
+                    address: investor.address,
+                    website: investor.website,
+                    founded: investor.founded_date,
+                    full_description: investor.description,
+                    vertical: investor.vertical,
+                    type:"investor"
+                  }
+
+                  var marker = new google.maps.Marker({
+                    map: map,
+                    position: location.position,
+                    title: location.title,
+                    description: location.short_description,
+                    animation: google.maps.Animation.DROP,
+                    icon: {
+                      // path: type_entity,
+                      scale: 5
+                    }
+                  });
+
+    markers.push(marker);
+    bounds.extend(marker.position);
+    marker.addListener('click',function(){
+      populateInfoWindow(this, largeInfowindow, bounds);
+    });
+  });
+  response.startups.forEach(function(startup) {
+    var location = {
+                    // title: startup.name,
+                    position: {lat: startup.latitude, lng: startup.longitude },
+                    // short_description: startup.shortdescription,
+                    address: startup.address,
+                    website: startup.website,
+                    founded: startup.founded_date,
+                    full_description: startup.description,
+                    vertical: startup.vertical,
+                    type:"startup"
+                  }
+                  var marker = new google.maps.Marker({
+                    map: map,
+                    position: location.position,
+                    title: startup.name,
+                    description: startup.short_description,
+                    animation: google.maps.Animation.DROP,
+                    icon: {
+                      // path: type_entity,
+                      scale: 5
+                    }
+                  });
+    markers.push(marker);
+    bounds.extend(marker.position);
+    marker.addListener('click',function(){
+      populateInfoWindow(this, largeInfowindow, bounds);
+    });
+  });
+}
