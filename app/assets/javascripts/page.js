@@ -4,6 +4,7 @@
 
 $(document).on("turbolinks:load", function() {
   $('div.hidden').fadeIn(2000).removeClass('hidden');
+  alert(gon.investors);
 });
 
 $('#logo').click(function() {

@@ -1,9 +1,16 @@
 class PageController < ApplicationController
 
   def index
-    @investors = Investor.all.to_json
-    @startups = Startup.all.to_json
+    # @investors = Investor.all.to_json
+    # @startups = Startup.all.to_json
+    # gon.investors = Investor.all.grab_location
 
+    temp = Investor.grab_location
+    puts "*" * 20
+    p temp
+    puts "*" * 20
+    gon.investors = temp
+    gon.startups = Startup.all
     # redirect_to register_path if session[:user_id].nil?
     @user = User.new
   end
