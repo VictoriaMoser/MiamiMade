@@ -38,16 +38,19 @@ html body {
 #nav ul {
   float: right;
   padding: 20px;
-  margin: 10px 0;
+  margin: 0px 0;
+}
+
+ul.nav li.nav-links {
+  margin-top: 20px;
 }
 
 ul.nav li.nav-links a {
   display: inline;
   font-size: 1.2em;
-  padding: 10px 20px;
   color: #5b04ff;
   letter-spacing: 1px;
-  margin: 0 20px;
+  margin: 5px;
 }
 
 ul.nav li.nav-links a:hover {

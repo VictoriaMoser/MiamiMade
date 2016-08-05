@@ -21,7 +21,6 @@
         <div class="container-fluid">
           <div class="row">
             <%= link_to image_tag("Miami_made_full_white.png", border: 0, width: "150px"), '/', id: "logo", class: "navbar-brand" %>
-<<<<<<< HEAD
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <!--hamburger-->
               <div class="navbar-header">
@@ -44,7 +43,7 @@
                     <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
                     <li class="nav-links"><%= link_to 'INVESTORS', investors_path %></li>
                     <!--modal button-->
-                    <li class="nav-links"><button type="button" class="btn btn-lg" data-toggle="modal" data-target="#reg-login-modal">Register/Login</button></li>
+                    <li><button id="modal-button" type="button" data-toggle="modal" data-target="#reg-login-modal">LOGIN/REGISTRATION</button></li>
             	    <% end %>
                 </ul>
               </div>
@@ -62,7 +61,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Login/Registration</h4>
+              <h3 class="modal-title" id="myModalLabel">LOGIN/REGISTRATION</h3>
             </div>
             <div class="modal-body">
 
@@ -70,8 +69,8 @@
                 <div class="row">
                   <!--tab titles-->
                   <ul class="nav nav-tabs">
-                    <li class="active"><a href="#register-tab" data-toggle="tab">Register</a></li>
-                    <li><a href="#login-tab" data-toggle="tab">Login</a></li>
+                    <li class="active"><a href="#register-tab" data-toggle="tab">REGISTER</a></li>
+                    <li><a href="#login-tab" data-toggle="tab">LOGIN</a></li>
                   </ul>
                   <!-- tab content -->
                   <div class="tab-content">
