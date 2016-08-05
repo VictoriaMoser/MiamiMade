@@ -31,8 +31,8 @@ var markers = [];
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
-		center: {lat: 25.79, lng: -80.19},
-		zoom: 13,
+		center: {lat: 28.00, lng: -79.60},
+		zoom: 7,
 		scrollwheel: false
 	});
 
