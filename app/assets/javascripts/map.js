@@ -44,7 +44,11 @@ var markers = [];
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
+<<<<<<< HEAD
 		center: {lat: 26.79, lng: -80.59},
+=======
+		center: {lat: 28.00, lng: -79.60},
+>>>>>>> b71528120f9969532bb56a10f9e2cee9ac11b25d
 		zoom: 7,
 		scrollwheel: false
 	});

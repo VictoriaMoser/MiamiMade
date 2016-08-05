@@ -1,89 +1,79 @@
 <div class="row">
-	<div class="col-xs-12 col-md-4 hidden" id="sidebar">
+	<!--Filters-->
+	<div class="col-xs-3 col-md-3 hidden" id="sidebar">
 		<!--Description-->
-		<h1 id="title">SoFla StartUp Ecosystem</h1>
+		<h2 id="title">SoFla StartUp Ecosystem</h2>
 		<p class="lead">We'll help you locate and get information about South Florida Startups, Investors and all components of the ecosystem. Please select the filters of the information you would like us to display and press Search...</p>
 
+		<div id="checkboxSt" class="checkbox">
+			<label>
+				<input type="checkbox" value="">
+				Startups
+			</label>
+		</div>
 
-		<!--Filters-->
-		<div class="row">
-			<!--Startup Filters-->
-			<!-- <% form_tag "url" %> -->
-			<div class="col-sm-6 vertical-line">
-				<div class="checkbox">
-				  <label>
-				    <input type="checkbox" value="">
-				    Startups
-				  </label>
-				</div>
+		<div id="checkboxInv" class="checkbox">
+			<label>
+				<input type="checkbox" value="">
+				Investors
+			</label>
+		</div>
 
-				<%= select_tag "Industry Vertical:", @options, class: "form-control" %>
-				<hr>
-				<h4>Stage:</h4>
-				<select class="form-control">
-				  <option>Stage 1</option>
-				  <option>Stage 2</option>
-				  <option>Stage 3</option>
-				  <option>Stage 4</option>
-				  <option>Stage 5</option>
-					<option>All</option>
-				</select>
-				<hr>
-				<h4>Founded Date:</h4>
-				<select class="form-control">
-				  <option>2012-Present</option>
-				  <option>2007-2011</option>
-				  <option>2002-2006</option>
-				  <option>1997-2001</option>
-				  <option>< 1996</option>
-					<option>All</option>
-				</select>
-			</div>
-			<!--Investor Filters-->
-			<div class="col-sm-6">
-				<div class="checkbox">
-				  <label>
-				    <input type="checkbox" value="">
-				    Investors
-				  </label>
-				</div>
+		<h4 id="vertical" data-investors-verticals='<%= @coords  %>'>Vertical:</h4>
+		<%= form_tag('/vertical-search', method: :get) do %>
+		<%= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter', class: "form-control") %>
+		<hr>
+		<h3>Startups filters</h3>
+		<h4>Stage:</h4>
+		<select id= "startupStage" class="form-control">
+			<option>Stage 1</option>
+			<option>Stage 2</option>
+			<option>Stage 3</option>
+			<option>Stage 4</option>
+			<option>Stage 5</option>
+			<option>All</option>
+		</select>
 
-				<h4 id="vertical" data-investors-verticals='<%= @coords  %>'>Industry Vertical:</h4>
-				<%= form_tag('/vertical-search', method: :get) do %>
-				<%= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter', class: "form-control") %>
+		<h4>Founded Date:</h4>
+		<select id= "foundedDate" class="form-control">
+			<option>2012-Present</option>
+			<option>2007-2011</option>
+			<option>2002-2006</option>
+			<option>1997-2001</option>
+			<option>< 1996</option>
+			<option>All</option>
+		</select>
 
-				<hr>
-				<h4>Investor Type:</h4>
-				<select class="form-control investor-type">
-				  <option>Angel Investor</option>
-				  <option>Venture Capitalist</option>
-				  <option>Peer-to-Peer Lending</option>
-				  <option>All</option>
-				</select>
-				<br>
-				<%= submit_tag 'Submit', class: "btn btn-primary" %>
-				<% end %>
-			</div>
-			<!--Searchbox-->
-			<div class="row">
-				<div class="col-sm-12">
-				<h1>Search</h1>
-				<%= form_tag("/search", method: "get") do %>
-	  			<%= search_field_tag :term %>
-	  			<%= submit_tag "Go!" %>
-				<% end %>
-				<%= params[:term] %>
-				</div>
-			</div>
+	<hr>
+	<h3>Investors filters</h3>
+	<h4>Investor Type:</h4>
+	<select id="investorType" class="form-control investor-type">
+		<option>Angel Investor</option>
+		<option>Venture Capitalist</option>
+		<option>Peer-to-Peer Lending</option>
+		<option>All</option>
+	</select>
+	<br>
+	<%= submit_tag 'Submit', class: "btn btn-primary" %>
+	<% end %>
+		<hr>
 
+		<div >
+			<h1>Search</h1>
+			<%= form_tag("/search", method: "get") do %>
+			<%= search_field_tag :term %>
+			<%= submit_tag "Go!" %>
+			<% end %>
+			<%= params[:term] %>
 		</div>
 	</div>
+</div>
 
-	<!-- an empty div for the map -->
+<!-- an empty div for the map -->
 
-	<div data-investors="<%= @investors %>" data-startups="<%= @startups %>" id="map-data" class="col-xs-12 col-md-8">
-		<div id="map-canvas"></div>
-	</div>
+<div data-investors="<%= @investors %>" data-startups="<%= @startups %>" id="map-data" class="col-xs-12 col-md-8">
+	<div id="map-canvas"></div>
+</div>
 
 </div>
 

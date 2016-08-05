@@ -1,0 +1,5 @@
+<p> Hi <%= @user.name %>,</p>
+
+<p> Thanks for registering! To confirm your registration click the link below. </p>
+
+<p> <%= link_to("Confirm your account", confirm_email_user_url(@user.token_confirmation)) %> </p>

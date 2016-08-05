@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/admin_panel' => 'users#admin_panel'
   get '/secret' => 'page#secret'
   get '/register' => 'users#new'
-  resources :users
+  # resources :users, except: :index
 
   #routes for login form/login in/logging out
   get 'login' => 'sessions#new'
@@ -30,9 +30,9 @@ Rails.application.routes.draw do
   patch '/investors/:id/approve' => 'investors#approve', as: 'investor_approve'
 
  #validating user email
- resources :users do
-   member do
-     get :confirm_email 
+  resources :users, except: :index do
+    member do
+     get :confirm_email
    end
  end
 

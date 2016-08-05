@@ -1,7 +1,7 @@
 class Startup < ApplicationRecord
   belongs_to :user, optional: true
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :address, presence: true
   # validates :description, presence: true
   # validates :founded_date, presence: true
