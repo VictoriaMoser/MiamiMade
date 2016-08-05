@@ -1,32 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12 white-font table-border">
+    <p id="notice"><%= notice %></p>
 
-<h1> List of Investors in South Florida</h1>
+    <h1> List of Investors in South Florida</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Website</th>
-      <th>Address</th>
-      <th>Description</th>
-      <th>Founded date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Website</th>
+          <th>Address</th>
+          <th>Description</th>
+          <th>Founded date</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @investors.each do |investor| %>
-      <tr>
-        <td><%= investor.name %></td>
-        <td><%= investor.email %></td>
-        <td><%= investor.website %></td>
-        <td><%= investor.address %></td>
-        <td><%= investor.description[0..100]%>...</td>
-        <td><%= investor.founded_date %></td>
-        <td><%= link_to 'Learn More', investor %></td>
-      </tr>
-    <% end %>
-    <td><%= button_to 'Add a new investor', new_investor_path, method:'get' %></td>
-  </tbody>
-</table>
+      <tbody>
+        <% @investors.each do |investor| %>
+          <tr>
+            <td><%= investor.name %></td>
+            <td><%= investor.email %></td>
+            <td><%= investor.website %></td>
+            <td><%= investor.address %></td>
+            <td><%= investor.description[0..50]%>...</td>
+            <td><%= investor.founded_date %></td>
+            <td><%= link_to 'Learn More', investor %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-offset-5">
+    <%= button_to 'Add a new investor', new_investor_path, method:'get', class: 'purple-button' %>
+  </div>
+</div>

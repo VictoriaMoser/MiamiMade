@@ -38,16 +38,19 @@ html body {
 #nav ul {
   float: right;
   padding: 20px;
-  margin: 10px 0;
+  margin: 0px 0;
+}
+
+ul.nav li.nav-links {
+  margin-top: 20px;
 }
 
 ul.nav li.nav-links a {
   display: inline;
   font-size: 1.2em;
-  padding: 10px 20px;
   color: #5b04ff;
   letter-spacing: 1px;
-  margin: 0 20px;
+  margin: 5px;
 }
 
 ul.nav li.nav-links a:hover {
@@ -55,12 +58,26 @@ ul.nav li.nav-links a:hover {
   border-bottom: 2px solid #5b04ff;
 }
 
-.form-style {
-    border: 2px solid #fff;
+.purple-button {
+	background-color: transparent;
+	color: #5b04ff;
+  border: 2px solid #5b04ff;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+	font-size: 1.2em;
+	padding: 10px 20px;
+	letter-spacing: 1px;
+	margin: 8px;
+  border-radius: 20px;
 }
 
 .white-font {
 	color: #fff;
+}
+
+.space {
+  margin: 100px 20px;
 }
 
 footer {
