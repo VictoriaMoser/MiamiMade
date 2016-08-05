@@ -58,12 +58,26 @@ ul.nav li.nav-links a:hover {
   border-bottom: 2px solid #5b04ff;
 }
 
-.form-style {
-    border: 2px solid #fff;
+.purple-button {
+	background-color: transparent;
+	color: #5b04ff;
+  border: 2px solid #5b04ff;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+	font-size: 1.2em;
+	padding: 10px 20px;
+	letter-spacing: 1px;
+	margin: 8px;
+  border-radius: 20px;
 }
 
 .white-font {
 	color: #fff;
+}
+
+.space {
+  margin: 100px 20px;
 }
 
 footer {
