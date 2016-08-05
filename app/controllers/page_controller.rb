@@ -3,6 +3,7 @@ class PageController < ApplicationController
   def index
     @investors = Investor.all.to_json
     @startups = Startup.all.to_json
+
     # redirect_to register_path if session[:user_id].nil?
     @user = User.new
   end
@@ -18,12 +19,32 @@ class PageController < ApplicationController
     @results = startup_result || investor_result
   end
 
-  def vertical_search
-    @results = Investor.where(vertical: params[:vertical])
-    @coords = @results.map do |investor|
-      {title: investor.name, location: {lat: investor.latitude, lng: investor.longitude}, description: investor.description, type: "investor"}
+  def filter
+    @user = User.new
+    investors = Investor.all
+    startups = Startup.all
+
+    if params[:vertical]
+      investors = Investor.where(vertical: params[:vertical]).as_json
+      startups = Startup.where(vertical: params[:vertical]).as_json
     end
-    @coords = @coords.to_json
+
+    if params[:stage]
+      investors = Investor.where(stage: params[:stage]).as_json
+      startups = Startup.where(stage: params[:stage]).as_json
+    end
+
+    render json: { investors: investors.as_json, startups: startups.as_json }
+  end
+
+  def vertical_search
+    @user = User.new
+    @investors = Investor.where(vertical: params[:vertical]).to_json
+    @startups = Startup.where(vertical: params[:vertical]).to_json
+    # @coords = @results.map do |investor|
+    #   {title: investor.name, location: {lat: investor.latitude, lng: investor.longitude}, description: investor.description, type: "investor"}
+    # end
+    # @coords = @coords.to_json
 
     render :index
   end
