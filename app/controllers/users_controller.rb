@@ -17,12 +17,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    UserMailer.registration_confirmation(@user).deliver
-    flash[:success] = "Please confirm your email address to continue"
-    redirect_to root_url
+    if @user.save
+      UserMailer.registration_confirmation(@user).deliver
+      flash[:success] = "Please confirm your email address to continue"
+      redirect_to root_url
     else
-    flash[:error] = "Ooooppss, something went wrong!"
-    render 'new'
+      flash[:error] = "Ooooppss, something went wrong!"
+      render 'new'
     end
   end
 
@@ -56,15 +57,28 @@ class UsersController < ApplicationController
     @startups = Startup.where(approval: false)
   end
 
- private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
+  def confirm_email
+    user = User.find_by_token_confirmation(params[:id])
+    if user
+      user.email_activate
+      flash[:success] = "Welcome to Miami Made! Your email has been confirmed.
+      Please sign in to continue."
+      redirect_to login_path
+    else
+      flash[:error] = "Sorry. Username does not exist"
+      redirect_to root_path
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
- end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
 end
