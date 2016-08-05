@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/filter' => 'page#filter'
   get '/vertical-search' => 'page#vertical_search'
   root 'page#index'
   get '/search' => 'page#search'
