@@ -1,3 +1,6 @@
+
+
+
 h1#title {
 	font-size: 3em;
 	text-align: center;
@@ -13,9 +16,10 @@ p {
 }
 
 #sidebar {
-	padding: 50px;
+	padding: 20px;
 	background-color: rgba(0, 0, 0, 0.7);
-	overflow: scroll;
+	overflow: none;
+	color: #fff;
 }
 
 #hidden {

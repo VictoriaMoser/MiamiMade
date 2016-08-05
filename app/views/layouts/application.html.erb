@@ -21,6 +21,7 @@
         <div class="container-fluid">
           <div class="row">
             <%= link_to image_tag("Miami_made_full_white.png", border: 0, width: "150px"), '/', id: "logo", class: "navbar-brand" %>
+<<<<<<< HEAD
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <!--hamburger-->
               <div class="navbar-header">
@@ -47,20 +48,24 @@
             	    <% end %>
                 </ul>
               </div>
+
             </div>
           </div>
         </nav>
 
 
+
       <!-- modal for register/login-->
       <div class="modal fade bd-example-modal-sm" id="reg-login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-sm" role="document">
+
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">Login/Registration</h4>
             </div>
             <div class="modal-body">
+
               <div class="container-fluid">
                 <div class="row">
                   <!--tab titles-->
@@ -117,7 +122,7 @@
     </header>
 
     <main>
-      <div class="container-fluid">
+      <div class="container-fluid" id="main-container">
         <%= yield %>
       </div>
     </main>

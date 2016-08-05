@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-html, body, main, .row, .container-fluid, .col-md-8, #map-canvas { height: 100% }
+html, body, main, #main-container, #page-index-row, #map-data, #map-canvas { height: 100% }
 
 
 html body {

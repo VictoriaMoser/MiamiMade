@@ -1,14 +1,18 @@
-<%= form_tag '/login', html: {class: "login-form"}  do %>
+<div class="row">
+  <div class="col-sm-12 col-md-4 col-md-offset-4">
 
-<div class="field">
-  <%= label_tag :email %>
-  <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Email@example.com' %>
+    <%= form_tag '/login', html: {class: "login-form"}  do %>
+
+    <div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div>
+    <%= submit_tag "Login" %>
+    <% end %>
+  </div>
 </div>
-<br>
-<div class="field">
-  <%= label_tag :password %>
-  <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password' %>
-</div>
-<br>
-<%= submit_tag "Login", class: 'btn btn-default' %>
-<% end %>
