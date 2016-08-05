@@ -1,32 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12 white-font table-border">
+    <p id="notice"><%= notice %></p>
 
-<h1> List of Startups in South Florida </h1>
+    <h1> List of Startups in South Florida </h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Website</th>
-      <th>Address</th>
-      <th>Description</th>
-      <th>Founded date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Website</th>
+          <th>Address</th>
+          <th>Description</th>
+          <th>Founded date</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @startups.each do |startup| %>
-      <tr>
-        <td><%= startup.name %></td>
-        <td><%= startup.email %></td>
-        <td><%= startup.website %></td>
-        <td><%= startup.address %></td>
-        <td><%= startup.description[0..100]%>...</td>
-        <td><%= startup.founded_date %></td>
-        <td><%= link_to 'Learn More', startup %></td>
-      </tr>
-    <% end %>
-    <td><%= button_to 'Add a new startup', new_startup_path, method:'get' %></td>
-  </tbody>
-</table>
+      <tbody>
+        <% @startups.each do |startup| %>
+          <tr>
+            <td><%= startup.name %></td>
+            <td><%= startup.email %></td>
+            <td><%= startup.website %></td>
+            <td><%= startup.address %></td>
+            <td><%= startup.description[0..50]%>...</td>
+            <td><%= startup.founded_date %></td>
+            <td><%= link_to 'Learn More', startup %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-offset-5">
+  <%= button_to 'Add a new startup', new_startup_path, method:'get', id: 'add-button', class: 'btn'  %>
+  </div>
+</div>

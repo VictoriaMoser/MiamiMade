@@ -17,7 +17,11 @@ html, body, main, .row, .container-fluid, .col-md-8, #map-canvas { height: 100% 
 
 
 html body {
- 	background-image: url("skyline.jpg");
+ 	background: #000 url("skyline.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   font-family: 'Roboto', sans-serif !important;
   /*background: url("skyline2.jpeg") no-repeat fixed center;*/
 }
@@ -27,8 +31,8 @@ html body {
   margin: auto 0;
 }
 
-.form-style {
-    border: 2px solid black;
+#nav {
+  background-color: #000;
 }
 
 #nav ul {
@@ -37,12 +41,26 @@ html body {
   margin: 10px 0;
 }
 
-#nav li.nav-links {
+ul.nav li.nav-links a {
   display: inline;
   font-size: 1.2em;
-  padding: 0 20px;
-  color: #5b04ff !important;
+  padding: 10px 20px;
+  color: #5b04ff;
   letter-spacing: 1px;
+  margin: 0 20px;
+}
+
+ul.nav li.nav-links a:hover {
+  background-color:transparent;
+  border-bottom: 2px solid #5b04ff;
+}
+
+.form-style {
+    border: 2px solid #fff;
+}
+
+.white-font {
+	color: #fff;
 }
 
 footer {
