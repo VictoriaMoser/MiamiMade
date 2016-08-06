@@ -8,6 +8,34 @@ class PageController < ApplicationController
     @user = User.new
   end
 
+  def get_filter
+    if params[:data]["entity"] == "Investor"
+
+      if params[:data]["vertical"].present? && params[:data]["founded_date"].present? && params[:data]["stage"].present?
+        @investor_results = Investor.where(vertical: params[:data]["vertical"], founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+      end
+
+      if params[:data]["founded_date"].present? && params[:data]["stage"].present?
+        @investor_results = Investor.where(founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+      end
+
+      if params[:data]["stage"].present? && params[:data]["vertical"].present?
+        @investor_results = Investor.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+      end
+
+      if params[:data]["founded_date"].present? && params[:data]["vertical"].present?
+        @investor_results = Investor.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+      end
+
+    elsif params[:data]["entity"] == "Startup"
+      @startups = Startup.all
+
+    elsif params[:data]["all"]
+      @all = Startup.all + Investor.all
+    end
+
+  end
+
   def search
     params[:investorType]
     startup_result = Startup.where("name like ?", "%#{params[:term]}%")
@@ -15,7 +43,6 @@ class PageController < ApplicationController
     puts "*" * 20
     investor_result = Investor.where("name like ?", "%#{params[:term]}%")
     p investor_result
-
     @results = startup_result || investor_result
   end
 
