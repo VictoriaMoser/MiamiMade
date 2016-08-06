@@ -3,8 +3,12 @@ class InvestorsController < ApplicationController
 
   # GET /investors
   def index
+    if session[:user_id]
     @investors = Investor.where(approval: true)
     @user = User.find(session[:user_id])
+    else
+    redirect_to root_path
+    end
   end
 
   # GET /investors/1
