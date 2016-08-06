@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create( name: 'Star Wars' }, { name: 'Lord of the Rings' )
 #   Character.create(name: 'Luke', movie: movies.first)
+#admin
 
 Startup.create!(name:'Acordis International', address:'Miami, FL', latitude: '25.7611', longitude: '-80.1912', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
 Startup.create!(name:'Fresh Meal Plan', address:'Miami, FL', latitude: '25.8711', longitude: '-80.2912', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
