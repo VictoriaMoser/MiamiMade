@@ -1,80 +1,112 @@
-<div class="row">
-	<div class="col-xs-12 col-md-4 hidden" id="sidebar">
-		<!--Description-->
-		<h1 id="title">SoFla StartUp Ecosystem</h1>
-		<p class="lead">We'll help you locate and get information about South Florida Startups, Investors and all components of the ecosystem. Please select the filters of the information you would like us to display and press Search...</p>
+div class="row">
+
+	<div class="col-xs-3 col-md-3 hidden" id="sidebar">
+
+		<h2 id="title">SoFla StartUp Ecosystem</h2>
+		<p class="lead">Information about South Florida Startups, Investors and all components of the ecosystem. Select bellow the information to show and then locate in the map to access the details..</p>
 
 
-		<!--Filters-->
-		<div class="row">
-			<!--Startup Filters-->
-			<!-- <% form_tag "url" %> -->
-			<div class="col-sm-6 vertical-line">
-				<div class="checkbox">
-				  <label>
-				    <input type="checkbox" value="">
-				    Startups
-				  </label>
-				</div>
 
-				<%= select_tag "Industry Vertical:", @options, class: "form-control" %>
-				<hr>
-				<h4>Stage:</h4>
-				<select class="form-control">
-				  <option>Stage 1</option>
-				  <option>Stage 2</option>
-				  <option>Stage 3</option>
-				  <option>Stage 4</option>
-				  <option>Stage 5</option>
-					<option>All</option>
-				</select>
+		<h4 id="vertical" data-investors-verticals='<%= @coords  %>'>Vertical:</h4>
+		<%#= form_tag('/vertical-search', method: :get) do %>
+			<%#= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter', class: "form-control") %>
+
+	<ul class="collapsible" data-collapsible="expandable">
+
+		<li>
+			<div class="collapsible-header">
+				Filter by Type of Entity
 			</div>
-			<!--Investor Filters-->
-			<div class="col-sm-6">
-				<div class="checkbox">
-				  <label>
-				    <input type="checkbox" value="">
-				    Investors
-				  </label>
-				</div>
-				<h4 id="investor" data-investors='<%= @coords  %>'>Industry Vertical:</h4>
-				<%= form_tag('/vertical-search', method: :get) do %>
-				<%= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter', class: "form-control") %>
-				<hr>
-				<h4>Investor Type:</h4>
-				<select class="form-control">
-				  <option>Angel Investor</option>
-				  <option>Venture Capitalist</option>
-				  <option>Peer-to-Peer Lending</option>
-				  <option>All</option>
-				</select>
-				<br>
-				<%= submit_tag 'Submit', class: "btn btn-primary" %>
+			<div class="collapsible-body">
+				<% ["All","Investor", "StartUp"].each do |entity| %>
+					<input type="checkbox" data-category="entity" name="<%= entity %>" id="<%= entity%>" value="<%= entity %>" class="js-filter-box">
+					<label for="<%= entity %>"> <%= entity %> </label>
 				<% end %>
 			</div>
-			<!--Searchbox-->
-			<div class="row">
-				<div class="col-sm-12">
-				<h1>Search</h1>
-				<%= form_tag("/search", method: "get") do %>
-	  			<%= search_field_tag :term %>
-	  			<%= submit_tag "Go!" %>
-				<% end %>
-				<%= params[:term] %>
-				</div>
-			</div>
+		</li>
 
+		<li>
+			<div class="collapsible-header">
+				Filter by Vertical
+			</div>
+			<div class="collapsible-body">
+				<% Investor.verticals.keys.each do |vertical| %>
+					<input type="checkbox" data-category="vertical" name="<%= vertical %>" id="<%= vertical%>" value="<%= vertical %>" class="js-filter-box">
+					<label for="<%= vertical %>"> <%= vertical %> </label>
+				<% end %>
+			</div>
+		</li>
+
+		<li>
+			<div class="collapsible-header">
+				Filter by Stage
+			</div>
+			<div class="collapsible-body">
+				<% ["All","Stage 1", "Stage 2", "Stage 3", "Stage 4"].each do |stage| %>
+					<input type="checkbox" data-category="stage" name="<%= stage %>" id="<%= stage%>" value="<%= stage %>" class="js-filter-box">
+					<label for="<%= stage %>"> <%= stage %> </label>
+				<% end %>
+			</div>
+		</li>
+
+		<li>
+			<div class="collapsible-header">
+				Filter by Founding date
+			</div>
+			<div class="collapsible-body">
+				<% ["All","2012-Present", "2007-2011", "2002-2006"].each do |founded| %>
+					<input type="checkbox" data-category="stage" name="<%= founded %>" id="<%= founded%>" value="<%= founded %>" class="js-filter-box">
+					<label for="<%= founded %>"> <%= founded %> </label>
+				<% end %>
+			</div>
+		</li>
+
+		<li>
+			<div class="collapsible-header">
+				Filter by Investor Type
+			</div>
+			<div class="collapsible-body">
+				<% ["All","Angel Investor", "Venture Capitalist", "Peer-to-Peer Lending"].each do |founded| %>
+					<input type="checkbox" data-category="stage" name="<%= founded %>" id="<%= founded%>" value="<%= founded %>" class="js-filter-box">
+					<label for="<%= founded %>"> <%= founded %> </label>
+				<% end %>
+			</div>
+		</li>
+
+
+
+	</ul>
+
+
+		<!-- <hr>
+		<h3>Startups filters</h3>
+		<h4>Stage:</h4> -->
+		<%#= select_tag(:stage, options_for_select(["All","Stage 1", "Stage 2", "Stage 3", "Stage 4"]), class: "form-control") %>
+
+
+	<hr>
+	<h3>Investors filters</h3>
+
+	<br>
+	<%#= submit_tag 'Submit', class: "btn btn-primary" %>
+	<%# end %>
+		<hr>
+
+		<div >
+			<h1>Search</h1>
+			<%= form_tag("/search", method: "get") do %>
+			<%= search_field_tag :term %>
+			<%= submit_tag "Go!" %>
+			<% end %>
+			<%= params[:term] %>
 		</div>
 	</div>
-
-	<!-- an empty div for the map -->
-
-	<div class="col-xs-12 col-md-8">
-		<div id="map-canvas"></div>
-	</div>
-
 </div>
 
-<!-- <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdZwnofi--Pt9bxvMeVpRw0SqNdKyvpAM&v=3&callback=initMap">
-</script> -->
+<!-- an empty div for the map -->
+
+<div data-investors="<%= @investors %>" data-startups="<%= @startups %>" id="map-data" class="col-xs-9 col-md-8">
+	<div id="map-canvas"></div>
+</div>
+
+</div>

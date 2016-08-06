@@ -7,42 +7,126 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPKEY'] %>&callback=initMap"
-    async defer></script>
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   </head>
 
   <body>
     <header>
-      <nav id="nav" class="navbar navbar-static-top navbar-inverse">
+      <nav id="nav" class="navbar navbar-static-top" role="navigation">
         <div class="container-fluid">
           <div class="row">
             <%= link_to image_tag("Miami_made_full_white.png", border: 0, width: "150px"), '/', id: "logo", class: "navbar-brand" %>
-              <ul>
-                <% if current_user %>
-                  <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
-                  <li class="nav-links"><%= link_to 'INVESTORS', investors_path %></li>
-                  <li>Signed in as <%= current_user.name %></li>
-                  <li><%= link_to "LOGOUT", logout_path %></li>
-                  <% else %>
-                  <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
-                  <li class="nav-links"><%= link_to 'INVESTORS', investors_path %></li>
-                  <li class="nav-links"><%= link_to 'LOGIN', login_path %></li>
-                  <li class="nav-links"><%= link_to 'REGISTER',register_path %></li>
-          	    <% end %>
-              </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <!--hamburger-->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+              </div>
+              <!--nav-content-->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <% if current_user %>
+                    <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
+                    <li class="nav-links"><%= link_to 'INVESTORS', investors_path %></li>
+                    <li class="nav-links">Signed in as <%= current_user.name %></li>
+                    <li class="nav-links"><%= link_to "LOGOUT", logout_path %></li>
+                    <% else %>
+                    <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
+                    <li class="nav-links"><%= link_to 'INVESTORS', investors_path %></li>
+                    <!--modal button-->
+                    <li><button class="purple-button" type="button" data-toggle="modal" data-target="#reg-login-modal">LOGIN/REGISTRATION</button></li>
+            	    <% end %>
+                </ul>
+              </div>
+
             </div>
           </div>
         </nav>
+
+
+
+      <!-- modal for register/login-->
+      <div class="modal fade bd-example-modal-sm" id="reg-login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel">LOGIN/REGISTRATION</h3>
+            </div>
+            <div class="modal-body">
+
+              <div class="container-fluid">
+                <div class="row">
+                  <!--tab titles-->
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a href="#register-tab" data-toggle="tab">REGISTER</a></li>
+                    <li><a href="#login-tab" data-toggle="tab">LOGIN</a></li>
+                  </ul>
+                  <!-- tab content -->
+                  <div class="tab-content">
+                    <div class="tab-pane active col-sm-12" id="register-tab">
+                      <%#= render 'users/form', user: @user %>
+                      <%= form_for(:user, :url => users_path(:user)) do |f| %>
+                      <div class="field">
+                        <%= f.label :name %>
+                        <%= f.text_field :name, class: 'form-control', placeholder: 'Full Name' %>
+                      </div>
+                      <br>
+                      <div class="field">
+                        <%= f.label :email %>
+                        <%= f.email_field :email, class: 'form-control', placeholder: 'Email@example.com' %>
+                      </div>
+                      <br>
+                      <div class="field">
+                        <%= f.label :password %>
+                        <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+                      </div>
+                      <br>
+                      <div class="field">
+                        <%= f.label :password_confirmation %>
+                        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password' %>
+                      </div>
+                      <br>
+                      <div class="actions">
+                        <%= f.submit 'Register', class: 'btn btn-default' %>
+                      </div>
+                    <% end %>
+                    </div>
+
+                    <div class="tab-pane col-sm-12" id="login-tab">
+                      <%= render 'sessions/form' %>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </header>
 
     <main>
-      <div class="container-fluid">
+      <div class="container-fluid" id="main-container">
         <%= yield %>
       </div>
     </main>
@@ -51,13 +135,14 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
-            <p>A project by <a href="#">Victoria Cartagena, N. Alejandra Estevez, Andres Duarte</a>.</p>
+            <!-- <p>A project by <a href="#">Victoria Cartagena, N. Alejandra Estevez, Andres Duarte</a>.</p> -->
           </div>
         </div>
       </div>
     </footer>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPKEY'] %>&callback=initMap"
+    async defer></script>
   </body>
 </html>
