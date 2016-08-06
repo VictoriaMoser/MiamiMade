@@ -5,16 +5,14 @@ class PageController < ApplicationController
     # @startups = Startup.all.to_json
     # gon.investors = Investor.all.grab_location
 
-    temp = Investor.grab_location
-    puts "*" * 20
-    p temp
-    puts "*" * 20
-    gon.investors = temp
-    gon.startups = Startup.all
+    gon.investors = Investor.grab_location
+    gon.startupsAll = Startup.all
+    gon.investorsAll = Investor.all
+
     # redirect_to register_path if session[:user_id].nil?
     @user = User.new
   end
-
+  
   def search
     params[:investorType]
     startup_result = Startup.where("name like ?", "%#{params[:term]}%")
