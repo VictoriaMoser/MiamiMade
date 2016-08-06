@@ -13,11 +13,11 @@
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <!-- Compiled and minified CSS -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> -->
 
-  <!-- Compiled and minified JavaScript -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+<!-- We include the gon gem in order to manage a little easier the data moving from the controller to the JS and vs -->
+  <%= include_gon %>
   </head>
 
   <body>
