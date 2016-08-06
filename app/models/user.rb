@@ -8,12 +8,19 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :password, presence: true, unless: :has_password
 
+  def has_password
+    return true if self.password_digest
+  end
   def email_activate
     self.email_confirmation = true
     self.token_confirmation = nil
     save!(:validate => false)
+  end
+
+  def approved_user
+    self.approval = true
   end
 
   private
