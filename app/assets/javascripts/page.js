@@ -2,8 +2,12 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready(function() {
+$(document).on("turbolinks:load", function() {
   $('div.hidden').fadeIn(2000).removeClass('hidden');
+});
+
+$('#logo').click(function() {
+  $('div.hidden').removeClass('hidden');
 });
 
 //Register Submit in Modal
