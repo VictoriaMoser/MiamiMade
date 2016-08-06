@@ -1,6 +1,7 @@
 class PageController < ApplicationController
 
   def index
+    
     @investors = Investor.all.to_json
     @startups = Startup.all.to_json
 
