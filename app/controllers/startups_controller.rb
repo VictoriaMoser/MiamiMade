@@ -2,8 +2,13 @@ class StartupsController < ApplicationController
   before_action :set_startup, only: [:show, :edit, :update, :destroy]
 
   def index
+    if session[:user_id]
     @startups = Startup.where(approval: true)
+    @user = User.find(session[:user_id])
+  else
+    redirect_to root_path
   end
+end
 
   def show
   end
@@ -40,7 +45,7 @@ class StartupsController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @startup.destroy
     respond_to do |format|
@@ -57,7 +62,7 @@ class StartupsController < ApplicationController
     else
       # Go back to admin_panel and give error
     end
-  end 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -72,5 +77,5 @@ class StartupsController < ApplicationController
 
     def approval_params
       params.permit(:approval)
-    end 
+    end
 end

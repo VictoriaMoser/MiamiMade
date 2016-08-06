@@ -1,27 +1,28 @@
 <div>
-<h3> List of investors to be approved: </h3>
+<h3 class="approve-investors"> List of investors to be approved: </h3>
   <table>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Website</th>
-      <th>Address</th>
-      <th>Description</th>
-      <th>Founded Date</th>
+      <th class="admin-page-fields">Name &nbsp&nbsp&nbsp&nbsp</th>
+      <th class="admin-page-fields">Email &nbsp&nbsp&nbsp&nbsp</th>
+      <th class="admin-page-fields">Website&nbsp&nbsp&nbsp&nbsp</th>
+      <th class="admin-page-fields">Address&nbsp&nbsp&nbsp&nbsp</th>
+      <th class="admin-page-fields">Description&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+      <th class="admin-page-fields">Founded Date&nbsp&nbsp&nbsp&nbsp</th>
     </tr>
     <tbody>
 
     <% @investors.each do |investor| %>
 
       <tr>
-        <td><%= investor.name %></td>
-        <td><%= investor.email %></td>
-        <td><%= investor.website %></td>
-        <td><%= investor.address %></td>
-        <td><%= investor.description %></td>
-        <td><%= investor.founded_date %></td>
-        <td><%= button_to 'Edit', edit_investor_path(investor), method:'get' %></td>
+        <td class="admin-page-fields"><%= investor.name %></td>
+        <td class="admin-page-fields"><%= investor.email %></td>
+        <td class="admin-page-fields"><%= investor.website %></td>
+        <td class="admin-page-fields"><%= investor.address %></td>
+        <td class="admin-page-fields"><%= investor.description %></td>
+        <td class="admin-page-fields"><%= investor.founded_date %></td>
+        <td class="admin-page-fields"><%= button_to 'Edit', edit_investor_path(investor), method:'get' %></td>
         <td><%= button_to 'Approve', investor_approve_path(investor), method:'patch' %></td>
+        <td><%= button_to 'Delete', investor_path(investor), method:'delete' %></td>
       </tr>
    <%end%>
    </tbody>
@@ -30,51 +31,53 @@
   <!-- Add buttons for approval -->
 
 <div>
-<h3> List of startups to be approved: </h3>
+<h3 class="approve-startups"> List of startups to be approved: </h3>
   <table>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Website</th>
-      <th>Address</th>
-      <th>Description</th>
-      <th>Founded Date</th>
+      <th class="admin-page-fields">Name</th>
+      <th class="admin-page-fields">Email</th>
+      <th class="admin-page-fields">Website</th>
+      <th class="admin-page-fields">Address</th>
+      <th class="admin-page-fields">Description</th>
+      <th class="admin-page-fields">Founded Date</th>
     </tr>
     <tbody>
 
     <% @startups.each do |startup| %>
 
       <tr>
-        <td><%= startup.name %></td>
-        <td><%= startup.email %></td>
-        <td><%= startup.website %></td>
-        <td><%= startup.address %></td>
-        <td><%= startup.description %></td>
-        <td><%= startup.founded_date %></td>
+        <td class="admin-page-fields"><%= startup.name %></td>
+        <td class="admin-page-fields"><%= startup.email %></td>
+        <td class="admin-page-fields"><%= startup.website %></td>
+        <td class="admin-page-fields"><%= startup.address %></td>
+        <td class="admin-page-fields"><%= startup.description %></td>
+        <td class="admin-page-fields"><%= startup.founded_date %></td>
         <td><%= button_to 'Edit', edit_startup_path(startup), method: 'get' %></td>
         <td><%= button_to 'Approve', startup_approve_path(startup), method:'patch' %></td>
+        <td><%= button_to 'Delete', startup_path(startup), method:'delete' %></td>
       </tr>
    <%end%>
    </tbody>
 </table>
 
 <div>
-<h3> List of users to be approved: </h3>
+<h3 class="approve-users"> List of users to be approved: </h3>
   <table>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>password</th>
+      <th class="admin-page-fields">Name</th>
+      <th class="admin-page-fields">Email</th>
+      <th class="admin-page-fields">password</th>
     </tr>
     <tbody>
 
     <% @users.each do |user| %>
 
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
+        <td class="admin-page-fields"><%= user.name %></td>
+        <td class="admin-page-fields"><%= user.email %></td>
         <td><%= button_to 'Edit', edit_user_path(user), method: 'get' %></td>
         <td><%= button_to 'Approve', user_approve_path(user), method:'patch' %></td>
+        <td><%= button_to 'Delete', user_path(user), method:'delete' %></td>
       </tr>
    <%end%>
    </tbody>

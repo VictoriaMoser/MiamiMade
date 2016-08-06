@@ -16,11 +16,14 @@ class UsersController < ApplicationController
   end
 
   def create
+    p "CREATE USER::::"
     @user = User.new(user_params)
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
       flash[:success] = "Please confirm your email address to continue"
-      redirect_to root_url
+
+      redirect_to root_path
+      p "REDIRECT"
     else
       flash[:error] = "Ooooppss, something went wrong!"
       render 'new'
@@ -42,7 +45,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_panel_path, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

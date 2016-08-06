@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .add-investor {
-  color: white;
+  color: #5b04ff !important;
   font-family: 'Roboto', sans-serif !important;
 }
 
@@ -12,6 +12,50 @@
 }
 
 .new-investor-form {
-  background-color: rgba(black, 0.6);
-  margin:.2em 0 1em;
+  background-color: rgba(black, 0.7);
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.create-new-investor {
+  background-color: transparent !important;
+	color: #5b04ff !important;
+  border: 2px solid #5b04ff !important;
+  text-align: center!important;
+  text-decoration: none !important;
+  display: inline-block !important;
+	font-size: 1.2em !important;
+	padding: 10px 20px !important;
+	letter-spacing: 1px !important;
+	margin: 8px !important;
+  border-radius: 20px !important;
+}
+
+.field {
+  background-color: transparent !important;
+  color: #5b04ff !important;
+  padding: 10px 20px !important;
+}
+
+a {
+  color: #5b04ff;
+}
+
+th {
+    color: #5b04ff;
+}
+
+h1 {
+color: #5b04ff;
+}
+
+b, strong {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+p {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 1.5em;
 }

@@ -27,6 +27,9 @@
             <td><%= startup.description[0..50]%>...</td>
             <td><%= startup.founded_date %></td>
             <td><%= link_to 'Learn More', startup %></td>
+            <% if @user.admin %>
+            <td><%= link_to 'Delete', startup_path(startup), method:'delete' %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

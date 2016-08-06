@@ -3,7 +3,12 @@ class InvestorsController < ApplicationController
 
   # GET /investors
   def index
+    if session[:user_id]
     @investors = Investor.where(approval: true)
+    @user = User.find(session[:user_id])
+    else
+    redirect_to root_path
+    end
   end
 
   # GET /investors/1
@@ -64,7 +69,7 @@ class InvestorsController < ApplicationController
     else
       # Go back to admin_panel and give error
     end
-  end 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -79,5 +84,5 @@ class InvestorsController < ApplicationController
 
     def approval_params
       params.permit(:approval)
-    end 
+    end
 end
