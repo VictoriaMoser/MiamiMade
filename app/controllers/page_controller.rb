@@ -1,13 +1,18 @@
 class PageController < ApplicationController
 
   def index
-    @investors = Investor.all.to_json
-    @startups = Startup.all.to_json
+    # @investors = Investor.all.to_json
+    # @startups = Startup.all.to_json
+    # gon.investors = Investor.all.grab_location
+
+    gon.investors = Investor.grab_location
+    gon.startupsAll = Startup.all
+    gon.investorsAll = Investor.all
 
     # redirect_to register_path if session[:user_id].nil?
     @user = User.new
   end
-
+  
   def search
     params[:investorType]
     startup_result = Startup.where("name like ?", "%#{params[:term]}%")

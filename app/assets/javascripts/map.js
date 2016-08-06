@@ -1,158 +1,113 @@
-//********* geolocation
+$(function(){
+	// 1. I have a button(click event)
+		// 1.2 When I click the button I need to to get the values from the form
+		// 1.3 Then I need to match those values to display specific data
+	// 2.
 
-// if (navigator.geolocation) {
-//
-// 	function error(err) {
-// 		console.warn('ERROR(' + err.code + '): ' + err.message);
-// 	}
-//
-// 	function success(pos){
-// 		userCords = pos.coords;
-// 		return userCords;
-// 	}
-//
-// 	// Get the user's current position
-// 	navigator.geolocation.getCurrentPosition(success, error);
-// 	//console.log(pos.latitude + " " + pos.longitude);
-// } else {
-// 	alert('Geolocation is not supported in your browser');
-// }
-
-//********** End Geo location
+	var entity_list = ["Investor", "StartUp", "All Entities"];
+	var vertical_list = ["Advertising", "Apps", "Biotechnology", "Commerce and Shopping", "Community and Lifestyle", "Consumer Electronics", "Content and Publishing","Data and Analytics","Fashion","Financial Services","Food and Beverage","Government and Military","Hardware","Healthcare","Internet Services","Manufacturing","Media and Entertainment","Mobile","Software"];
+	var founded_date_list = ["All dates","2012-Present", "2007-2011", "2002-2006"];
+	var stage_list = ["All stages","Stage 1", "Stage 2", "Stage 3", "Stage 4"];
+	var investorType_list = ["All investors","Angel Investor", "Venture Capitalist", "Peer-to-Peer Lending"];
 
 
-/*change map to map-canvas*/
+	$('button').on('click', function(){
+			var formData = $('form').serialize();
+			var begString = '&password='
+			var endString = '=%E2%9C%93&term='
 
-var map;
+			var beforePass = formData.substring(formData.indexOf(begString));
+			beforePass = beforePass.replace('&password=','');
+			formData = beforePass.replace('=%E2%9C%93&term=','');
 
-var locations = [];
-var markers = [];
+			data = {
+				entity: [],
+				vertical: [],
+				founded_date: [],
+				stage: [],
+				investorType: [],
+			};
 
-function initMap(){
-	map = new google.maps.Map(document.getElementById('map-canvas'), {
-		center: {lat: 28.00, lng: -79.60},
-		zoom: 7,
-		scrollwheel: false
+			for (i=0; i < entity_list.length; i++) {
+				if (formData.indexOf(entity_list[i]) > -1) {
+					data.entity.push(entity_list[i]);
+				};
+			};
+
+			for (i=0; i < vertical_list.length; i++) {
+				if (formData.indexOf(vertical_list[i]) > -1) {
+					data.vertical.push(vertical_list[i]);
+				};
+			};
+
+			for (i=0; i < founded_date_list.length; i++) {
+				if (formData.indexOf(founded_date_list[i]) > -1) {
+					data.founded_date.push(founded_date_list[i]);
+				};
+			};
+
+			for (i=0; i < stage_list.length; i++) {
+				if (formData.indexOf(stage_list[i]) > -1) {
+					data.founded_date.push(stage_list[i]);
+				};
+			};
+
+			for (i=0; i < investorType_list.length; i++) {
+				if (formData.indexOf(investorType_list[i]) > -1) {
+					data.founded_date.push(investorType_list[i]);
+				};
+			};
+
+			console.log(data);
+
+				$.ajax({
+					url: '/',
+					type: "GET",
+					data: { data: data },
+					success: function(data){
+						// when you made the call to the controller and then the controller
+						// response with the data
+						// You initalize the map here again!
+					}
+				});
+		});
 	});
 
 
-  $('.collapsible').collapsible({
-    accordion: false
-  });
+function initMap() {
+	//we create the map center in south florida
+	var map = new google.maps.Map(document.getElementById('map-canvas'), {
+		center: {lat: 28.00, lng: -79.60},
+		zoom: 8
+	});
 
-  $('.js-filter-box').on('click', function(e){
-    var filters = {
-      vertical: [],
-			stage: []
-    }
-
-    $('.js-filter-box:checked').each(function(index, element){
-      var filterId = $(element).attr("value");
-      var category = $(element).attr("data-category");
-      // console.log($(element).attr("data-category"));
-      filters[category].push(filterId);
-    })
-
-    $.ajax({
-      url: '/filter',
-			method: "POST",
-      data: filters,
-      success: businessMarkers
-    })
-
-  });
-
-	// var investors = $('#map-data').data().investors;
-	// var startups = $('#map-data').data().startups;
+	// filter to understand the markers to create
+	// if (filter array is equal to )
 
 
-	var largeInfowindow = new google.maps.InfoWindow();
 
-	var bounds = new google.maps.LatLngBounds();
-}
 
-// This function populates the infowindow when the marker is clicked, we'll only allow
-// one infowindow which will open at the marker that is clicked, and populate based
-// on that markers position
-function populateInfoWindow(marker, infowindow, bounds) {
-	// Check to make sure that the infowindow is not already opended on this marker
-	if (infowindow.marker != marker) {
-		infowindow.marker = marker;
-		//With the "infowindow" we can play around the css styles on the top of the file
-		infowindow.setContent('<div id="infowindow"><strong>' + marker.title  + '</strong><br>' + marker.description + '</div>');
-		infowindow.open(map, marker);
 
-		// Make sure the marker is cleared if the infowindow is closed
-		infowindow.addListener('closeclick',function(){
-			infowindow.setMarker(null);
+	for (x in gon.investors) {
+		var pos = {lat: gon.investors[x][0], lng: gon.investors[x][1]};
+		var markers = new google.maps.Marker({
+			position: pos,
+			map: map
 		});
-	}
-	map.fitBounds(bounds);
-}
+	};
 
-function businessMarkers(response) {
-  var largeInfowindow = new google.maps.InfoWindow();
+	// console.log(gon.investorsAll);
+	// console.log(gon.investorsAll[0].latitude); // latitud of the investor
 
-	var bounds = new google.maps.LatLngBounds();
 
-  response.investors.forEach(function(investor) {
-    var location = {
-                    title: investor.name,
-                    position: {lat: investor.latitude, lng: investor.longitude },
-                    short_description: investor.shortdescription,
-                    address: investor.address,
-                    website: investor.website,
-                    founded: investor.founded_date,
-                    full_description: investor.description,
-                    vertical: investor.vertical,
-                    type:"investor"
-                  }
+	// console.log("investors location gon: ");
+	// console.log(gon.investors);
+	//
+	// console.log("startups gon: ");
+	// console.log(gon.startupsAll);
+	//
+	// console.log("Investors gon: ");
+	// console.log(gon.investorsAll);
 
-                  var marker = new google.maps.Marker({
-                    map: map,
-                    position: location.position,
-                    title: location.title,
-                    description: location.short_description,
-                    animation: google.maps.Animation.DROP,
-                    icon: {
-                      // path: type_entity,
-                      scale: 5
-                    }
-                  });
 
-    markers.push(marker);
-    bounds.extend(marker.position);
-    marker.addListener('click',function(){
-      populateInfoWindow(this, largeInfowindow, bounds);
-    });
-  });
-  response.startups.forEach(function(startup) {
-    var location = {
-                    // title: startup.name,
-                    position: {lat: startup.latitude, lng: startup.longitude },
-                    // short_description: startup.shortdescription,
-                    address: startup.address,
-                    website: startup.website,
-                    founded: startup.founded_date,
-                    full_description: startup.description,
-                    vertical: startup.vertical,
-                    type:"startup"
-                  }
-                  var marker = new google.maps.Marker({
-                    map: map,
-                    position: location.position,
-                    title: startup.name,
-                    description: startup.short_description,
-                    animation: google.maps.Animation.DROP,
-                    icon: {
-                      // path: type_entity,
-                      scale: 5
-                    }
-                  });
-    markers.push(marker);
-    bounds.extend(marker.position);
-    marker.addListener('click',function(){
-      populateInfoWindow(this, largeInfowindow, bounds);
-    });
-  });
 }

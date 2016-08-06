@@ -9,6 +9,8 @@ gem 'rails', '~> 5.0.0'
 
 gem 'geocoder'
 gem 'jquery-turbolinks'
+
+gem 'gon', '~> 6.0', '>= 6.0.1'
 gem 'gmaps4rails'
 gem 'hirb'
 
