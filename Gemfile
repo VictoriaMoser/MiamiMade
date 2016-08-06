@@ -9,7 +9,7 @@ gem 'sqlite3'
 # Use Puma as the app server
 
 gem 'geocoder'
-
+gem 'jquery-turbolinks'
 gem 'gmaps4rails'
 gem 'hirb'
 

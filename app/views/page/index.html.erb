@@ -1,98 +1,89 @@
-div class="row">
+<div class="row" id="page-index-row">
 
-	<div class="col-xs-3 col-md-3 hidden" id="sidebar">
+	<div class="col-xs-12 col-md-3 hidden" id="sidebar">
 
 		<h2 id="title">SoFla StartUp Ecosystem</h2>
 		<p class="lead">Information about South Florida Startups, Investors and all components of the ecosystem. Select bellow the information to show and then locate in the map to access the details..</p>
 
+		<div id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          Startup/Investor
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					<% ["All","Investor", "StartUp"].each do |entity| %>
+						<input type="checkbox" data-category="entity" name="<%= entity %>" id="<%= entity%>" value="<%= entity %>" class="js-filter-box">
+						<label for="<%= entity %>"> <%= entity %> </label> <br>
+					<% end %>
+		    </div>
+		  </div>
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingTwo">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Vertical
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+					<% Investor.verticals.keys.each do |vertical| %>
+						<input type="checkbox" data-category="vertical" name="<%= vertical %>" id="<%= vertical%>" value="<%= vertical %>" class="js-filter-box">
+						<label for="<%= vertical %>"> <%= vertical %> </label> <br>
+					<% end %>
+		    </div>
+		  </div>
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingThree">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		          Stage
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+					<% ["All","Stage 1", "Stage 2", "Stage 3", "Stage 4"].each do |stage| %>
+						<input type="checkbox" data-category="stage" name="<%= stage %>" id="<%= stage%>" value="<%= stage %>" class="js-filter-box">
+						<label for="<%= stage %>"> <%= stage %> </label> <br>
+					<% end %>
+		    </div>
+		  </div>
+			<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingFour">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+		          Founded Year
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+					<% ["All","2012-Present", "2007-2011", "2002-2006"].each do |founded| %>
+						<input type="checkbox" data-category="stage" name="<%= founded %>" id="<%= founded%>" value="<%= founded %>" class="js-filter-box">
+						<label for="<%= founded %>"> <%= founded %> </label> <br>
+					<% end %>
+		    </div>
+		  </div>
+			<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingFive">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+		          Investor Type
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+					<% ["All","Angel Investor", "Venture Capitalist", "Peer-to-Peer Lending"].each do |founded| %>
+						<input type="checkbox" data-category="stage" name="<%= founded %>" id="<%= founded%>" value="<%= founded %>" class="js-filter-box">
+						<label for="<%= founded %>"> <%= founded %> </label> <br>
+					<% end %>
+		    </div>
+		  </div>
+		</div>
 
-
-		<h4 id="vertical" data-investors-verticals='<%= @coords  %>'>Vertical:</h4>
-		<%#= form_tag('/vertical-search', method: :get) do %>
-			<%#= select_tag(:vertical, options_for_select(Investor.verticals), id: 'filter', class: "form-control") %>
-
-	<ul class="collapsible" data-collapsible="expandable">
-
-		<li>
-			<div class="collapsible-header">
-				Filter by Type of Entity
-			</div>
-			<div class="collapsible-body">
-				<% ["All","Investor", "StartUp"].each do |entity| %>
-					<input type="checkbox" data-category="entity" name="<%= entity %>" id="<%= entity%>" value="<%= entity %>" class="js-filter-box">
-					<label for="<%= entity %>"> <%= entity %> </label>
-				<% end %>
-			</div>
-		</li>
-
-		<li>
-			<div class="collapsible-header">
-				Filter by Vertical
-			</div>
-			<div class="collapsible-body">
-				<% Investor.verticals.keys.each do |vertical| %>
-					<input type="checkbox" data-category="vertical" name="<%= vertical %>" id="<%= vertical%>" value="<%= vertical %>" class="js-filter-box">
-					<label for="<%= vertical %>"> <%= vertical %> </label>
-				<% end %>
-			</div>
-		</li>
-
-		<li>
-			<div class="collapsible-header">
-				Filter by Stage
-			</div>
-			<div class="collapsible-body">
-				<% ["All","Stage 1", "Stage 2", "Stage 3", "Stage 4"].each do |stage| %>
-					<input type="checkbox" data-category="stage" name="<%= stage %>" id="<%= stage%>" value="<%= stage %>" class="js-filter-box">
-					<label for="<%= stage %>"> <%= stage %> </label>
-				<% end %>
-			</div>
-		</li>
-
-		<li>
-			<div class="collapsible-header">
-				Filter by Founding date
-			</div>
-			<div class="collapsible-body">
-				<% ["All","2012-Present", "2007-2011", "2002-2006"].each do |founded| %>
-					<input type="checkbox" data-category="stage" name="<%= founded %>" id="<%= founded%>" value="<%= founded %>" class="js-filter-box">
-					<label for="<%= founded %>"> <%= founded %> </label>
-				<% end %>
-			</div>
-		</li>
-
-		<li>
-			<div class="collapsible-header">
-				Filter by Investor Type
-			</div>
-			<div class="collapsible-body">
-				<% ["All","Angel Investor", "Venture Capitalist", "Peer-to-Peer Lending"].each do |founded| %>
-					<input type="checkbox" data-category="stage" name="<%= founded %>" id="<%= founded%>" value="<%= founded %>" class="js-filter-box">
-					<label for="<%= founded %>"> <%= founded %> </label>
-				<% end %>
-			</div>
-		</li>
-
-
-
-	</ul>
-
-
-		<!-- <hr>
-		<h3>Startups filters</h3>
-		<h4>Stage:</h4> -->
-		<%#= select_tag(:stage, options_for_select(["All","Stage 1", "Stage 2", "Stage 3", "Stage 4"]), class: "form-control") %>
-
-
-	<hr>
-	<h3>Investors filters</h3>
-
-	<br>
-	<%#= submit_tag 'Submit', class: "btn btn-primary" %>
-	<%# end %>
-		<hr>
-
-		<div >
+		<div id="search">
 			<h1>Search</h1>
 			<%= form_tag("/search", method: "get") do %>
 			<%= search_field_tag :term %>
@@ -101,12 +92,13 @@ div class="row">
 			<%= params[:term] %>
 		</div>
 	</div>
-</div>
+
+
 
 <!-- an empty div for the map -->
 
-<div data-investors="<%= @investors %>" data-startups="<%= @startups %>" id="map-data" class="col-xs-9 col-md-8">
-	<div id="map-canvas"></div>
-</div>
+	<div data-investors="<%= @investors %>" data-startups="<%= @startups %>" id="map-data" class="col-xs-12 col-md-9">
+		<div id="map-canvas"></div>
+	</div>
 
-</div>
+</div><!--end of row-->

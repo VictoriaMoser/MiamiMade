@@ -72,6 +72,10 @@ ul.nav li.nav-links a:hover {
   border-radius: 20px;
 }
 
+.purple-button:visited {
+  background-color: transparent !important;
+}
+
 .white-font {
 	color: #fff;
 }
