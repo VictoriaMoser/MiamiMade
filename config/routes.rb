@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/filter' => 'page#filter'
   get '/vertical-search' => 'page#vertical_search'
   root 'page#index'
   get '/search' => 'page#search'
@@ -29,7 +30,9 @@ Rails.application.routes.draw do
   #approving investors
   patch '/investors/:id/approve' => 'investors#approve', as: 'investor_approve'
 
- #validating user email
+  #user approval
+  patch '/users/:id/approve' => 'users#approve', as: 'user_approve'
+  #validating user email
   resources :users, except: :index do
     member do
      get :confirm_email

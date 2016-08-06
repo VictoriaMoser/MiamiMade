@@ -55,7 +55,18 @@ class UsersController < ApplicationController
     end
     @investors = Investor.where(approval: false)
     @startups = Startup.where(approval: false)
+    @users = User.where(approval: false)
   end
+
+    def approve
+      @user = User.find(params[:id])
+      @user.approved_user
+      if @user.save!
+        redirect_to admin_panel_path
+      else
+        # Go back to admin_panel and give error
+      end
+    end
 
   def confirm_email
     user = User.find_by_token_confirmation(params[:id])

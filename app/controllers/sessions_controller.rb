@@ -8,11 +8,15 @@ class SessionsController < ApplicationController
     # debugger;
     if @user && @user.authenticate(params[:password])
       logger.debug("*****************")
-      if @user.email_confirmation
+      if @user.email_confirmation && @user.approval
+        session[:user_id] = @user.id
         redirect_to @user
       else
-        logger.debug("*****************")
-        flash.now[:error] = 'Please check your email to activate your account'
+        if !@user.email_confirmation
+          flash.now[:error] = 'Please check your email to activate your account'
+        else
+          flash.now[:error] = 'I apologize but you do not have access to this website'
+        end
         render 'new'
       end
     else
