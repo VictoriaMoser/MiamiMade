@@ -27,6 +27,9 @@
             <td><%= investor.description[0..50]%>...</td>
             <td><%= investor.founded_date %></td>
             <td><%= link_to 'Learn More', investor %></td>
+            <% if @user.admin %>
+            <td><%= link_to 'Delete', investor_path(investor), method:'delete' %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
