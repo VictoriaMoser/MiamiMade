@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803160840) do
+ActiveRecord::Schema.define(version: 20160805221759) do
 
   create_table "investors", force: :cascade do |t|
     t.string   "name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160803160840) do
     t.boolean  "admin",              default: false
     t.boolean  "email_confirmation"
     t.string   "token_confirmation"
+    t.boolean  "approval",           default: false
   end
 
 end
