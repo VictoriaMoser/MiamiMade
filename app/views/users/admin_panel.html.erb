@@ -1,4 +1,4 @@
-<div> 
+<div>
 <h3> List of investors to be approved: </h3>
   <table>
     <tr>
@@ -25,11 +25,11 @@
       </tr>
    <%end%>
    </tbody>
-</table> 
+</table>
 
   <!-- Add buttons for approval -->
 
-<div> 
+<div>
 <h3> List of startups to be approved: </h3>
   <table>
     <tr>
@@ -56,9 +56,28 @@
       </tr>
    <%end%>
    </tbody>
-</table> 
+</table>
+
+<div>
+<h3> List of users to be approved: </h3>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>password</th>
+    </tr>
+    <tbody>
+
+    <% @users.each do |user| %>
+
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= button_to 'Edit', edit_user_path(user), method: 'get' %></td>
+        <td><%= button_to 'Approve', user_approve_path(user), method:'patch' %></td>
+      </tr>
+   <%end%>
+   </tbody>
+</table>
 
   <!-- Add buttons for approval -->
-
-
-
