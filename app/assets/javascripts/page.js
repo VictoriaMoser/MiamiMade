@@ -33,17 +33,15 @@ $(document).on("turbolinks:load", function() {
     $('.modal-button').click(function() {
       $('.register-form').submit();
     });
-
   }
+
   //Login Submit in Modal
   function ready() {
     $('.modal-button').click(function() {
       $('.login-form').submit();
     });
-
   }
 });
-}
 
 
 
@@ -189,4 +187,3 @@ $(document).on("turbolinks:load", function() {
 //     });
 //   });
 // }
->>>>>>> 2dc54fd9610682e43afb01cf5afd11f801777baf
