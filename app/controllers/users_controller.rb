@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Ooooppss, something went wrong!"
       render 'new'
-      p "ELSE RENDER NEW"
     end
   end
 
