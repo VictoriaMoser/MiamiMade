@@ -4,7 +4,7 @@ $(function(){
 		// 1.3 Then I need to match those values to display specific data
 	// 2.
 
-	var entity_list = ["Investor", "StartUp", "All Entities"];
+	var entity_list = ["Investor", "StartUp", "All entities"];
 	var vertical_list = ["Advertising", "Apps", "Biotechnology", "Commerce and Shopping", "Community and Lifestyle", "Consumer Electronics", "Content and Publishing","Data and Analytics","Fashion","Financial Services","Food and Beverage","Government and Military","Hardware","Healthcare","Internet Services","Manufacturing","Media and Entertainment","Mobile","Software"];
 	var founded_date_list = ["All dates","2012-Present", "2007-2011", "2002-2006"];
 	var stage_list = ["All stages","Stage 1", "Stage 2", "Stage 3", "Stage 4"];
@@ -19,6 +19,7 @@ $(function(){
 			var beforePass = formData.substring(formData.indexOf(begString));
 			beforePass = beforePass.replace('&password=','');
 			formData = beforePass.replace('=%E2%9C%93&term=','');
+			formData = formData.replace(/&/g, " ");
 
 			data = {
 				entity: [],
@@ -77,13 +78,9 @@ $(function(){
 function initMap() {
 	//we create the map center in south florida
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
-		center: {lat: 28.00, lng: -79.60},
-		zoom: 8
+		center: {lat: 26.00, lng: -80.60},
+		zoom: 9
 	});
-
-	// filter to understand the markers to create
-	// if (filter array is equal to )
-
 
 
 
@@ -96,18 +93,6 @@ function initMap() {
 		});
 	};
 
-	// console.log(gon.investorsAll);
-	// console.log(gon.investorsAll[0].latitude); // latitud of the investor
-
-
-	// console.log("investors location gon: ");
-	// console.log(gon.investors);
-	//
-	// console.log("startups gon: ");
-	// console.log(gon.startupsAll);
-	//
-	// console.log("Investors gon: ");
-	// console.log(gon.investorsAll);
 
 
 }

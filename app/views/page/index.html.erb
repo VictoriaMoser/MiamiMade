@@ -16,7 +16,7 @@
 						</h4>
 					</div>
 					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-						<% ["All","Investor", "StartUp"].each do |entity| %>
+						<% ["All entities","Investor", "StartUp"].each do |entity| %>
 						<input type="checkbox" data-category="entity" name="<%= entity %>" id="<%= entity%>" value="<%= entity %>" class="js-filter-box">
 						<label for="<%= entity %>"> <%= entity %> </label> <br>
 						<% end %>
@@ -46,7 +46,7 @@
 						</h4>
 					</div>
 					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-						<% ["All","Stage 1", "Stage 2", "Stage 3", "Stage 4"].each do |stage| %>
+						<% ["All stages","Stage 1", "Stage 2", "Stage 3", "Stage 4"].each do |stage| %>
 						<input type="checkbox" data-category="stage" name="<%= stage %>" id="<%= stage%>" value="<%= stage %>" class="js-filter-box">
 						<label for="<%= stage %>"> <%= stage %> </label> <br>
 						<% end %>
@@ -61,7 +61,7 @@
 						</h4>
 					</div>
 					<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-						<% ["All","2012-Present", "2007-2011", "2002-2006"].each do |founded| %>
+						<% ["All dates","2012-Present", "2007-2011", "2002-2006"].each do |founded| %>
 						<input type="checkbox" data-category="stage" name="<%= founded %>" id="<%= founded%>" value="<%= founded %>" class="js-filter-box">
 						<label for="<%= founded %>"> <%= founded %> </label> <br>
 						<% end %>
@@ -76,7 +76,7 @@
 						</h4>
 					</div>
 					<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-						<% ["All","Angel Investor", "Venture Capitalist", "Peer-to-Peer Lending"].each do |founded| %>
+						<% ["All investors","Angel Investor", "Venture Capitalist", "Peer-to-Peer Lending"].each do |founded| %>
 						<input type="checkbox" data-category="stage" name="<%= founded %>" id="<%= founded%>" value="<%= founded %>" class="js-filter-box">
 						<label for="<%= founded %>"> <%= founded %> </label> <br>
 						<% end %>
