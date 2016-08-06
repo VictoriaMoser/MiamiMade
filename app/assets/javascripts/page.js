@@ -22,25 +22,27 @@
 
 $(document).on("turbolinks:load", function() {
   $('div.hidden').fadeIn(2000).removeClass('hidden');
-});
 
-$('#logo').click(function() {
-  $('div.hidden').removeClass('hidden');
-});
 
-//Register Submit in Modal
-function ready() {
-  $('.modal-button').click(function() {
-    $('.register-form').submit();
+  $('#logo').click(function() {
+    $('div.hidden').removeClass('hidden');
   });
 
-}
-//Login Submit in Modal
-function ready() {
-  $('.modal-button').click(function() {
-    $('.login-form').submit();
-  });
+  //Register Submit in Modal
+  function ready() {
+    $('.modal-button').click(function() {
+      $('.register-form').submit();
+    });
 
+  }
+  //Login Submit in Modal
+  function ready() {
+    $('.modal-button').click(function() {
+      $('.login-form').submit();
+    });
+
+  }
+});
 }
 
 
@@ -187,3 +189,4 @@ function ready() {
 //     });
 //   });
 // }
+>>>>>>> 2dc54fd9610682e43afb01cf5afd11f801777baf

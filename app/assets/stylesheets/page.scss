@@ -1,11 +1,11 @@
 
 
-h1#title {
+#sidebar h1#title {
 	font-size: 3em;
 	text-align: center;
 	padding-bottom: 20px;
 	text-align: center;
-	color: #5b04ff;
+	color: #5b04ff !important;
 }
 
 p {
@@ -42,6 +42,13 @@ p {
 
 .input-large {
 	line-height: 3em;
+}
+
+
+//Searchbox//
+
+#search {
+	margin: 5px 0;
 }
 
 // //Searchbox//
