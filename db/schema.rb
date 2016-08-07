@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160806160955) do
+ActiveRecord::Schema.define(version: 20160807184455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160806160955) do
     t.string   "email"
     t.string   "website"
     t.string   "address"
+    t.string   "vertical"
     t.text     "description"
     t.date     "founded_date"
     t.boolean  "approval",         default: false
@@ -29,7 +30,6 @@ ActiveRecord::Schema.define(version: 20160806160955) do
     t.string   "shortdescription"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "vertical"
     t.index ["user_id"], name: "index_investors_on_user_id", using: :btree
   end
 
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160806160955) do
     t.string   "name"
     t.string   "website"
     t.string   "address"
+    t.string   "vertical"
     t.text     "description"
     t.date     "founded_date"
     t.boolean  "approval",         default: false
@@ -47,8 +48,8 @@ ActiveRecord::Schema.define(version: 20160806160955) do
     t.string   "shortdescription"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "vertical"
-    t.integer  "stage"
+    t.string   "stage"
+    t.string   "employee_count"
     t.index ["user_id"], name: "index_startups_on_user_id", using: :btree
   end
 
