@@ -16,31 +16,127 @@ class PageController < ApplicationController
   end
 
   def get_filter
-    if params[:data]["entity"] == "Investor"
+
+    if params[:data]["entity"][0].downcase == "investor"
 
       if params[:data]["vertical"].present? && params[:data]["founded_date"].present? && params[:data]["stage"].present?
-        @investor_results = Investor.where(vertical: params[:data]["vertical"], founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+        @results = Investor.where(vertical: params[:data]["vertical"], founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
       end
 
       if params[:data]["founded_date"].present? && params[:data]["stage"].present?
-        @investor_results = Investor.where(founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+        @results = Investor.where(founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
       end
 
       if params[:data]["stage"].present? && params[:data]["vertical"].present?
-        @investor_results = Investor.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+        @results = Investor.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
       end
 
       if params[:data]["founded_date"].present? && params[:data]["vertical"].present?
-        @investor_results = Investor.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+        @results = Investor.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
       end
 
-    elsif params[:data]["entity"] == "Startup"
-      @startups = Startup.all
+      if params[:data]["founded_date"].present?
+        @results = Investor.where(founded_date: params[:data]["founded_date"])
+      end
 
-    elsif params[:data]["all"]
-      @all = Startup.all + Investor.all
+      if params[:data]["stage"].present?
+        @results = Investor.where(stage: params[:data]["stage"])
+      end
+
+      if params[:data]["vertical"].present?
+        # logger.debug("*******#{Investor.where(vertical: params[:data]["vertical"])}******")
+        @results = Investor.where(vertical: params[:data]["vertical"])
+      end
+
+      if params[:data]["vertical"].nil? && params[:data]["founded_date"].nil? && params[:data]["stage"].nil?
+        @results = Investor.all
+      end
+
+    elsif params[:data]["entity"][0].downcase == "startup"
+
+      if params[:data]["vertical"].present? && params[:data]["founded_date"].present? && params[:data]["stage"].present?
+        @results = Startup.where(vertical: params[:data]["vertical"], founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+      end
+
+      if params[:data]["founded_date"].present? && params[:data]["stage"].present?
+        @results = Startup.where(founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+      end
+
+      if params[:data]["stage"].present? && params[:data]["vertical"].present?
+        @results = Startup.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+      end
+
+      if params[:data]["founded_date"].present? && params[:data]["vertical"].present?
+        @results = Startup.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+      end
+
+      if params[:data]["founded_date"].present?
+        @results = Startup.where(founded_date: params[:data]["founded_date"])
+      end
+
+      if params[:data]["stage"].present?
+        @results = Startup.where(stage: params[:data]["stage"])
+      end
+
+      if params[:data]["vertical"].present?
+        @results = Startup.where(vertical: params[:data]["vertical"])
+      end
+
+      if params[:data]["vertical"].nil? && params[:data]["founded_date"].nil? && params[:data]["stage"].nil?
+        @results = Startup.all
+      end
+
+    elsif params[:data]["all"][0].downcase == "all"
+
+      if params[:data]["vertical"].present? && params[:data]["founded_date"].present? && params[:data]["stage"].present?
+        startup_results = Startup.where(vertical: params[:data]["vertical"], founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+
+        investor_results = Investor.where(vertical: params[:data]["vertical"], founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+        @results = startup_results + investor_results
+      end
+
+      if params[:data]["founded_date"].present? && params[:data]["stage"].present?
+        startup_results = Startup.where(founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+        investor_results = Investor.where(founded_date: params[:data]["founded_date"], stage: params[:data]["stage"])
+        @results = startup_results + investor_results
+      end
+
+      if params[:data]["stage"].present? && params[:data]["vertical"].present?
+        startup_results = Startup.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+        investor_results = Investor.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+        @results = startup_results + investor_results
+      end
+
+      if params[:data]["founded_date"].present? && params[:data]["vertical"].present?
+        startup_results = Startup.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+        investor_results = Investor.where(vertical: params[:data]["vertical"], stage: params[:data]["stage"])
+        @results = startup_results + investor_results
+      end
+
+      if params[:data]["founded_date"].present?
+        startup_results = Startup.where(founded_date: params[:data]["founded_date"])
+        investor_results = Investor.where(founded_date: params[:data]["founded_date"])
+        @results = startup_results + investor_results
+      end
+
+      if params[:data]["stage"].present?
+        startup_results = Startup.where(stage: params[:data]["stage"])
+        investor_results = Investor.where(stage: params[:data]["stage"])
+        @results = startup_results + investor_results
+      end
+
+      if params[:data]["vertical"].present?
+        startup_results = Startup.where(vertical: params[:data]["vertical"])
+        investor_results = Investor.where(vertical: params[:data]["vertical"])
+        @results = startup_results + investor_results
+      end
+
+      if params[:data]["vertical"].nil? && params[:data]["founded_date"].nil? && params[:data]["stage"].nil?
+        @results = Startup.all + Investor.all
+      end
+
     end
-
+    render json: @results
   end
 
   def search

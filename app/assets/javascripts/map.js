@@ -53,19 +53,20 @@ $(function(){
 				};
 			};
 
-			for (i=0; i < investorType_list.length; i++) {
-				if (formData.indexOf(investorType_list[i]) > -1) {
-					data.founded_date.push(investorType_list[i]);
-				};
-			};
+			// for (i=0; i < investorType_list.length; i++) {
+			// 	if (formData.indexOf(investorType_list[i]) > -1) {
+			// 		data.founded_date.push(investorType_list[i]);
+			// 	};
+			// };
 
 			console.log(data);
 
 				$.ajax({
-					url: '/',
+					url: '/get_filter',
 					type: "GET",
 					data: { data: data },
 					success: function(data){
+						console.info(data);
 						// when you made the call to the controller and then the controller
 						// response with the data
 						// You initalize the map here again!
