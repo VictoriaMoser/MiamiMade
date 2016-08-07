@@ -53,11 +53,7 @@ $(function(){
 				};
 			};
 
-			// for (i=0; i < investorType_list.length; i++) {
-			// 	if (formData.indexOf(investorType_list[i]) > -1) {
-			// 		data.founded_date.push(investorType_list[i]);
-			// 	};
-			// };
+
 
 			console.log(data);
 
@@ -89,8 +85,8 @@ function initMap(markers) {
 	var lng = -80.60;
 	//we create the map center in south florida
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
-		center: {lat: lat, lng: lng},
-		zoom: 9
+		center: {lat: 26.80, lng: -80.90},
+		zoom: 8
 	});
 
 	console.warn(markers);
