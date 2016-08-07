@@ -4,13 +4,14 @@ $(function(){
 		// 1.3 Then I need to match those values to display specific data
 	// 2.
 
+// we have a duplication of data in this variables here and in the page index.html.erb >> refactoring
 	var entity_list = ["Investor", "StartUp", "All entities"];
 	var vertical_list = ["Advertising", "Apps", "Biotechnology", "Commerce and Shopping", "Community and Lifestyle", "Consumer Electronics", "Content and Publishing","Data and Analytics","Fashion","Financial Services","Food and Beverage","Government and Military","Hardware","Healthcare","Internet Services","Manufacturing","Media and Entertainment","Mobile","Software"];
 	var founded_date_list = ["All dates","2012-Present", "2007-2011", "2002-2006"];
 	var stage_list = ["All stages","Stage 1", "Stage 2", "Stage 3", "Stage 4"];
 	var investorType_list = ["All investors","Angel Investor", "Venture Capitalist", "Peer-to-Peer Lending"];
 
-
+// Here we create a request based on the selections on the filters
 	$('button').on('click', function(){
 			var formData = $('form').serialize();
 			var begString = '&password='
@@ -54,6 +55,9 @@ $(function(){
 			};
 
 
+// data is an array with all the items selected in the filters ... now Ajax needs to
+// send this to the controller in order to request the especic data from the model and then
+// bring it back here to reset the markets and present new ones with the informations that comes
 
 			console.log(data);
 
@@ -89,7 +93,19 @@ function initMap(markers) {
 		zoom: 8
 	});
 
+// marker functionality from GoogleMaps
+var marker = new google.maps.Marker({
+	 position: myLatLng,
+	 map: map,
+	 title: 'Hello World!'
+ });
+ // end of the functionality
+
+
+
+
 	console.warn(markers);
+
 	if (markers != undefined) {
 		if (markers.length > 0) {
 			// console.log("here")
@@ -106,8 +122,8 @@ function initMap(markers) {
 			};
 		}
 	}else {
-		for (x in gon.investors) {
-			var pos = {lat: gon.investors[x][0], lng: gon.investors[x][1]};
+		for (x in gon.investorLoc) {
+			var pos = {lat: gon.investorsLoc[x][0], lng: gon.investorsLoc[x][1]};
 			var markers = new google.maps.Marker({
 				position: pos,
 				map: map
