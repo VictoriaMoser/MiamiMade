@@ -1,46 +1,57 @@
 <div class="row">
-  <div class="col-xs-12 col-md-10 col-md-offset-1 centered profile">
-    <div class="jumbotron">
-      <h1>Hello, world!</h1>
-      <p>...</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  <div class="col-xs-12 centered profile">
+
+    <div class="row show-height space">
+      <div class="col-md-4 profile-column">
+        <img class="img-responsive img" src="http://placehold.it/300x300" />
+      </div>
+      <div class="col-md-8 profile-column">
+        <p>
+          <strong> Investor Name: </strong>
+          <%= @investor.name %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= @investor.email %>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <%= @investor.website %>
+        </p>
+
+        <p>
+          <strong>Address:</strong>
+          <%= @investor.address %>
+        </p>
+        <p>
+          <strong>Description:</strong>
+          <%= @investor.description %>
+        </p>
+      </div>
     </div>
-    <p>
-      <strong> Investor Name: </strong>
-      <%= @investor.name %>
-    </p>
-
-    <p>
-      <strong>Email:</strong>
-      <%= @investor.email %>
-    </p>
-
-    <p>
-      <strong>Website:</strong>
-      <%= @investor.website %>
-    </p>
-
-    <p>
-      <strong>Address:</strong>
-      <%= @investor.address %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= @investor.description %>
-    </p>
-
-    <p>
-      <strong>Founded date:</strong>
-      <%= @investor.founded_date %>
-    </p>
-
-    <div>
-      <%= link_to 'Edit', edit_investor_path(@investor), class: "purple-button" %>
-    <%= link_to 'Back', investors_path, class: "purple-button" %>
+    <div class="row show-height space">
+      <div class="col-md-8 profile-column">
+        <p>
+          <strong>Founded date:</strong>
+          <%= @investor.founded_date %>
+        </p>
+      </div>
+      <div class="col-md-4 profile-column">
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
     </div>
 
-    <p id="notice new-investor-form"><%= notice %></p>
+      <div>
+        <%= link_to 'Edit', edit_investor_path(@investor), class: "purple-button" %>
+        <%= link_to 'Back', investors_path, class: "purple-button" %>
+      </div>
+
+      <p id="notice new-investor-form"><%= notice %></p>
+
 
   </div>
 </div>

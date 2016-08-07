@@ -66,34 +66,56 @@ $(function(){
 					type: "GET",
 					data: { data: data },
 					success: function(data){
-						console.info(data);
+
 						// when you made the call to the controller and then the controller
 						// response with the data
 						// You initalize the map here again!
+						var latAndlong = [];
+						for (var inv in data) {
+							latAndlong.push([data[inv].latitude, data[inv].longitude]);
+							// console.info(data[inv].latitude);
+							// console.info(data[inv].longitude);
+						}
+						console.info(latAndlong);
+						initMap(latAndlong);
 					}
 				});
 		});
 	});
 
 
-function initMap() {
+function initMap(markers) {
+	var lat = 26.00;
+	var lng = -80.60;
 	//we create the map center in south florida
 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
-		center: {lat: 26.00, lng: -80.60},
+		center: {lat: lat, lng: lng},
 		zoom: 9
 	});
 
-
-
-
-	for (x in gon.investors) {
-		var pos = {lat: gon.investors[x][0], lng: gon.investors[x][1]};
-		var markers = new google.maps.Marker({
-			position: pos,
-			map: map
-		});
-	};
-
-
-
+	console.warn(markers);
+	if (markers != undefined) {
+		if (markers.length > 0) {
+			// console.log("here")
+			// debugger;
+			for (x in markers) {
+				console.log(markers);
+				if (markers[x] != undefined) {
+					var pos = {lat: markers[x][0], lng: markers[x][1]};
+				}
+				var markers = new google.maps.Marker({
+					position: pos,
+					map: map
+				});
+			};
+		}
+	}else {
+		for (x in gon.investors) {
+			var pos = {lat: gon.investors[x][0], lng: gon.investors[x][1]};
+			var markers = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+		};
+	}
 }
