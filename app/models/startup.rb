@@ -10,7 +10,7 @@ class Startup < ApplicationRecord
     self.approval = true
   end
 
-  enum vertical: ["Advertising", "Apps", "Biotechnology", "E-commerce", "Community and lifestyle", "Consumer Electronics", "Content and Publishing","Data","Education","Fashion","Finance","Food and Beverage","Government and Military","Hardware","Healthcare","Internet Services","Marketing","Media and Entertainment","Mobile","Pharmaceuticals","Software","Real-estate"]
+  enum vertical: ['Advertising', "Apps", "Biotechnology", "E-commerce", "Community and lifestyle", "Consumer Electronics", "Content and Publishing","Data","Education","Fashion","Finance","Food and Beverage","Government and Military","Hardware","Healthcare","Internet Services","Marketing","Media and Entertainment","Mobile","Pharmaceuticals","Software","Real-estate"]
 end
 
 # Advertising 0

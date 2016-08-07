@@ -22,7 +22,6 @@ csv.delete_at(0)
 # pp csv
 csv.each do |startup|
 	#create startups
-
 	s = Startup.create(
   	name: startup[0],
     website: startup[1],
@@ -35,9 +34,6 @@ csv.each do |startup|
     stage: startup[8],
     founded_date: startup[9]
   )
-  s.save
-	p s
-
 end
 
 
