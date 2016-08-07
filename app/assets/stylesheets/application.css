@@ -17,7 +17,7 @@ html, body, main, #main-container, #page-index-row, #map-data, #map-canvas { hei
 
 
 html body {
- 	background: #000 url("/assets/skyline.jpg") no-repeat center center fixed;
+ 	background: #000 url("http://i.imgur.com/mcOvzZn.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
