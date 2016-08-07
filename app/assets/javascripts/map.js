@@ -72,8 +72,8 @@ console.log(data);
 						var markersData = [];
 // we will add the information from var Data into markersData in the right format for Googlemaps
 
-						for (i=0; i < data.length; i++) {
-							markersData.push([data[x].latitude, data[x].longitude]);
+						for (var i = 0; i < data.length; i++) {
+							markersData.push([data[i].latitude, data[i].longitude]);
 						}
 						console.log('information contructed from the data received and ready to be use in the map')
 						console.log(markersData);
@@ -100,6 +100,12 @@ function initMap(markers) {
 
  console.log('if is the first run markets info should be:');
  console.log(gon.investorsLoc);
+ console.log('all the information in startupsAll');
+ console.log(gon.startupsAll);
+ console.log(gon.investorsLoc[0],[0]);
+ console.log(gon.investorsLoc[0],[1]);
+ console.log(gon.investorsAll[0].latitude);
+
 	// console.warn(markers);
 
 	if (markers != undefined) {
@@ -121,12 +127,27 @@ function initMap(markers) {
 	}else {
 		console.log('this must run the first time with the investor markers');
 		console.log(gon.investorsLoc);
-		for (x in gon.investorsLoc) {
-			var pos = {lat: gon.investorsLoc[x][0], lng: gon.investorsLoc[x][1]};
+
+
+
+
+		for (i in gon.investorsAll) {
+			var pos = {lat: gon.investorsAll[i].latitude, lng: gon.investorsAll[i].longitude};
 			var markers = new google.maps.Marker({
 				position: pos,
 				map: map
 			});
 		};
+
+		for (i in gon.startupsAll) {
+			var pos = {lat: gon.startupsAll[i].latitude, lng: gon.startupsAll[i].longitude};
+			var markers = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+		};
+
+
+
 	}
 }
