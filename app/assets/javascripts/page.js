@@ -29,19 +29,20 @@ $(document).on("turbolinks:load", function() {
   });
 
   //Register Submit in Modal
-  function ready() {
+  function ready_register() {
     $('.modal-button').click(function() {
       $('.register-form').submit();
     });
   }
 
   //Login Submit in Modal
-  function ready() {
+  function ready_login() {
     $('.modal-button').click(function() {
       $('.login-form').submit();
     });
   }
 });
+
 
 
 

@@ -149,23 +149,23 @@ class PageController < ApplicationController
     @results = startup_result || investor_result
   end
 
-  def filter
-    @user = User.new
-    investors = Investor.all
-    startups = Startup.all
-
-    if params[:vertical]
-      investors = Investor.where(vertical: params[:vertical]).as_json
-      startups = Startup.where(vertical: params[:vertical]).as_json
-    end
-
-    if params[:stage]
-      investors = Investor.where(stage: params[:stage]).as_json
-      startups = Startup.where(stage: params[:stage]).as_json
-    end
-
-    render json: { investors: investors.as_json, startups: startups.as_json }
-  end
+  # def filter
+  #   @user = User.new
+  #   investors = Investor.all
+  #   startups = Startup.all
+  #
+  #   if params[:vertical]
+  #     investors = Investor.where(vertical: params[:vertical]).as_json
+  #     startups = Startup.where(vertical: params[:vertical]).as_json
+  #   end
+  #
+  #   if params[:stage]
+  #     investors = Investor.where(stage: params[:stage]).as_json
+  #     startups = Startup.where(stage: params[:stage]).as_json
+  #   end
+  #
+  #   render json: { investors: investors.as_json, startups: startups.as_json }
+  # end
 
   def vertical_search
     @user = User.new
