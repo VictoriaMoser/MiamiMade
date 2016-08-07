@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get '/get_filter' => 'page#get_filter'
 
-  post '/filter' => 'page#filter'
+  # post '/filter' => 'page#filter'
   get '/vertical-search' => 'page#vertical_search'
   root 'page#index'
   get '/search' => 'page#search'
