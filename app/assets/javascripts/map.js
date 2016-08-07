@@ -1,8 +1,5 @@
 $(function(){
-	// 1. I have a button(click event)
-		// 1.2 When I click the button I need to to get the values from the form
-		// 1.3 Then I need to match those values to display specific data
-	// 2.
+
 
 // we have a duplication of data in this variables here and in the page index.html.erb >> refactoring
 	var entity_list = ["Investor", "StartUp", "All entities"];
@@ -59,29 +56,34 @@ $(function(){
 // send this to the controller in order to request the especic data from the model and then
 // bring it back here to reset the markets and present new ones with the informations that comes
 
-			console.log(data);
+console.log('information to be send to request info');
+console.log(data);
 
 				$.ajax({
 					url: '/get_filter',
 					type: "GET",
 					data: { data: data },
+// we request the information to the controller
 					success: function(data){
+// if succesfull .. we get a variable data from the controller with all the data for the markers
+						console.log('information receive from controller after request for the filtering part');
+						console.log(data);
 
-						// when you made the call to the controller and then the controller
-						// response with the data
-						// You initalize the map here again!
-						var latAndlong = [];
-						for (var inv in data) {
-							latAndlong.push([data[inv].latitude, data[inv].longitude]);
-							// console.info(data[inv].latitude);
-							// console.info(data[inv].longitude);
+						var markersData = [];
+// we will add the information from var Data into markersData in the right format for Googlemaps
+
+						for (i=0; i < data.length; i++) {
+							markersData.push([data[x].latitude, data[x].longitude]);
 						}
-						console.info(latAndlong);
-						initMap(latAndlong);
+						console.log('information contructed from the data received and ready to be use in the map')
+						console.log(markersData);
+// once we have the markers data we call the map function again to restart the map and add the new markers
+
+						initMap(markersData);
 					}
 				});
 		});
-	});
+}); // function finishes here
 
 
 function initMap(markers) {
@@ -93,23 +95,17 @@ function initMap(markers) {
 		zoom: 8
 	});
 
-// marker functionality from GoogleMaps
-var marker = new google.maps.Marker({
-	 position: myLatLng,
-	 map: map,
-	 title: 'Hello World!'
- });
- // end of the functionality
+ console.log('information of the markers to be use to populate the map');
+ console.log(markers);
 
-
-
-
-	console.warn(markers);
+ console.log('if is the first run markets info should be:');
+ console.log(gon.investorsLoc);
+	// console.warn(markers);
 
 	if (markers != undefined) {
+
 		if (markers.length > 0) {
-			// console.log("here")
-			// debugger;
+
 			for (x in markers) {
 				console.log(markers);
 				if (markers[x] != undefined) {
@@ -121,8 +117,11 @@ var marker = new google.maps.Marker({
 				});
 			};
 		}
+
 	}else {
-		for (x in gon.investorLoc) {
+		console.log('this must run the first time with the investor markers');
+		console.log(gon.investorsLoc);
+		for (x in gon.investorsLoc) {
 			var pos = {lat: gon.investorsLoc[x][0], lng: gon.investorsLoc[x][1]};
 			var markers = new google.maps.Marker({
 				position: pos,
