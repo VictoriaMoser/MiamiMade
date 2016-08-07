@@ -84,6 +84,15 @@ ul.nav li.nav-links a:hover {
   margin: 100px 20px;
 }
 
+.signedin {
+  color: #5b04ff;
+  font-size: 1.2em;
+}
+
+.profile {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 footer {
   background-color: black;
 }

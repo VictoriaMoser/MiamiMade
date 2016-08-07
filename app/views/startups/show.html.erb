@@ -1,35 +1,36 @@
 <div class="row">
+
+  <div class="col-xs-12">
+    <table class="table">
+      <thead class="thead-default">
+        <tr>
+          <th><strong>Name</strong></th>
+          <th><strong>Email</strong></th>
+          <th><strong>Website</strong></th>
+          <th><strong>Address</strong></th>
+          <th><strong>Description</strong></th>
+          <th><strong>Founded date</strong></th>
+        </tr>
+      </thead>
+    </table>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= @startup.name %></td>
+          <td><%= @startup.email %></td>
+          <td><%= @startup.website %></td>
+          <td><%= @startup.address %></td>
+          <td><%= @startup.description %></td>
+          <td><%= @startup.founded_date %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 <p id="notice"><%= notice %></p>
 
-<table class="table table-striped">
-  <thead class="thead-default">
-    <tr>
-      <th><strong>Name</strong></th>
-      <th><strong>Email</strong></th>
-      <th><strong>Website</strong></th>
-      <th><strong>Address</strong></th>
-      <th><strong>Description</strong></th>
-      <th><strong>Founded date</strong></th>
-    </tr>
-  </thead>
-</table>
-<table class="table table-striped">
-  <tbody>
-    <tr>
-      <td><%= @startup.name %></td>
-      <td><%= @startup.email %></td>
-      <td><%= @startup.website %></td>
-      <td><%= @startup.address %></td>
-      <td><%= @startup.description %></td>
-      <td><%= @startup.founded_date %></td>
-    </tr>
-  </tbody>
-</table>
 
-
-<%= link_to 'Edit', edit_startup_path(@startup) %> |
-<%= link_to 'Back', startups_path %>
-
-<td><%= link_to 'Add a new startup', new_startup_path(@startup) %></td>
+<div><%= link_to 'Edit', edit_startup_path(@startup), class: "purple-button" %> <%= link_to 'Back', startups_path, class: "purple-button" %><%= link_to 'Add a new startup', new_startup_path(@startup), class: "purple-button" %></td>
+</div>
 
 </div>

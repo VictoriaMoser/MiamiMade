@@ -1,34 +1,46 @@
-<p id="notice new-investor-form"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12 col-md-10 col-md-offset-1 centered profile">
+    <div class="jumbotron">
+      <h1>Hello, world!</h1>
+      <p>...</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    </div>
+    <p>
+      <strong> Investor Name: </strong>
+      <%= @investor.name %>
+    </p>
 
-<p>
-  <strong> Investor Name: </strong>
-  <%= @investor.name %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @investor.email %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @investor.email %>
-</p>
+    <p>
+      <strong>Website:</strong>
+      <%= @investor.website %>
+    </p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @investor.website %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @investor.address %>
+    </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @investor.address %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @investor.description %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @investor.description %>
-</p>
+    <p>
+      <strong>Founded date:</strong>
+      <%= @investor.founded_date %>
+    </p>
 
-<p>
-  <strong>Founded date:</strong>
-  <%= @investor.founded_date %>
-</p>
+    <div>
+      <%= link_to 'Edit', edit_investor_path(@investor), class: "purple-button" %>
+    <%= link_to 'Back', investors_path, class: "purple-button" %>
+    </div>
 
-<%= link_to 'Edit', edit_investor_path(@investor) %> |
-<%= link_to 'Back', investors_path %>
+    <p id="notice new-investor-form"><%= notice %></p>
+
+  </div>
+</div>

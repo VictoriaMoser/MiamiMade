@@ -1,11 +1,9 @@
 
 
-#sidebar h1#title {
+#title {
+	color: #5b04ff !important;
 	font-size: 3em;
 	text-align: center;
-	padding-bottom: 20px;
-	text-align: center;
-	color: #5b04ff !important;
 }
 
 p {
@@ -18,15 +16,10 @@ p {
 	padding: 20px;
 	background-color: rgba(0, 0, 0, 0.7);
 	overflow: none;
-	color: #000;
 }
 
 #hidden {
 	display: none;
-}
-
-.vertical-line {
-	border-right: 1px solid #333;
 }
 
 //CSS styling for the infowindows that are presented in the Google Maps
@@ -38,6 +31,7 @@ p {
 	padding: 10px 10px 30px 10px;
 	text-align: left;
 	width: 200px;
+	font-size: 1em;
 }
 
 .input-large {
@@ -45,58 +39,6 @@ p {
 }
 
 
-//Searchbox//
-
 #search {
-	margin: 5px 0;
+	border: 2px solid white;
 }
-
-// //Searchbox//
-//
-// #search {
-// 	margin: 5px 0;
-// }
-//
-// #custom-search-input {
-//         margin:0;
-//         margin-top: 10px;
-//         padding: 0;
-//     }
-//
-//     #custom-search-input .search-query {
-//         padding-right: 3px;
-//         padding-right: 4px \9;
-//         padding-left: 3px;
-//         padding-left: 4px \9;
-//         /* IE7-8 doesn't have border-radius, so don't indent the padding */
-//
-//         margin-bottom: 0;
-//         -webkit-border-radius: 3px;
-//         -moz-border-radius: 3px;
-//         border-radius: 3px;
-//     }
-//
-//     #custom-search-input button {
-//         border: 0;
-//         background: none;
-//         /** belows styles are working good */
-//         padding: 2px 5px;
-//         margin-top: 2px;
-//         position: relative;
-//         left: -28px;
-//         /* IE7-8 doesn't have border-radius, so don't indent the padding */
-//         margin-bottom: 0;
-//         -webkit-border-radius: 3px;
-//         -moz-border-radius: 3px;
-//         border-radius: 3px;
-//         color:#D9230F;
-//     }
-//
-//     .search-query:focus + button {
-//         z-index: 3;
-//     }
-//
-// .collapsible-header {
-// 	text-emphasis-color: red;
-//
-// }
