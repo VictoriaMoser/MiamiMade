@@ -36,9 +36,9 @@
     <%= f.text_area :description, class: 'form-control', placeholder: 'Description' %>
   </div>
 
-  <div class="field-form-group">
+  <div class="field">
     <%= f.label :founded_date %>
-    <%= f.date_select :founded_date, class: 'form-control', placeholder: 'Founded Date' %>
+    <%= f.date_field(:founded_date, class:"form-control") %>
   </div>
 
   <div>

@@ -38,7 +38,9 @@
 
   <div class="field">
     <%= f.label :founded_date %>
-    <%= f.date_select :founded_date, class: 'form-control', placeholder: 'Founded Date' %>
+    <!-- <%= f.date_select :founded_date, class: 'form-control', placeholder: 'Founded Date' %> -->
+    <%= f.date_field(:founded_date, class:"form-control") %>
+    <!-- <input type="date" name="name" value=""> -->
   </div>
 
 
