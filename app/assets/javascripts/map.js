@@ -93,7 +93,7 @@ function initMap(dataMarkers) {
 		if (infowindow.marker != marker) {
 				infowindow.marker = marker;
 				//With the "infowindow" we can play around the css styles on the top of the file
-				infowindow.setContent('<div id="infowindow"><strong>' + marker.title  + '</strong><br><hr>' + marker.description + '</div>');
+				infowindow.setContent('<div id="infowindow"><p><strong>' + marker.name  + '</strong></p><br><hr>' + marker.description + '<br><hr>' + marker.website + '</div>');
 				infowindow.open(map, marker);
 
 				// Make sure the marker is cleared if the infowindow is closed
@@ -108,33 +108,42 @@ function initMap(dataMarkers) {
 
 	if (dataMarkers !== undefined) {
 		console.log('after filters');
-		for (i in dataMarkers) {
-			var pos = {lat: dataMarkers[i].latitude, lng: dataMarkers[i].longitude};
-			console.log(pos);
+		for (var i = 0; i < dataMarkers.length; i++) {
+			var entity = dataMarkers[i];
+			var pos = {lat: entity.latitude, lng: entity.longitude};
+			// console.log(pos);
+
 			var marker = new google.maps.Marker({
 				map: map,
 				position: pos,
-				title: dataMarkers[i].title,
-				description: dataMarkers[i].description,
+				name: entity.name,
+				description: entity.description,
+				website: entity.website,
+				email: entity.email,
 				animation: google.maps.Animation.DROP,
 			});
-			    markers.push(marker);
-			    bounds.extend(marker.position);
-			    marker.addListener('click',function(){
-			      populateInfoWindow(this, largeInfowindow, bounds);
-			    });
+
+	    markers.push(marker);
+	    bounds.extend(marker.position);
+	    marker.addListener('click',function(){
+	      populateInfoWindow(this, largeInfowindow, bounds);
+	    });
+
 		};
 	} else {
-		  console.log('first run');
+		  // console.log('first run');
 		  markers = [];
 			for (i in gon.investorsAll) {
-				var pos = {lat: gon.investorsAll[i].latitude, lng: gon.investorsAll[i].longitude};
-				console.log(pos);
+				var investor = gon.investorsAll[i];
+				var pos = {lat: investor.latitude, lng: investor.longitude};
+				// console.log(pos);
 				var marker = new google.maps.Marker({
 					position: pos,
 					map: map,
-					title: gon.investorsAll[i].name,
-					description: gon.investorsAll[i].description,
+					name: investor.name,
+					description: investor.description,
+					website: investor.website,
+					email: investor.email,
 					animation: google.maps.Animation.DROP,
 				});
 				markers.push(marker);
@@ -145,12 +154,15 @@ function initMap(dataMarkers) {
 			};
 
 			for (i in gon.startupsAll) {
-				var pos = {lat: gon.startupsAll[i].latitude, lng: gon.startupsAll[i].longitude};
+				var startup = gon.startupsAll[i];
+				var pos = {lat: startup.latitude, lng: startup.longitude};
 				var marker = new google.maps.Marker({
 					position: pos,
 					map: map,
-					title: gon.startupsAll[i].name,
-					description: gon.startupsAll[i].description,
+					name: startup.name,
+					description: startup.description,
+					website: startup.website,
+					email: startup.email,
 					animation: google.maps.Animation.DROP,
 				});
 				markers.push(marker);
