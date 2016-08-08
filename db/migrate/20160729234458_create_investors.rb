@@ -5,6 +5,7 @@ class CreateInvestors < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :website
       t.string :address
+      t.string :vertical
       t.text :description
       t.date :founded_date
       t.boolean :approval, default: false
