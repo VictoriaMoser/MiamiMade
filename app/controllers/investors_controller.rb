@@ -4,7 +4,7 @@ class InvestorsController < ApplicationController
   # GET /investors
   def index
     if session[:user_id]
-    @investors = Investor.where(approval: true)
+    @investors = Investor.where(approval: true).paginate(:page => params[:page], :per_page => 20)
     @user = User.find(session[:user_id])
     else
     redirect_to root_path
