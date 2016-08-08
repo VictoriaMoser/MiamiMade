@@ -1,7 +1,4 @@
-<div class="row">
-  <div class="col-xs-12 centered profile">
-
-    <div class="row show-height space">
+    <div class="row show-height profile space">
       <div class="col-md-4 profile-column">
         <img class="img-responsive img" src="http://placehold.it/300x300" />
       </div>
@@ -37,21 +34,29 @@
           <strong>Founded date:</strong>
           <%= @investor.founded_date %>
         </p>
+        <p>
+          <strong>Number of employees:</strong>
+        </p>
+        <p>
+          <strong>Total Funding:</strong>
+        </p>
       </div>
       <div class="col-md-4 profile-column">
-        <button></button>
-        <button></button>
-        <button></button>
+        <a href="mailto:#{<%= @investor.email %>}" target="_top" class="btn btn-default">Contact</a>
+        <hr>
+        <img class="smedia" src="facebook.jpg" alt="facebook"/>
+        <img class="smedia" src="twitter.jpg" alt="twitter"/>
+        <img class="smedia" src="linkedin.png" alt="linkedin" width="30" height="30">
+        <hr>
+        <%= link_to 'Back to Map', root_path, class: "purple-button" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= link_to 'Edit', edit_investor_path(@investor), class: "purple-button" %>
+        <%= link_to 'Back', investors_path, class: "purple-button" %>
+        <%= link_to 'Add a new investor', new_investor_path(@investor), class: "purple-button" %>
       </div>
     </div>
 
-      <div>
-        <%= link_to 'Edit', edit_investor_path(@investor), class: "purple-button" %>
-        <%= link_to 'Back', investors_path, class: "purple-button" %>
-      </div>
-
       <p id="notice new-investor-form"><%= notice %></p>
-
-
-  </div>
-</div>

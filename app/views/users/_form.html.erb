@@ -33,7 +33,9 @@
       </div>
       <br>
       <div class="actions">
-        <%= f.submit 'Register', class: 'btn btn-default' %>
+        <%= link_to 'Show', @user, class: "purple-button" %>
+        <%= f.submit 'Register/Update', class: 'btn btn-default purple-button' %>
+        <%= link_to 'Back', users_path, class: "purple-button" %>
       </div>
     <% end %>
   </div>

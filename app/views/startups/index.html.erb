@@ -22,7 +22,7 @@
           <tr>
             <td><%= startup.name %></td>
             <td><%= startup.email %></td>
-            <td><%= startup.website %></td>
+            <td><%= startup.website[0..15] %></td>
             <td><%= startup.address %></td>
             <td><%= startup.description[0..50]%>...</td>
             <td><%= startup.founded_date %></td>
@@ -38,6 +38,6 @@
 </div>
 <div class="row">
   <div class="col-xs-12 col-md-offset-5">
-  <%= button_to 'Add Startup', new_startup_path, method:'get', class: 'purple-button'  %>
+    <%= button_to 'Add Startup', new_startup_path, method:'get', class: 'purple-button'  %>
   </div>
 </div>

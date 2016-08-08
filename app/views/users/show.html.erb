@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4 semi-transparent">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+      <p class="white-font">
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+      <p class="white-font">
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Home', root_path %>
+    <%= link_to 'Edit', edit_user_path(@user), class: "purple-button" %>
+    <%= link_to 'Home', root_path, class: "purple-button" %>
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>

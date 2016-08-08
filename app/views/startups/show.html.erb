@@ -1,32 +1,56 @@
 <div class="row">
+  <div class="col-xs-12 centered profile space">
 
-  <div class="col-xs-12">
-    <table class="table">
-      <thead class="thead-default">
-        <tr>
-          <th><strong>Name</strong></th>
-          <th><strong>Email</strong></th>
-          <th><strong>Website</strong></th>
-          <th><strong>Address</strong></th>
-          <th><strong>Description</strong></th>
-          <th><strong>Founded date</strong></th>
-        </tr>
-      </thead>
-    </table>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td><%= @startup.name %></td>
-          <td><%= @startup.email %></td>
-          <td><%= @startup.website %></td>
-          <td><%= @startup.address %></td>
-          <td><%= @startup.description %></td>
-          <td><%= @startup.founded_date %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
+    <div class="row show-height">
+      <div class="col-md-4 profile-column">
+        <img class="img-responsive img" src="http://placehold.it/300x300" />
+      </div>
+      <div class="col-md-8 profile-column">
+        <p>
+          <strong>Name</strong>
+          <%= @startup.name %>
+        </p>
+        <p>
+          <strong>Email</strong>
+          <%= @startup.email %>
+        </p>
+        <p>
+          <strong>Website</strong>
+          <%= @startup.website %>
+        </p>
+        <p>
+          <strong>Address</strong>
+          <%= @startup.address %>
+        </p>
+        <p>
+          <strong>Description</strong>
+          <%= @startup.description %>
+        </p>
+      </div>
+    </div>
+    <div class="row show-height">
+      <div class="col-md-8 profile-column">
+        <p>
+          <strong>Founded date:</strong>
+          <%= @startup.founded_date %>
+        </p>
+        <p>
+          <strong>Number of employees:</strong>
+        </p>
+        <p>
+          <strong>Total Funding:</strong>
+        </p>
+      </div>
+      <div class="col-md-4 profile-column">
+        <a href="mailto:#{<%= @startup.email %>}" target="_top" class="btn btn-default">Contact</a>
+        <hr>
+        <img class="img" src="facebook.jpg" alt="facebook"/>
+        <img class="img" src="twitter.jpg" alt="twitter"/>
+        <img class="img" src="linkedin.png" alt="linkedin"/>
+        <hr>
+        <%= link_to 'Back to Map', root_path, class: "purple-button" %>
+      </div>
+    </div>
 <p id="notice"><%= notice %></p>
 
 
