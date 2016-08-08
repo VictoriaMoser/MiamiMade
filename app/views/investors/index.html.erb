@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row space">
   <div class="col-xs-12 white-font table-bg">
     <p id="notice"><%= notice %></p>
 
@@ -22,7 +22,7 @@
           <tr>
             <td><%= investor.name %></td>
             <td><%= investor.email %></td>
-            <td><%= investor.website %></td>
+            <td><%= investor.website[0..15] %></td>
             <td><%= investor.address %></td>
             <td><%= investor.description[0..50]%>...</td>
             <td><%= investor.founded_date %></td>

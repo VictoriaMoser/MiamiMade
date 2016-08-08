@@ -42,6 +42,8 @@
   </div>
 
   <div class="btn-right">
+    <%= link_to 'Show', @investor, class: "purple-button" %>
     <input class="purple-button" type="submit" value="create new investor">
+    <%= link_to 'Back', investors_path, class: "purple-button" %>
   </div>
 <% end %>
