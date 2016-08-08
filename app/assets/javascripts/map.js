@@ -65,6 +65,8 @@ $(function(){
 					success: function(data){
 					// if succesfull .. we get a variable data from the controller with all the data for the markers
 							var markersData = data;
+							console.log('information returning after filter');
+							console.log(markersData);
 							initMap(markersData);
 					}
 				});
@@ -113,7 +115,7 @@ function initMap(dataMarkers) {
 				map: map,
 				position: pos,
 				title: dataMarkers[i].title,
-				description: dataMarkers[i].short_description,
+				description: dataMarkers[i].description,
 				animation: google.maps.Animation.DROP,
 			});
 			    markers.push(marker);
@@ -132,7 +134,7 @@ function initMap(dataMarkers) {
 					position: pos,
 					map: map,
 					title: gon.investorsAll[i].name,
-					description: gon.investorsAll[i].shortdescription,
+					description: gon.investorsAll[i].description,
 					animation: google.maps.Animation.DROP,
 				});
 				markers.push(marker);
@@ -148,14 +150,14 @@ function initMap(dataMarkers) {
 					position: pos,
 					map: map,
 					title: gon.startupsAll[i].name,
-					description: gon.startupsAll[i].shortdescription,
+					description: gon.startupsAll[i].description,
 					animation: google.maps.Animation.DROP,
 				});
 				markers.push(marker);
 				bounds.extend(marker.position);
 				marker.addListener('click',function(){
 					populateInfoWindow(this, largeInfowindow, bounds);
-				});	
+				});
 			};
 		};
 
