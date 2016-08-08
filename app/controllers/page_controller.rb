@@ -7,11 +7,9 @@ class PageController < ApplicationController
     # gon.investors = Investor.all.grab_location
 
     gon.investorsLoc = Investor.grab_location
-
-
     gon.startupsAll = Startup.all
     gon.investorsAll = Investor.all
-
+    # gon.entities = Startup.all + Investor.all
 
     # redirect_to register_path if session[:user_id].nil?
     @user = User.new

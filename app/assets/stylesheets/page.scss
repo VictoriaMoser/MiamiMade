@@ -18,6 +18,11 @@ p {
 	overflow: none;
 }
 
+.lead {
+	font-size: 1.2em;
+	text-align: center;
+}
+
 #hidden {
 	display: none;
 }
@@ -25,18 +30,23 @@ p {
 //CSS styling for the infowindows that are presented in the Google Maps
 #infowindow {
 	background: #fff;
-	border: 1px solid #999;
-	border-radius: 2px;
+	border-radius: 20px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size: 1em;
-	line-height: 35px;
+	line-height: 25px;
 	text-align: left;
 	padding: 10px 10px 30px 10px;
-	width: 200px;
+	width: 250px;
 	box-shadow: 0 0 8px #000;
 	-webkit-box-shadow: 0 0  8px #000;
+	overflow: scroll;
+}
+
+#infowindow p {
+	font-size: 1.5em;
+	color: #000;
 }
 
 .input-large {
