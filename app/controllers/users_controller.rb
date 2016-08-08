@@ -44,10 +44,13 @@ class UsersController < ApplicationController
 
   def destroy
     if @current_user.admin
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_panel_path, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to admin_panel_path, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end 
+    else
+      redirect_to root_path
     end
   end
 
