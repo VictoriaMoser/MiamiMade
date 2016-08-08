@@ -125,27 +125,38 @@ function initMap(markers) {
 		}
 
 	}else {
-		console.log('this must run the first time with the investor markers');
-		console.log(gon.investorsLoc);
-
-
-
 
 		for (i in gon.investorsAll) {
 			var pos = {lat: gon.investorsAll[i].latitude, lng: gon.investorsAll[i].longitude};
-			var markers = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				position: pos,
-				map: map
+				map: map,
+				title: gon.investorsAll[i].name,
+				description: gon.investorsAll[i].shortdescription,
+				animation: google.maps.Animation.DROP,
 			});
+			// markers.push(marker);
+			// marker.addListener('click',function(){
+			// populateInfoWindow(this, largeInfowindow);
+			// };
 		};
 
 		for (i in gon.startupsAll) {
 			var pos = {lat: gon.startupsAll[i].latitude, lng: gon.startupsAll[i].longitude};
-			var markers = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				position: pos,
-				map: map
+				map: map,
+				title: gon.startupsAll[i].name,
+				description: gon.startupsAll[i].shortdescription,
+				animation: google.maps.Animation.DROP,
 			});
+			// markers.push(marker);
+			// marker.addListener('click',function(){
+			// populateInfoWindow(this, largeInfowindow);
+			// };
 		};
+
+
 
 
 
