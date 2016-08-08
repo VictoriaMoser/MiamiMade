@@ -16,7 +16,7 @@ namespace :startups do
 			name: row[:company_name],
 			website: row[:website],
 			address: row[:address],
-			latitude: row[:latutide],
+			latitude: row[:latitude],
 			longitude: row[:longitude],
 			description: row[:description],
 			vertical: vertical,
