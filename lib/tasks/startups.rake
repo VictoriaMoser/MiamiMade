@@ -3,7 +3,7 @@ require 'csv'
 namespace :startups do
 	desc "import startups from lib/seeds/StartupList.csv"
 	task import: :environment do
-    Startup.destroy_all
+    # Startup.destroy_all
 		file = Rails.root.join("lib","seeds","StartupList.csv")
 		CSV.foreach(file, headers: true, return_headers: false, header_converters: :symbol) do |row|
 			# CSV contains multiple verticals per startup. Your model only supports one vertical per startup.

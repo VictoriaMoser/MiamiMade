@@ -87,11 +87,11 @@ function initMap(dataMarkers) {
 	var bounds = new google.maps.LatLngBounds();
 
 	function populateInfoWindow(marker, infowindow, bounds) {
-		// Check to make sure that the infowindow is not already opended on this marker
+		// Check to make sure that the infowindow is not already opened on this marker
 		if (infowindow.marker != marker) {
 				infowindow.marker = marker;
 				//With the "infowindow" we can play around the css styles on the top of the file
-				infowindow.setContent('<div id="infowindow"><strong>' + marker.title  + '</strong><br>' + marker.description + '</div>');
+				infowindow.setContent('<div id="infowindow"><strong>' + marker.title  + '</strong><br><hr>' + marker.description + '</div>');
 				infowindow.open(map, marker);
 
 				// Make sure the marker is cleared if the infowindow is closed
@@ -155,7 +155,7 @@ function initMap(dataMarkers) {
 				bounds.extend(marker.position);
 				marker.addListener('click',function(){
 					populateInfoWindow(this, largeInfowindow, bounds);
-				});	
+				});
 			};
 		};
 

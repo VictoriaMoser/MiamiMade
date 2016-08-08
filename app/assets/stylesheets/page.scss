@@ -31,12 +31,13 @@ p {
 	-moz-border-radius: 2px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size: 1em;
-	line-height: 35px;
+	line-height: 15px;
 	text-align: left;
 	padding: 10px 10px 30px 10px;
 	width: 200px;
 	box-shadow: 0 0 8px #000;
 	-webkit-box-shadow: 0 0  8px #000;
+	overflow: scroll;
 }
 
 .input-large {
