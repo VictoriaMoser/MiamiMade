@@ -1,34 +1,57 @@
-<p id="notice new-investor-form"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12 centered profile">
 
-<p>
-  <strong> Investor Name: </strong>
-  <%= @investor.name %>
-</p>
+    <div class="row show-height space">
+      <div class="col-md-4 profile-column">
+        <img class="img-responsive img" src="http://placehold.it/300x300" />
+      </div>
+      <div class="col-md-8 profile-column">
+        <p>
+          <strong> Investor Name: </strong>
+          <%= @investor.name %>
+        </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @investor.email %>
-</p>
+        <p>
+          <strong>Email:</strong>
+          <%= @investor.email %>
+        </p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @investor.website %>
-</p>
+        <p>
+          <strong>Website:</strong>
+          <%= @investor.website %>
+        </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @investor.address %>
-</p>
+        <p>
+          <strong>Address:</strong>
+          <%= @investor.address %>
+        </p>
+        <p>
+          <strong>Description:</strong>
+          <%= @investor.description %>
+        </p>
+      </div>
+    </div>
+    <div class="row show-height space">
+      <div class="col-md-8 profile-column">
+        <p>
+          <strong>Founded date:</strong>
+          <%= @investor.founded_date %>
+        </p>
+      </div>
+      <div class="col-md-4 profile-column">
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @investor.description %>
-</p>
+      <div>
+        <%= link_to 'Edit', edit_investor_path(@investor), class: "purple-button" %>
+        <%= link_to 'Back', investors_path, class: "purple-button" %>
+      </div>
 
-<p>
-  <strong>Founded date:</strong>
-  <%= @investor.founded_date %>
-</p>
+      <p id="notice new-investor-form"><%= notice %></p>
 
-<%= link_to 'Edit', edit_investor_path(@investor) %> |
-<%= link_to 'Back', investors_path %>
+
+  </div>
+</div>

@@ -9,45 +9,44 @@
 
 require 'csv'
 
-csv_text = File.read(Rails.root.join("lib","seeds","StartupList.csv"))
-csv = []
-csv_text = csv_text.split("\r\n")
+namespace :startups do
+  desc "import startups from lib/seeds/StartupList.csv"
+  task import: :environment do
+    file = Rails.root.join("lib","seeds","StartupList.csv")
+    CSV.foreach(file, headers: true, return_headers: false, header_converters: :symbol) do |row|
+      # CSV contains multiple verticals per startup. Your model only supports one vertical per startup.
+      verticals = row[:vertical]
 
-csv_text.each do |startup|
-	#split each index of the array by commas
-	csv << startup.split(',')
+			next if verticals.nil?
+      vertical = verticals.is_a?(String)  ? verticals.capitalize : verticals.first.capitalize
+      Startup.create!(
+        name: row[:company_name],
+        website: row[:website],
+        address: row[:address],
+        latitude: row[:latutide],
+        longitude: row[:longitude],
+        description: row[:description],
+        vertical: vertical,
+        employee_count: row[:employee_count],
+        stage: row[:stage],
+        founded_date: row[:date_added]
+      )
+    end
+  end
+
 end
-
-csv.delete_at(0)
-# pp csv
-csv.each do |startup|
-	#create startups
-	s = Startup.create(
-  	name: startup[0],
-    website: startup[1],
-    address: startup[2],
-    latitude: startup[3],
-    longitude: startup[4],
-    description: startup[5],
-    vertical: startup[6].capitalize,
-    employee_count: startup[7],
-    stage: startup[8],
-    founded_date: startup[9]
-  )
-end
-
 
 
 
 # p csv
-# Investor.create!(name:'Citibank', address:'Miami, FL', latitude: '25.9451', longitude: '-80.1961', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
-# Investor.create!(name:'Mario', address:'Miami, FL', latitude: '25.6551', longitude: '-80.1981', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
-# Investor.create!(name:'HSBC', address:'Orlando, FL', latitude: '26.7539', longitude: '-81.5747', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
-# Investor.create!(name:'Fundation', address:'Tampa, FL', latitude: '27.9354', longitude: '-82.4522', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
-# Investor.create!(name:'University of Miami', address:'Orlando, FL', latitude: '26.5752', longitude: '-81.9325', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
+Investor.create!(name:'Citibank', address:'Miami, FL', latitude: '25.9451', longitude: '-80.1961', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
+Investor.create!(name:'Mario', address:'Miami, FL', latitude: '25.6551', longitude: '-80.1981', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
+Investor.create!(name:'HSBC', address:'Orlando, FL', latitude: '26.7539', longitude: '-81.5747', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
+Investor.create!(name:'Fundation', address:'Tampa, FL', latitude: '27.9354', longitude: '-82.4522', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
+Investor.create!(name:'University of Miami', address:'Orlando, FL', latitude: '26.5752', longitude: '-81.9325', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
 
-#New Startups
-#
+#Startups I manually typed in case something goes wrong!
+
 # Startup.create!(name:"InnFocus Inc", website:"http://innfocusinc.com", address:"12415 SW 136th Ave #3, Miami, FL 33186", latitude:"25.65129", longitude:"-80.415978", description:"InnFocus is an ophthalmology company with extensive biomaterials experience, which develops and provides next-generation products for glaucoma surgery.", vertical: 2, employee_count:"16", stage:"C", founded_date:"11-05-2013", approval: true)
 #
 # Startup.create!(name:"Open English", website:"http://openenglish.com", address:"2901 Florida Ave #840, Miami, FL 33133", latitude:"25.72941", longitude:"-80.2429445", description:"Open English is a leading Education Technology company focused on English language learning for the Latin American & U.S. Hispanic markets.", vertical: 8, employee_count:"898", stage:"Late", founded_date:"04-04-2013", approval: true)

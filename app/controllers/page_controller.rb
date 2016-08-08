@@ -6,7 +6,9 @@ class PageController < ApplicationController
     # @startups = Startup.all.to_json
     # gon.investors = Investor.all.grab_location
 
-    gon.investors = Investor.grab_location
+    gon.investorsLoc = Investor.grab_location
+
+
     gon.startupsAll = Startup.all
     gon.investorsAll = Investor.all
 

@@ -42,7 +42,7 @@
                   <% if current_user %>
                     <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
                     <li class="nav-links"><%= link_to 'INVESTORS', investors_path %></li>
-                    <li class="nav-links">SIGNED IN AS <%= current_user.name %></li>
+                    <li class="nav-links signedin">SIGNED IN AS <%= current_user.name.upcase %></li>
                     <li class="nav-links"><%= link_to "LOGOUT", logout_path %></li>
                     <% else %>
                     <li class="nav-links"><%= link_to 'STARTUPS', startups_path %></li>
