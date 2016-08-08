@@ -4,7 +4,7 @@ class CreateStartups < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :website
       t.string :address
-      t.string :vertical
+      t.column :vertical, :integer
       t.text :description
       t.date :founded_date
       t.boolean :approval, default: false

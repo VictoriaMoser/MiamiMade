@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20160807184455) do
     t.string   "name"
     t.string   "website"
     t.string   "address"
-    t.string   "vertical"
+    t.integer  "vertical"
     t.text     "description"
     t.date     "founded_date"
     t.boolean  "approval",         default: false
