@@ -44,16 +44,14 @@
         </p>
       </div>
       <div class="col-md-4 profile-column">
-        <div class="col-xs-12 col-md-4 extra">
+        <div class="col-xs-12 extra">
           <a href="mailto:#{<%= @startup.email %>}" target="_top" class="btn btn-default">Contact</a>
         </div>
-        <hr>
         <div class="col-xs-12 extra">
-          <img class="img img-responsive" src="facebook.jpg" alt="facebook" width="20"/>
-          <img class="img img-responsive" src="twitter.jpg" alt="twitter" width="20"/>
-          <img class="img img-responsive" src="linkedin.png" alt="linkedin" width="20"/>
+          <%= image_tag("facebook.png", class: "smedia img-responsive", width: "40") %>
+          <%= image_tag("twitter.png", class: "smedia img-responsive", width: "40") %>
+          <%= image_tag("linkedin.png", class: "smedia img-responsive", width: "40") %>
         </div>
-        <hr>
         <div class="col-xs-12 extra">
           <%= link_to 'Back to Map', root_path, class: "purple-button" %>
         </div>
