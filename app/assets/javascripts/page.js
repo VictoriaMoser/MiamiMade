@@ -62,40 +62,8 @@ $(document).on("turbolinks:load", function() {
 // 		zoom: 7,
 // 		scrollwheel: false
 // 	});
-//
-//
-//   $('.collapsible').collapsible({
-//     accordion: false
-//   });
-//
-//   $('.js-filter-box').on('click', function(e){
-//     var filters = {
-//       vertical: [],
-// 			stage: []
-//     }
-//
-//     $('.js-filter-box:checked').each(function(index, element){
-//       var filterId = $(element).attr("value");
-//       var category = $(element).attr("data-category");
-//       // console.log($(element).attr("data-category"));
-//       filters[category].push(filterId);
-//     })
-//
-//     $.ajax({
-//       url: '/filter',
-// 			method: "POST",
-//       data: filters,
-//       success: businessMarkers
-//     })
-//
-//   });
-//
-//
-//
-//
-//
-// 	// var investors = $('#map-data').data().investors;
-// 	// var startups = $('#map-data').data().startups;
+
+
 //
 //
 // 	var largeInfowindow = new google.maps.InfoWindow();

@@ -56,37 +56,26 @@ $(function(){
 // send this to the controller in order to request the especic data from the model and then
 // bring it back here to reset the markets and present new ones with the informations that comes
 
-console.log('information to be send to request info');
-console.log(data);
 
 				$.ajax({
 					url: '/get_filter',
 					type: "GET",
 					data: { data: data },
-// we request the information to the controller
+					// we request the information to the controller
 					success: function(data){
-// if succesfull .. we get a variable data from the controller with all the data for the markers
-						console.log('information receive from controller after request for the filtering part');
-						console.log(data);
-
-						var markersData = [];
-// we will add the information from var Data into markersData in the right format for Googlemaps
-
-						for (var i = 0; i < data.length; i++) {
-							markersData.push([data[i].latitude, data[i].longitude]);
-						}
-						console.log('information contructed from the data received and ready to be use in the map')
-						console.log(markersData);
-// once we have the markers data we call the map function again to restart the map and add the new markers
-
-						initMap(markersData);
+					// if succesfull .. we get a variable data from the controller with all the data for the markers
+							var markersData = data;
+ 							markers = []
+							console.log('information receive from controller after request for the filtering part');
+							console.log(data);
+							initMap(markersData);
 					}
 				});
-		});
-}); // function finishes here
+		}); // function click
+}); // main function finishes here
 
 
-function initMap(markers) {
+function initMap(dataMarkers) {
 	var lat = 26.00;
 	var lng = -80.60;
 	//we create the map center in south florida
@@ -95,70 +84,55 @@ function initMap(markers) {
 		zoom: 8
 	});
 
- console.log('information of the markers to be use to populate the map');
- console.log(markers);
-
- console.log('if is the first run markets info should be:');
- console.log(gon.investorsLoc);
- console.log('all the information in startupsAll');
- console.log(gon.startupsAll);
- console.log(gon.investorsLoc[0],[0]);
- console.log(gon.investorsLoc[0],[1]);
- console.log(gon.investorsAll[0].latitude);
-
-	// console.warn(markers);
-
-	if (markers != undefined) {
-
-		if (markers.length > 0) {
-
-			for (x in markers) {
-				console.log(markers);
-				if (markers[x] != undefined) {
-					var pos = {lat: markers[x][0], lng: markers[x][1]};
-				}
-				var markers = new google.maps.Marker({
+	if (dataMarkers = undefined) {
+			var marker = new google.maps.Marker({
+				map: map,
+				position: dataMarkers.position,
+				title: dataMarkers.title,
+				description: dataMarkers.short_description,
+				animation: google.maps.Animation.DROP,
+			});
+	} else {
+			for (i in gon.investorsAll) {
+				var pos = {lat: gon.investorsAll[i].latitude, lng: gon.investorsAll[i].longitude};
+				var marker = new google.maps.Marker({
 					position: pos,
-					map: map
+					map: map,
+					title: gon.investorsAll[i].name,
+					description: gon.investorsAll[i].shortdescription,
+					animation: google.maps.Animation.DROP,
 				});
 			};
-		}
 
-	}else {
-
-		for (i in gon.investorsAll) {
-			var pos = {lat: gon.investorsAll[i].latitude, lng: gon.investorsAll[i].longitude};
-			var marker = new google.maps.Marker({
-				position: pos,
-				map: map,
-				title: gon.investorsAll[i].name,
-				description: gon.investorsAll[i].shortdescription,
-				animation: google.maps.Animation.DROP,
-			});
-			// markers.push(marker);
-			// marker.addListener('click',function(){
-			// populateInfoWindow(this, largeInfowindow);
-			// };
+			for (i in gon.startupsAll) {
+				var pos = {lat: gon.startupsAll[i].latitude, lng: gon.startupsAll[i].longitude};
+				var marker = new google.maps.Marker({
+					position: pos,
+					map: map,
+					title: gon.startupsAll[i].name,
+					description: gon.startupsAll[i].shortdescription,
+					animation: google.maps.Animation.DROP,
+				});
+			};
 		};
 
-		for (i in gon.startupsAll) {
-			var pos = {lat: gon.startupsAll[i].latitude, lng: gon.startupsAll[i].longitude};
-			var marker = new google.maps.Marker({
-				position: pos,
-				map: map,
-				title: gon.startupsAll[i].name,
-				description: gon.startupsAll[i].shortdescription,
-				animation: google.maps.Animation.DROP,
-			});
-			// markers.push(marker);
-			// marker.addListener('click',function(){
-			// populateInfoWindow(this, largeInfowindow);
-			// };
+	var largeInfowindow = new google.maps.InfoWindow();
+
+	var bounds = new google.maps.LatLngBounds();
+
+	function populateInfoWindow(marker, infowindow, bounds) {
+		// Check to make sure that the infowindow is not already opended on this marker
+		if (infowindow.marker != marker) {
+				infowindow.marker = marker;
+				//With the "infowindow" we can play around the css styles on the top of the file
+				infowindow.setContent('<div id="infowindow"><strong>' + marker.title  + '</strong><br>' + marker.description + '</div>');
+				infowindow.open(map, marker);
+
+				// Make sure the marker is cleared if the infowindow is closed
+				infowindow.addListener('closeclick',function(){
+					infowindow.setMarker(null);
+				});
 		};
-
-
-
-
-
-	}
-}
+		map.fitBounds(bounds);
+	};
+} // init Map end
