@@ -1,60 +1,71 @@
 <div class="row">
-  <div class="col-xs-12 centered profile space">
+  <div class="col-xs-12 centered profile">
 
     <div class="row show-height">
       <div class="col-md-4 profile-column">
         <img class="img-responsive img" src="http://placehold.it/300x300" />
+        <p class="padding">
+          <strong>Name:</strong>&nbsp&nbsp&nbsp
+          <%= @startup.name %>
+        </p>
       </div>
       <div class="col-md-8 profile-column">
         <p>
-          <strong>Name</strong>
-          <%= @startup.name %>
-        </p>
-        <p>
-          <strong>Email</strong>
+          <strong>Email:</strong>&nbsp&nbsp&nbsp
           <%= @startup.email %>
         </p>
         <p>
-          <strong>Website</strong>
+          <strong>Website:</strong>&nbsp&nbsp&nbsp
           <%= @startup.website %>
         </p>
         <p>
-          <strong>Address</strong>
+          <strong>Address:</strong>&nbsp&nbsp&nbsp
           <%= @startup.address %>
         </p>
         <p>
-          <strong>Description</strong>
-          <%= @startup.description %>
+          <strong>Founded date:</strong>&nbsp&nbsp&nbsp
+          <%= @startup.founded_date %>
+        </p>
+        <p>
+          <strong>Number of employees:</strong>&nbsp&nbsp&nbsp
+          10-50
+        </p>
+        <p>
+          <strong>Total Funding:</strong>&nbsp&nbsp&nbsp
+          10,000
         </p>
       </div>
     </div>
     <div class="row show-height">
       <div class="col-md-8 profile-column">
         <p>
-          <strong>Founded date:</strong>
-          <%= @startup.founded_date %>
-        </p>
-        <p>
-          <strong>Number of employees:</strong>
-        </p>
-        <p>
-          <strong>Total Funding:</strong>
+          <strong>Description</strong>&nbsp&nbsp&nbsp
+          <%= @startup.description %>
         </p>
       </div>
       <div class="col-md-4 profile-column">
-        <a href="mailto:#{<%= @startup.email %>}" target="_top" class="btn btn-default">Contact</a>
+        <div class="col-xs-12 col-md-4 extra">
+          <a href="mailto:#{<%= @startup.email %>}" target="_top" class="btn btn-default">Contact</a>
+        </div>
         <hr>
-        <img class="img" src="facebook.jpg" alt="facebook"/>
-        <img class="img" src="twitter.jpg" alt="twitter"/>
-        <img class="img" src="linkedin.png" alt="linkedin"/>
+        <div class="col-xs-12 extra">
+          <img class="img" src="facebook.jpg" alt="facebook"/>
+          <img class="img" src="twitter.jpg" alt="twitter"/>
+          <img class="img" src="linkedin.png" alt="linkedin"/>
+        </div>
         <hr>
-        <%= link_to 'Back to Map', root_path, class: "purple-button" %>
+        <div class="col-xs-12 extra">
+          <%= link_to 'Back to Map', root_path, class: "purple-button" %>
+        </div>
       </div>
     </div>
 <p id="notice"><%= notice %></p>
 
 
-<div><%= link_to 'Edit', edit_startup_path(@startup), class: "purple-button" %> <%= link_to 'Back', startups_path, class: "purple-button" %><%= link_to 'Add a new startup', new_startup_path(@startup), class: "purple-button" %></td>
+<div>
+  <%= link_to 'Edit', edit_startup_path(@startup), class: "purple-button" %>
+  <%= link_to 'Back', startups_path, class: "purple-button" %>
+  <%= link_to 'Add a new startup', new_startup_path(@startup), class: "purple-button" %>
 </div>
 
 </div>

@@ -1,54 +1,73 @@
-    <div class="row show-height profile space">
+<div class="row">
+  <div class="col-xs-12 centered profile">
+
+    <div class="row show-height">
       <div class="col-md-4 profile-column">
         <img class="img-responsive img" src="http://placehold.it/300x300" />
+        <p class="padding">
+          <strong> Investor Name: </strong>&nbsp&nbsp&nbsp
+          <%= @investor.name %>
+        </p>
       </div>
       <div class="col-md-8 profile-column">
         <p>
-          <strong> Investor Name: </strong>
-          <%= @investor.name %>
-        </p>
-
-        <p>
-          <strong>Email:</strong>
+          <strong>Email:</strong>&nbsp&nbsp&nbsp
           <%= @investor.email %>
         </p>
 
         <p>
-          <strong>Website:</strong>
+          <strong>Website:</strong>&nbsp&nbsp&nbsp
           <%= @investor.website %>
         </p>
 
         <p>
-          <strong>Address:</strong>
+          <strong>Address:</strong>&nbsp&nbsp&nbsp
           <%= @investor.address %>
         </p>
         <p>
-          <strong>Description:</strong>
-          <%= @investor.description %>
-        </p>
-      </div>
-    </div>
-    <div class="row show-height space">
-      <div class="col-md-8 profile-column">
-        <p>
-          <strong>Founded date:</strong>
+          <strong>Founded date:</strong>&nbsp&nbsp&nbsp
           <%= @investor.founded_date %>
         </p>
         <p>
-          <strong>Number of employees:</strong>
+          <strong>Number of employees:</strong>&nbsp&nbsp&nbsp
+          100-500
         </p>
         <p>
-          <strong>Total Funding:</strong>
+          <strong>Total Funding:</strong>&nbsp&nbsp&nbsp
+          5,000,000
+        </p>
+      </div>
+    </div>
+    <div class="row show-height">
+      <div class="col-md-8 profile-column">
+        <p>
+          <strong>Description:</strong>&nbsp&nbsp&nbsp
+          <%= @investor.description %>
         </p>
       </div>
       <div class="col-md-4 profile-column">
-        <a href="mailto:#{<%= @investor.email %>}" target="_top" class="btn btn-default">Contact</a>
+        <div class="row">
+        <div class="col-xs-12 extra">
+          <a href="mailto:#{<%= @investor.email %>}" target="_top" class="btn btn-default purple-button">Contact</a>
+        </div>
+        </div>
+
         <hr>
-        <img class="smedia" src="facebook.jpg" alt="facebook"/>
-        <img class="smedia" src="twitter.jpg" alt="twitter"/>
-        <img class="smedia" src="linkedin.png" alt="linkedin" width="30" height="30">
+        <div class="row">
+        <div class="col-xs-12 extra">
+          <img class="smedia" src="facebook.jpg" alt="facebook"/>
+          <img class="smedia" src="twitter.jpg" alt="twitter"/>
+          <img class="smedia" src="linkedin.png" alt="linkedin" width="30" height="30" />
+        </div>
+        </div>
+
         <hr>
-        <%= link_to 'Back to Map', root_path, class: "purple-button" %>
+        <div class="row">
+        <div class="col-xs-12 extra">
+          <%= link_to 'Back to Map', root_path, class: "purple-button" %>
+        </div>
+        </div>
+
       </div>
     </div>
     <div class="row">

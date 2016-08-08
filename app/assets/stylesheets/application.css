@@ -105,12 +105,17 @@ ul.nav li.nav-links a:hover {
   font-size: 1em;
 }
 
-/*.space {
+.space {
   margin: 100px 20px;
-}*/
+}
 
 .semi-transparent {
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+.padding {
+  padding: 50px;
+  text-align: center;
 }
 
 .profile {
@@ -123,6 +128,9 @@ ul.nav li.nav-links a:hover {
   height: 500px;
   padding: 30px;
   background-color: #000;
+}
+
+.profile-column p {
   text-align: left !important;
 }
 
@@ -132,6 +140,10 @@ ul.nav li.nav-links a:hover {
 
 .smedia {
   display: inline;
+}
+
+.extra {
+  height: 50px;
 }
 
 footer {
