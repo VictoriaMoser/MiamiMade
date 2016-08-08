@@ -1,15 +1,14 @@
 
 
 #title {
-	color: #5b04ff !important;
+	color: #04b6ff !important;
 	font-size: 3.3em;
 	text-align: center;
-	font-family: 'Permanent Marker', cursive;
 }
 
 p {
 	padding-bottom: 20px;
-	text-align: center;
+	text-align: left;
 	color: #fff;
 }
 
@@ -27,12 +26,17 @@ p {
 #infowindow {
 	background: #fff;
 	border: 1px solid #999;
-	border-radius: 3px;
-	line-height: 35px;
-	padding: 10px 10px 30px 10px;
-	text-align: left;
-	width: 200px;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	font-family:Arial, Helvetica, sans-serif;
 	font-size: 1em;
+	line-height: 35px;
+	text-align: left;
+	padding: 10px 10px 30px 10px;
+	width: 200px;
+	box-shadow: 0 0 8px #000;
+	-webkit-box-shadow: 0 0  8px #000;
 }
 
 .input-large {

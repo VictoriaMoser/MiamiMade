@@ -51,7 +51,7 @@ ul.nav li.nav-links {
 ul.nav li.nav-links a {
   display: inline;
   font-size: 1.2em;
-  color: #5b04ff;
+  color: #04b6ff;
   letter-spacing: 1px;
   margin: 5px;
 }
@@ -120,6 +120,10 @@ ul.nav li.nav-links a:hover {
 
 .profile {
   padding: 5%;
+}
+
+.txt-center {
+  text-align: center;
 }
 
 .profile-column {
