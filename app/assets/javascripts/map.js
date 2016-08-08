@@ -65,15 +65,13 @@ $(function(){
 					success: function(data){
 					// if succesfull .. we get a variable data from the controller with all the data for the markers
 							var markersData = data;
- 							markers = []
-							console.log('information receive from controller after request for the filtering part');
-							console.log(data);
 							initMap(markersData);
 					}
 				});
 		}); // function click
 }); // main function finishes here
 
+var markers = [];
 
 function initMap(dataMarkers) {
 	var lat = 26.00;
@@ -83,38 +81,6 @@ function initMap(dataMarkers) {
 		center: {lat: 26.80, lng: -80.90},
 		zoom: 8
 	});
-
-	if (dataMarkers = undefined) {
-			var marker = new google.maps.Marker({
-				map: map,
-				position: dataMarkers.position,
-				title: dataMarkers.title,
-				description: dataMarkers.short_description,
-				animation: google.maps.Animation.DROP,
-			});
-	} else {
-			for (i in gon.investorsAll) {
-				var pos = {lat: gon.investorsAll[i].latitude, lng: gon.investorsAll[i].longitude};
-				var marker = new google.maps.Marker({
-					position: pos,
-					map: map,
-					title: gon.investorsAll[i].name,
-					description: gon.investorsAll[i].shortdescription,
-					animation: google.maps.Animation.DROP,
-				});
-			};
-
-			for (i in gon.startupsAll) {
-				var pos = {lat: gon.startupsAll[i].latitude, lng: gon.startupsAll[i].longitude};
-				var marker = new google.maps.Marker({
-					position: pos,
-					map: map,
-					title: gon.startupsAll[i].name,
-					description: gon.startupsAll[i].shortdescription,
-					animation: google.maps.Animation.DROP,
-				});
-			};
-		};
 
 	var largeInfowindow = new google.maps.InfoWindow();
 
@@ -135,4 +101,65 @@ function initMap(dataMarkers) {
 		};
 		map.fitBounds(bounds);
 	};
+
+
+
+	if (dataMarkers !== undefined) {
+		console.log('after filters');
+		for (i in dataMarkers) {
+			var pos = {lat: dataMarkers[i].latitude, lng: dataMarkers[i].longitude};
+			console.log(pos);
+			var marker = new google.maps.Marker({
+				map: map,
+				position: pos,
+				title: dataMarkers[i].title,
+				description: dataMarkers[i].short_description,
+				animation: google.maps.Animation.DROP,
+			});
+			    markers.push(marker);
+			    bounds.extend(marker.position);
+			    marker.addListener('click',function(){
+			      populateInfoWindow(this, largeInfowindow, bounds);
+			    });
+		};
+	} else {
+		  console.log('first run');
+		  markers = [];
+			for (i in gon.investorsAll) {
+				var pos = {lat: gon.investorsAll[i].latitude, lng: gon.investorsAll[i].longitude};
+				console.log(pos);
+				var marker = new google.maps.Marker({
+					position: pos,
+					map: map,
+					title: gon.investorsAll[i].name,
+					description: gon.investorsAll[i].shortdescription,
+					animation: google.maps.Animation.DROP,
+				});
+				markers.push(marker);
+				bounds.extend(marker.position);
+				marker.addListener('click',function(){
+					populateInfoWindow(this, largeInfowindow, bounds);
+				});
+			};
+
+			for (i in gon.startupsAll) {
+				var pos = {lat: gon.startupsAll[i].latitude, lng: gon.startupsAll[i].longitude};
+				var marker = new google.maps.Marker({
+					position: pos,
+					map: map,
+					title: gon.startupsAll[i].name,
+					description: gon.startupsAll[i].shortdescription,
+					animation: google.maps.Animation.DROP,
+				});
+				markers.push(marker);
+				bounds.extend(marker.position);
+				marker.addListener('click',function(){
+					populateInfoWindow(this, largeInfowindow, bounds);
+				});	
+			};
+		};
+
+
+
+
 } // init Map end

@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create( name: 'Star Wars' }, { name: 'Lord of the Rings' )
-#   Character.create(name: 'Luke', movie: movies.first)
-#admin
+
 
 require 'csv'
 
@@ -40,9 +33,9 @@ end
 
 # p csv
 Investor.create!(name:'Citibank', address:'Miami, FL', latitude: '25.9451', longitude: '-80.1961', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
-Investor.create!(name:'Mario', address:'Miami, FL', latitude: '25.6551', longitude: '-80.1981', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
-Investor.create!(name:'HSBC', address:'Orlando, FL', latitude: '26.7539', longitude: '-81.5747', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
-Investor.create!(name:'Fundation', address:'Tampa, FL', latitude: '27.9354', longitude: '-82.4522', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
+Investor.create!(name:'Mario', address:'Miami, FL', latitude: '25.6551', longitude: '-80.1981', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 2)
+Investor.create!(name:'HSBC', address:'Orlando, FL', latitude: '26.7539', longitude: '-81.5747', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 3)
+Investor.create!(name:'Fundation', address:'Tampa, FL', latitude: '27.9354', longitude: '-82.4522', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 2)
 Investor.create!(name:'University of Miami', address:'Orlando, FL', latitude: '26.5752', longitude: '-81.9325', shortdescription: 'company short description', founded_date: '01/02/2000', website: 'http://www.wyncode.co', approval: true, email: 'aa@aa.com', description: 'long long long description long long long descriptionlong long long descriptionlong long long description', vertical: 1)
 
 #Startups I manually typed in case something goes wrong!
