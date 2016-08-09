@@ -144,10 +144,13 @@ ul.nav li.nav-links a:hover {
 
 .smedia {
   display: inline;
+  margin: 0 auto;
+  margin-left: 50px;
+  width: 40px;
 }
 
 .extra {
-  height: 50px;
+  height: 150px;
 }
 
 .footer {
