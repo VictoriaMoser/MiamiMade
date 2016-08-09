@@ -13,6 +13,7 @@ class User < ApplicationRecord
   def has_password
     return true if self.password_digest
   end
+  
   def email_activate
     self.email_confirmation = true
     self.token_confirmation = nil
