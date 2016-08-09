@@ -20,9 +20,8 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
       flash[:success] = "Please confirm your email address to continue"
-      UserMailer.admin_confirmation(User.find(11)).deliver
-      redirect_to root_path
-
+      # UserMailer.admin_confirmation(User.find(11)).deliver
+      # redirect_to root_path
     else
       flash[:error] = "Ooooppss, something went wrong!"
       render 'new'
