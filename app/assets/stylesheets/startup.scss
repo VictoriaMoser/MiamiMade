@@ -23,7 +23,7 @@ h1 {
 }
 
 #add-startup-button {
-  color: #5b04ff;
+  color: #04b6ff;
   margin: 50px 0;
 }
 
@@ -34,13 +34,13 @@ th, td {
 // style the startup new page
 
 .add-startup {
-  color: #5b04ff !important;
+  color: #04b6ff !important;
   font-family: 'Roboto', sans-serif !important;
 }
 
 .field-form-group {
   background-color: transparent !important;
-  color: #5b04ff !important;
+  color: #04b6ff !important;
   padding: 10px 20px !important;
 }
 
@@ -64,4 +64,9 @@ th {
 #notice {
   font-family: 'Roboto', sans-serif !important;
   font-size: 2em;
+}
+
+.pagination {
+  color: #04b6ff;
+  font-size: 1.75em;
 }

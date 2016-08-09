@@ -68,8 +68,8 @@ ul.nav li.nav-links a:hover {
 
 .purple-button {
 	background-color: transparent;
-	color: #5b04ff;
-  border: 2px solid #5b04ff;
+	color: #04b6ff;
+  border: 2px solid #04b6ff;
   text-align: center;
   text-decoration: none !important;
   display: inline-block;
@@ -82,14 +82,14 @@ ul.nav li.nav-links a:hover {
 
 .purple-button:visited {
   background-color: transparent !important;
-  color: #5b04ff;
+  color: #04b6ff;
 }
 
 .purple-button:hover {
   background-color: transparent !important;
-  color: #5b04ff;
+  color: #04b6ff;
   text-decoration: none;
-  border: 2px solid #5b04ff;
+  border: 2px solid #04b6ff;
 }
 
 .btn-right {
@@ -150,7 +150,9 @@ ul.nav li.nav-links a:hover {
   height: 50px;
 }
 
-footer {
-  background-color: #000;
-  padding: 10px;
+.footer {
+  color: #04b6ff;
+}
+.panel-title {
+  color: #5b04ff;
 }
