@@ -3,7 +3,7 @@
     <p id="notice"><%= notice %></p>
 
     <h1> List of Startups in South Florida </h1>
-    <%= will_paginate @startups %>
+    <%= will_paginate @startups, class:"pagination"%>
 
     <table class="table">
       <thead>
@@ -37,8 +37,11 @@
     </table>
   </div>
 </div>
+
 <div class="row">
   <div class="col-xs-12 col-md-offset-5">
     <%= button_to 'Add Startup', new_startup_path, method:'get', class: 'purple-button'  %>
   </div>
 </div>
+
+<%= will_paginate @startups, class:"pagination"%>

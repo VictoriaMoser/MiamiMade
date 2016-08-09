@@ -1,18 +1,20 @@
 
-  <div class="col-md-4">
-
+<div class="row">
+  <div class="col-md-offset-4 col-md-4 login">
+    <h1> Welcome to MiamiMade. </h1>
     <%= form_tag '/login', html: {class: "login-form"}  do %>
 
     <div class="field">
-      <%= label_tag :email %>
-      <%= text_field_tag :email %>
+      <%= label_tag :email, nil, class:'email-field' %>
+      <%= text_field_tag :email,"", class: 'form-control' %>
     </div>
 
     <div class="field">
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
+      <%= label_tag :password, nil, class:'password-field'%>
+      <%= password_field_tag :password,"", class: 'form-control' %>
     </div>
     <br>
-    <%= submit_tag "Login", class: 'btn btn-default' %>
+    <%= submit_tag "Login", class: 'btn btn-default blue-button' %>
     <% end %>
   </div>
+</div>
