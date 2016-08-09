@@ -25,9 +25,9 @@
             <td class="admin-page-fields"><%= investor.address %></td>
             <td class="admin-page-fields"><%= investor.description %></td>
             <td class="admin-page-fields"><%= investor.founded_date %></td>
-            <td class="admin-page-fields"><%= button_to 'Edit', edit_investor_path(investor), method:'get' %></td>
-            <td><%= button_to 'Approve', investor_approve_path(investor), method:'patch' %></td>
-            <td><%= button_to 'Delete', investor_path(investor), method:'delete' %></td>
+            <td class="admin-page-fields"><%= button_to 'Edit', edit_investor_path(investor), method:'get', class: "purple-button" %></td>
+            <td><%= button_to 'Approve', investor_approve_path(investor), method:'patch', class: "purple-button" %></td>
+            <td><%= button_to 'Delete', investor_path(investor), method:'delete', class: "purple-button" %></td>
           </tr>
           <%end%>
         </tbody>
@@ -60,9 +60,9 @@
             <td class="admin-page-fields"><%= startup.address %></td>
             <td class="admin-page-fields"><%= startup.description %></td>
             <td class="admin-page-fields"><%= startup.founded_date %></td>
-            <td><%= button_to 'Edit', edit_startup_path(startup), method: 'get' %></td>
-            <td><%= button_to 'Approve', startup_approve_path(startup), method:'patch' %></td>
-            <td><%= button_to 'Delete', startup_path(startup), method:'delete' %></td>
+            <td><%= button_to 'Edit', edit_startup_path(startup), method: 'get', class: "purple-button" %></td>
+            <td><%= button_to 'Approve', startup_approve_path(startup), method:'patch', class: "purple-button" %></td>
+            <td><%= button_to 'Delete', startup_path(startup), method:'delete', class: "purple-button" %></td>
           </tr>
           <%end%>
         </tbody>
@@ -89,9 +89,9 @@
           <tr>
             <td class="admin-page-fields"><%= user.name %></td>
             <td class="admin-page-fields"><%= user.email %></td>
-            <td><%= button_to 'Edit', edit_user_path(user), method: 'get' %></td>
-            <td><%= button_to 'Approve', user_approve_path(user), method:'patch' %></td>
-            <td><%= button_to 'Delete', user_path(user), method:'delete' %></td>
+            <td><%= button_to 'Edit', edit_user_path(user), method: 'get', class: "purple-button" %></td>
+            <td><%= button_to 'Approve', user_approve_path(user), method:'patch', class: "purple-button" %></td>
+            <td><%= button_to 'Delete', user_path(user), method:'delete', class: "purple-button" %></td>
           </tr>
           <%end%>
         </tbody>
