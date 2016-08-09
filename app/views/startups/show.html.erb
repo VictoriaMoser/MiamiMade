@@ -45,15 +45,13 @@
       </div>
       <div class="col-md-4 profile-column">
         <div class="col-xs-12 extra">
-          <a href="mailto:#{<%= @startup.email %>}" target="_top" class="btn btn-default">Contact</a>
-        </div>
-        <div class="col-xs-12 extra">
           <%= image_tag("facebook.png", class: "smedia img-responsive", width: "40") %>
           <%= image_tag("twitter.png", class: "smedia img-responsive", width: "40") %>
           <%= image_tag("linkedin.png", class: "smedia img-responsive", width: "40") %>
         </div>
         <div class="col-xs-12 extra">
           <%= link_to 'Back to Map', root_path, class: "purple-button" %>
+          <a href="mailto:#{<%= @startup.email %>}" target="_top" class="btn btn-default purple-button">Contact</a>
         </div>
       </div>
     </div>
