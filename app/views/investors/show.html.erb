@@ -46,28 +46,22 @@
         </p>
       </div>
       <div class="col-md-4 profile-column">
-        <div class="row">
+
         <div class="col-xs-12 extra">
           <a href="mailto:#{<%= @investor.email %>}" target="_top" class="btn btn-default purple-button">Contact</a>
         </div>
-        </div>
 
-        <hr>
-        <div class="row">
+
         <div class="col-xs-12 extra">
-          <ul>
-            <li><%= image_tag("facebook.png", class: "smedia img-responsive") %></li>
-            <li><%= image_tag("twitter.png", class: "smedia img-responsive") %></li>
-            <li><%= image_tag("linkedin.png", class: "smedia img-responsive") %></li>
-          </ul>
-        </div>
+          <%= image_tag("facebook.png", class: "smedia img-responsive", width: "40") %>
+          <%= image_tag("twitter.png", class: "smedia img-responsive", width: "40") %>
+          <%= image_tag("linkedin.png", class: "smedia img-responsive", width: "40") %>
         </div>
 
-        <hr>
-        <div class="row">
+
+
         <div class="col-xs-12 extra">
           <%= link_to 'Back to Map', root_path, class: "purple-button" %>
-        </div>
         </div>
 
       </div>
