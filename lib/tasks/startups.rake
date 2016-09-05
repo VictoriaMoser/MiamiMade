@@ -23,7 +23,7 @@ namespace :startups do
 			employee_count: row[:employee_count],
 			stage: row[:stage],
 			founded_date: row[:date_added],
-      approval: true
+      		approval: true
 			)
 		end
 	end

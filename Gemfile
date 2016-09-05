@@ -43,6 +43,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'capybara'
   gem 'launchy'
+  gem 'sqlite3', '~> 1.3', '>= 1.3.11'
 end
 
 group :development do
