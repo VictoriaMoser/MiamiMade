@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :users, except: :index do
     member do
      get :confirm_email
-   end
- end
+    end
+  end
 
 end
